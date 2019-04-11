@@ -1,1 +1,20 @@
-﻿test test abc
+﻿Khách hàng:
+ -Đăng ký
+ -Đăng nhập
+ -Xem và tra cứu
+ -Quản lí giỏ hàng (thêm sản phẩm vào giỏ hàng, xóa sản phẩm)
+ -Đặt đơn hàng
+ -Theo dõi tình trạng đơn hàng
+ -Quản lí tài khoản (đổi mật khẩu, thông tin giao hàng mặc định)
+ -Viết đánh giá trong từng sản phẩm (*)
+
+Quản lí:
+ - Quản lí sản phẩm (thêm, xóa sản phẩm, quản lí số lượng)
+ - Quản lí đơn hàng
+ - Tra cứu thông tin khách hàng
+ - Lập báo cáo doanh thu (*)
+
+Hệ thống:
+- Thuật toán trình bày sản phẩm dựa trên nhiều yếu tố (số lượng bán ra, độ đánh giá,..) (*)
+
+ (*) có độ ưu tiên thấp hơn
