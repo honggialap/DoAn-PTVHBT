@@ -1,1 +1,22 @@
-test test abc
+Quản lý:
+- Quản lý kho
+	+ Sản phẩm (Thêm, Xóa, Sửa)
+	+ Loại sản phẩm (Thêm, Xóa, Sửa)
+	+ Nhập/Xuất sản phẩm
+	+ Báo cáo tồn
+- Quản lý bán hàng
+	+ Đơn hàng (Thêm, Xóa, Sửa)
+	+ Khách hàng (Thêm, Xóa, Sửa)
+	+ Báo cáo doanh thu
+	
+Khách hàng:
+- Quản lý tài khoản
+	+ Đăng ký
+	+ Đăng nhập
+	+ Thay đổi mật khẩu
+	+ Thay đổi thông tin
+- Mua hàng
+	+ Xem, tra cứu sản phẩm
+	+ Giỏ hàng
+	+ Đặt hàng
+	+ Theo dõi tình trạng đơn hàng
