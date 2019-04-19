@@ -1,0 +1,28 @@
+﻿@model IEnumerable<NomNomConnection.SanPham>
+<!-- Most views product section -->
+<section class="top-views-product-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Sản phẩm hot</h2>
+        </div>
+        <div class="product-slider owl-carousel">
+            @foreach (var sp in Model)
+                {
+                    <div class="product-item">
+                        <div class="pi-pic">                             
+                                <img src="~/Images/@sp.hinhanh" alt="Edit">
+                           
+                            <div class="pi-links">
+                                <a href="#" class="add-card"><i class="flaticon-bag"></i><span>Thêm vào giỏ</span></a>
+                            </div>
+                        </div>
+                        <div class="pi-text">
+                            <h6>@sp.giaban</h6>
+                            <p><a href="@Url.Action("ChiTiet","SanPham",new { id=@sp.id})">@sp.ten</a></p>
+                        </div>
+                    </div>
+            }
+        </div>
+    </div>
+</section>
+<!-- letest product section end -->

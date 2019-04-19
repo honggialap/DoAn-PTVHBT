@@ -1,0 +1,51 @@
+﻿@model PagedList.IPagedList<NomNomConnection.SanPham>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Category section -->
+<section class="category-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 order-2 order-lg-1">
+                <div class="filter-widget">
+                    <h2 class="fw-title">Phân loại</h2>
+                    <ul class="category-menu">
+                        <li>
+                            @Html.Partial("LoaiSanPham",NomNom.Models.BUS.LoaiSanPhamBUS.DanhSach())
+                        </li>                      
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
+                <div class="row">
+                    @foreach(var sp in Model)
+                    {
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="product-item">
+                                <div class="pi-pic">                               
+                                    <img style="max-width:200px;max-height:200px;" src="~/Images/@sp.hinhanh" alt="">
+                                    <div class="pi-links">
+                                        <a href="#" class="add-card"><i class="flaticon-bag"></i><span>THÊM VÀO GIỎ</span></a>
+                                    </div>
+                                </div>
+                                <div class="pi-text">
+                                    <h6>@sp.giaban đ</h6>
+                                    <p><a href="@Url.Action("ChiTiet","SanPham",new {id=@sp.id})">@sp.ten</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    }                  
+                </div>
+                <div class="text-center">
+                    <ul class="pagination">
+                        @Html.PagedListPager(Model,page=>Url.Action("Index","SanPham",new { page,loai_id = Model.Last().loai_id}))
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Category section end -->

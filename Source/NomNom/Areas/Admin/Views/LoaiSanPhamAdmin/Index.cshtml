@@ -1,0 +1,56 @@
+﻿
+@model IEnumerable<NomNomConnection.LoaiSanPham>
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
+    }
+   
+    <head>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 50%;
+                margin: auto;
+            }
+
+            th, td {
+                text-align: center;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #5d5e63
+            }
+
+            th {
+                background-color: #2a9fd6;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+
+        <h2>Quản lí loại sản phẩm</h2>
+
+        <table>
+            <tr>
+                <th>Mã loại sản phẩm</th>
+                <th>Tên loại sản phẩm</th>
+                <th>Tình trạng</th>
+                <th colspan="2">
+                    <a href="@Url.Action("Create","LoaiSanPhamAdmin")"><img src="~/Images/AddIcon.png" /></a">
+                </th>
+            </tr>
+            @foreach(var sp in Model)
+            {
+            <tr>
+                <td>@sp.id</td>
+                <td>@sp.ten</td>
+                <td>@sp.tinhtrang</td>
+                <td><a href="@Url.Action("Edit","LoaiSanPhamAdmin",new { id=sp.id})"><img src="~/Images/EditIcon.png" /></a></td>
+                <td><img src="~/Images/DeleteIcon.png" /></td>
+            </tr>
+            }
+        </table>
+
+    </body>

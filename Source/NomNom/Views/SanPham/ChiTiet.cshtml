@@ -1,0 +1,56 @@
+﻿
+@model NomNomConnection.SanPham
+@{
+    ViewBag.Title = "ChiTiet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{NomNom.Models.BUS.SanPhamBUS.Tang1View(Model.id);}
+<section class="product-section">
+    <div class="container">       
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="product-pic-zoom">
+                    <img class="product-big-img" src="~/Images/@Model.hinhanh" alt="">
+                </div>
+                <div class="product-thumbs" tabindex="1" style="overflow: hidden; outline: none;">
+                    <div class="product-thumbs-track">
+                        <div class="pt active" data-imgbigurl="/Images/@Model.hinhanh"><img src="/Images/@Model.hinhanh" alt=""></div>
+                        <div class="pt" data-imgbigurl="/Images/@Model.hinhanh"><img src="/Images/@Model.hinhanh" alt=""></div>
+                        <div class="pt" data-imgbigurl="/Images/@Model.hinhanh"><img src="/Images/@Model.hinhanh" alt=""></div>
+                        <div class="pt" data-imgbigurl="/Images/@Model.hinhanh"><img src="/Images/@Model.hinhanh" alt=""></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 product-details">
+                <h2 class="p-title">@Model.ten</h2>
+                <h3 class="p-price">@Model.giaban đồng</h3>
+                @if (@Model.soluongton != 0) {
+                    <h4 class="p-stock">Tình trạng: <span>Còn hàng</span></h4>   
+                }
+                else
+                {
+                    <h4 class="p-stock">Tình trạng: <span>Hết hàng</span></h4>  
+                }
+                <div class="quantity">
+                    <p>Số lượng</p>
+                    <div class="pro-qty"><input type="text" value="1"></div>
+                </div>
+                <a href="#" class="site-btn">Thêm vào giỏ</a>
+
+                <div id="accordion" class="accordion-area">
+                    <div class="panel">
+                        <div class="panel-header" id="headingOne">
+                            <button class="panel-link active" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">thông tin</button>
+                        </div>
+                        <div id="collapse1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="panel-body">
+                                <p>@Model.thongtin</p>
+                            </div>
+                        </div>
+                    </div>                 
+                </div>               
+            </div>
+        </div>
+    </div>
+</section>
+<!-- product section end -->
