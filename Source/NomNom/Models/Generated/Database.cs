@@ -237,6 +237,12 @@ namespace NomNomConnection
 
 
 
+		[Column] public string thuonghieu_id { get; set; }
+
+
+
+
+
 		[Column] public string hinhanh { get; set; }
 
 

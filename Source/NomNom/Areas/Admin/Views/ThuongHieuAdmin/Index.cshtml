@@ -41,14 +41,14 @@
                     <a href="@Url.Action("Create","ThuongHieuAdmin")"><img src="~/Images/AddIcon.png" /></a">
                 </th>
             </tr>
-            @foreach(var sp in Model)
+            @foreach(var th in Model)
             {
             <tr>
-                <td>@sp.id</td>
-                <td>@sp.ten</td>
-                <td>@sp.tinhtrang</td>
-                <td><a href="@Url.Action("Edit","ThuongHieuAdmin",new { id=sp.id})"><img src="~/Images/EditIcon.png" /></a></td>
-                <td><a href="@Url.Action("Delete","ThuongHieuAdmin",new { id=sp.id})"><img src="~/Images/DeleteIcon.png" /></a></td>
+                <td>@th.id</td>
+                <td>@th.ten</td>
+                <td>@th.tinhtrang</td>
+                <td><a href="@Url.Action("Edit","ThuongHieuAdmin",new { id=th.id})"><img src="~/Images/EditIcon.png" /></a></td>
+                <td><a href="@Url.Action("Delete","ThuongHieuAdmin",new { id=th.id})"><img src="~/Images/DeleteIcon.png" /></a></td>
             </tr>
             }
         </table>

@@ -13,6 +13,11 @@ namespace NomNom.Models.BUS
             var db = new NomNomConnectionDB();
             return db.Query<SanPham>("Select * from SanPham where tinhtrang != 0");
         }
+        public static IEnumerable<SanPham> DanhSachAdmin()
+        {
+            var db = new NomNomConnectionDB();
+            return db.Query<SanPham>("Select * from SanPham");
+        }
         public static IEnumerable<SanPham> DanhSachbyloaisanpham(string loai_id)
         {
             var db = new NomNomConnectionDB();
@@ -22,6 +27,13 @@ namespace NomNom.Models.BUS
         {
             var db = new NomNomConnectionDB();
             return db.SingleOrDefault<SanPham>("Select * from SanPham where id = @0", id);
+        }
+        public static void Them(SanPham sp)
+        {
+            var db = new NomNomConnectionDB();
+            sp.soview = 0;
+            sp.soluongton = 0;
+            db.Insert(sp);
         }
         public static IEnumerable<SanPham> Top10LuotView()
         {
@@ -34,6 +46,14 @@ namespace NomNom.Models.BUS
             var a = db.SingleOrDefault<SanPham>("SELECT * FROM SanPham WHERE id=@0", id);
             a.soview = a.soview + 1;
             db.Update("SanPham", "id", a);
+        }
+        public static void CapNhat(SanPham sp)
+        {
+            var db = new NomNomConnectionDB();
+            var old = ChiTiet(sp.id);
+            sp.soview = old.soview;
+            sp.soluongton = old.soluongton;
+            db.Update(sp);
         }
     }
 }

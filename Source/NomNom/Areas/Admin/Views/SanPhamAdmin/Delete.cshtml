@@ -1,8 +1,9 @@
-﻿@model NomNomConnection.SanPham
+﻿
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Delete";
     Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
 }
+
 
 <style>
     input[type=text] {
@@ -35,14 +36,14 @@
 <h3>Sửa Sản phẩm</h3>
 
 <div style="width:50%;margin:auto">
-    @using (Html.BeginForm("Edit", "SanPhamAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("Delete", "SanPhamAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <label for="id">Mã sản phẩm</label>
         <input type="text" id="id" name="id" style="background-color:#5d5e63" placeholder="Mã sản phẩm.." required value="@Model.id" readonly>
         <label for="ten">Tên sản phẩm</label>
-        <input type="text" id="ten" name="ten" style="background-color:#5d5e63" placeholder="Tên sản phẩm.." required value="@Model.ten">
+        <input type="text" id="ten" name="ten" style="background-color:#5d5e63" placeholder="Tên sản phẩm.." required value="@Model.ten" readonly>
         <label for="hinhanh">Hình ảnh</label>
-        <input type="file" id="hinhanh" name="hinhanh" onchange="previewfile();" />
+        <img src="~/Images/@Model.hinhanh" style="width:200px;height:200px" />
         <div>
             <label>Loại sản phẩm</label>
             @Html.DropDownList("loai_id", null, new { @style = "background-color:#5d5e63" })
@@ -52,7 +53,7 @@
             @Html.DropDownList("thuonghieu_id", null, new { @style = "background-color:#5d5e63" })
         </div>
         <label for="thongtin">Thông tin</label>
-        <textarea required id="thongtin" name="thongtin" placeholder="Thông tin sản phảm.." style="width: 100%;
+        <textarea readonly required id="thongtin" name="thongtin" placeholder="Thông tin sản phảm.." style="width: 100%;
         padding: 12px 20px;
         margin: 8px 0;
         display: inline-block;
@@ -62,22 +63,13 @@
         background-color:#5d5e63;
         height:150px">@Model.thongtin</textarea>
         <label for="giaban">Giá bán</label>
-        <input type="text" id="giaban" name="giaban" style="background-color:#5d5e63" placeholder="Giá bán.." required value="@Model.giaban">
+        <input type="text" id="giaban" name="giaban" style="background-color:#5d5e63" placeholder="Giá bán.." required value="@Model.giaban" readonly>
         <label for="tinhtrang">Tình trạng</label>
         <select id="tinhtrang" name="tinhtrang" style="background-color:#5d5e63" required>
-            @if (@Model.tinhtrang == 1)
-            {
-                <option value="0">Khóa</option>
-                <option selected value="1">Không khóa</option>
-            }
-            else
-            {
-                <option selected value="0">Khóa</option>
-                <option value="1">Không khóa</option>
-            }
+
+            <option selected value="0">Khóa</option>
         </select>
 
-        <input type="submit" value="Xác nhận chỉnh sửa">
+        <input type="submit" value="Xác nhận xóa">
     }
 </div>
-

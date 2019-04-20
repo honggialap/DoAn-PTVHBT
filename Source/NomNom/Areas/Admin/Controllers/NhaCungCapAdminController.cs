@@ -42,7 +42,8 @@ namespace NomNom.Areas.Admin.Controllers
             }
             catch
             {
-                return View();
+                return Content("Cập nhật csdl thất bại");
+                //return View();
             }
         }
 
@@ -69,8 +70,8 @@ namespace NomNom.Areas.Admin.Controllers
             }
             catch
             {
-               
-                return View();
+                return Content("Cập nhật csdl thất bại");
+                //return View();
             }
         }
 
@@ -98,7 +99,8 @@ namespace NomNom.Areas.Admin.Controllers
             }
             catch
             {
-                return View();
+                return Content("Cập nhật csdl thất bại");
+                //return View();
             }
         }
     }

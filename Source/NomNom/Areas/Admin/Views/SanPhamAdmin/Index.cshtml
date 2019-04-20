@@ -1,5 +1,66 @@
 ﻿
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
-}
+@model IEnumerable<NomNomConnection.SanPham>
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
+    }
+   
+    <head>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 70%;
+                margin: auto;
+            }
+
+            th, td {
+                text-align: center;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #5d5e63
+            }
+
+            th {
+                background-color: #2a9fd6;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+
+        <h2>Quản lí sản phẩm</h2>
+
+        <table>
+            <tr>
+                <th>Mã sản phẩm</th>
+                <th>Tên sản phẩm</th>
+                <th>Hình ảnh</th>
+                <th>Loại sản phẩm</th>
+                <th>Thương hiệu</th>
+                <th>Thông tin</th>
+                <th>Giá bán</th>
+                <th>Tình trạng</th>
+                <th colspan="2">
+                    <a href="@Url.Action("Create","SanPhamAdmin")"><img src="~/Images/AddIcon.png" /></a">
+                </th>
+            </tr>
+            @foreach(var sp in Model)
+            {
+            <tr>
+                <td>@sp.id</td>
+                <td>@sp.ten</td>
+                <td><img src="~/Images/@sp.hinhanh" style="width:50px;height:50px"/></td>
+                <td>@sp.loai_id</td>
+                <td>@sp.thuonghieu_id</td>
+                <td>@sp.thongtin</td>
+                <td>@sp.giaban</td>
+                <td>@sp.tinhtrang</td>
+                <td><a href="@Url.Action("Edit","SanPhamAdmin",new { id=sp.id})"><img src="~/Images/EditIcon.png" /></a></td>
+                <td><a href="@Url.Action("Delete","SanPhamAdmin",new { id=sp.id})"><img src="~/Images/DeleteIcon.png" /></a></td>
+            </tr>
+            }
+        </table>
+
+    </body>
