@@ -149,9 +149,43 @@ namespace NomNomConnection
     public partial class LoaiSanPham : NomNomConnectionDB.Record<LoaiSanPham>  
     {
 
-       
 
-        [Column] public string id { get; set; }
+
+		[Column] public string id { get; set; }
+
+
+
+
+
+		[Column] public string ten { get; set; }
+
+
+
+
+
+		[Column] public int tinhtrang { get; set; }
+
+
+
+	}
+
+    
+
+	[TableName("dbo.NhaCungCap")]
+
+
+
+	[PrimaryKey("id", AutoIncrement=false)]
+
+
+	[ExplicitColumns]
+
+    public partial class NhaCungCap : NomNomConnectionDB.Record<NhaCungCap>  
+    {
+
+
+
+		[Column] public string id { get; set; }
 
 
 
@@ -228,6 +262,40 @@ namespace NomNomConnection
 
 
 		[Column] public int soview { get; set; }
+
+
+
+
+
+		[Column] public int tinhtrang { get; set; }
+
+
+
+	}
+
+    
+
+	[TableName("dbo.ThuongHieu")]
+
+
+
+	[PrimaryKey("id", AutoIncrement=false)]
+
+
+	[ExplicitColumns]
+
+    public partial class ThuongHieu : NomNomConnectionDB.Record<ThuongHieu>  
+    {
+
+
+
+		[Column] public string id { get; set; }
+
+
+
+
+
+		[Column] public string ten { get; set; }
 
 
 

@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<NomNomConnection.LoaiSanPham>
+@model IEnumerable<NomNomConnection.ThuongHieu>
     @{
         ViewBag.Title = "Index";
         Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
@@ -30,15 +30,15 @@
     </head>
     <body>
 
-        <h2>Quản lí loại sản phẩm</h2>
+        <h2>Quản lí thương hiệu</h2>
 
         <table>
             <tr>
-                <th>Mã loại sản phẩm</th>
-                <th>Tên loại sản phẩm</th>
+                <th>Mã thương hiệu</th>
+                <th>Tên thương hiệu</th>
                 <th>Tình trạng</th>
                 <th colspan="2">
-                    <a href="@Url.Action("Create","LoaiSanPhamAdmin")"><img src="~/Images/AddIcon.png" /></a">
+                    <a href="@Url.Action("Create","ThuongHieuAdmin")"><img src="~/Images/AddIcon.png" /></a">
                 </th>
             </tr>
             @foreach(var sp in Model)
@@ -47,8 +47,8 @@
                 <td>@sp.id</td>
                 <td>@sp.ten</td>
                 <td>@sp.tinhtrang</td>
-                <td><a href="@Url.Action("Edit","LoaiSanPhamAdmin",new { id=sp.id})"><img src="~/Images/EditIcon.png" /></a></td>
-                <td><a href="@Url.Action("Delete","LoaiSanPhamAdmin",new { id=sp.id})"><img src="~/Images/DeleteIcon.png" /></a></td>
+                <td><a href="@Url.Action("Edit","ThuongHieuAdmin",new { id=sp.id})"><img src="~/Images/EditIcon.png" /></a></td>
+                <td><a href="@Url.Action("Delete","ThuongHieuAdmin",new { id=sp.id})"><img src="~/Images/DeleteIcon.png" /></a></td>
             </tr>
             }
         </table>

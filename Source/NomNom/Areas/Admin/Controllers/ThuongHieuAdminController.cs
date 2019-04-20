@@ -8,34 +8,34 @@ using System.Web.Mvc;
 
 namespace NomNom.Areas.Admin.Controllers
 {
-    public class LoaiSanPhamAdminController : Controller
+    public class ThuongHieuAdminController : Controller
     {
-        // GET: Admin/LoaiSanPham
+        // GET: Admin/ThuongHieu
         public ActionResult Index()
         {
-            var db = LoaiSanPhamBUS.DanhSachAdmin();
+            var db = ThuongHieuBUS.DanhSachAdmin();
             return View(db);
         }
 
-        // GET: Admin/LoaiSanPham/Details/5
+        // GET: Admin/ThuongHieu/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Admin/LoaiSanPham/Create
+        // GET: Admin/ThuongHieu/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/LoaiSanPham/Create
+        // POST: Admin/ThuongHieu/Create
         [HttpPost]
-        public ActionResult Create(LoaiSanPham lsp)
+        public ActionResult Create(ThuongHieu th)
         {
             try
             {
-                LoaiSanPhamBUS.Them(lsp);
+                ThuongHieuBUS.Them(th);
                 // TODO: Add insert logic here
 
                 return RedirectToAction("Index");
@@ -46,25 +46,25 @@ namespace NomNom.Areas.Admin.Controllers
             }
         }
 
-        // GET: Admin/LoaiSanPham/Edit/5
+        // GET: Admin/ThuongHieu/Edit/5
         public ActionResult Edit(string id)
         {
-            var db = LoaiSanPhamBUS.ChiTiet(id);
+            var db = ThuongHieuBUS.ChiTiet(id);
             return View(db);
         }
 
-        // POST: Admin/LoaiSanPham/Edit/5
+        // POST: Admin/ThuongHieu/Edit/5
         [HttpPost]
         public ActionResult Edit(string id,FormCollection form)
         {
             try
             {
                 // TODO: Add update logic here
-                var lsp = new LoaiSanPham();
-                lsp.id = form["id"].ToString();
-                lsp.ten = form["ten"].ToString();
-                lsp.tinhtrang = Convert.ToInt32(form["tinhtrang"].ToString());
-                LoaiSanPhamBUS.CapNhat(lsp);
+                var th = new ThuongHieu();
+                th.id = form["id"].ToString();
+                th.ten = form["ten"].ToString();
+                th.tinhtrang = Convert.ToInt32(form["tinhtrang"].ToString());
+                ThuongHieuBUS.CapNhat(th);
                 return RedirectToAction("Index");
             }
             catch
@@ -74,26 +74,26 @@ namespace NomNom.Areas.Admin.Controllers
             }
         }
 
-        // GET: Admin/LoaiSanPham/Delete/5
+        // GET: Admin/ThuongHieu/Delete/5
         public ActionResult Delete(string id)
         {
-            var db = LoaiSanPhamBUS.ChiTiet(id);
+            var db = ThuongHieuBUS.ChiTiet(id);
             db.tinhtrang = 0;
             return View(db);
         }
 
-        // POST: Admin/LoaiSanPham/Delete/5
+        // POST: Admin/ThuongHieu/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection form)
         {
             try
             {
                 // TODO: Add delete logic here
-                var lsp = new LoaiSanPham();
-                lsp.id = form["id"].ToString();
-                lsp.ten = form["ten"].ToString();
-                lsp.tinhtrang = Convert.ToInt32(form["tinhtrang"].ToString());
-                LoaiSanPhamBUS.CapNhat(lsp);
+                var th = new ThuongHieu();
+                th.id = form["id"].ToString();
+                th.ten = form["ten"].ToString();
+                th.tinhtrang = Convert.ToInt32(form["tinhtrang"].ToString());
+                ThuongHieuBUS.CapNhat(th);
                 return RedirectToAction("Index");
             }
             catch

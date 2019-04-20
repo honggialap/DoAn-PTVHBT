@@ -1,0 +1,62 @@
+﻿@model NomNomConnection.NhaCungCap
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
+}
+
+<style>
+    input[type=text] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #2a9fd6;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+</style>
+
+
+<h3>Sửa Nhà cung cấp</h3>
+
+<div style="width:50%;margin:auto">
+    @using (Html.BeginForm("Edit", "NhaCungCapAdmin", FormMethod.Post))
+    {
+        <label for="id">Mã nhà cung cấp</label>
+        <input type="text" id="id" name="id" style="background-color:#5d5e63" placeholder="Mã nhà cung cấp.." required value = "@Model.id" readonly>
+
+        <label for="ten">Tên nhà cung cấp</label>
+        <input type="text" id="ten" name="ten" style="background-color:#5d5e63" value = "@Model.ten" placeholder="Tên nhà cung cấp.." required>
+
+        <label for="tinhtrang">Tình trạng</label>
+        <select id="tinhtrang" name="tinhtrang" style="background-color:#5d5e63" required>
+            @if (@Model.tinhtrang == 1)
+            {
+                <option value="0">Khóa</option>
+                <option selected value="1">Không khóa</option>
+            }
+            else
+            {
+                <option selected value="0">Khóa</option>
+                <option value="1">Không khóa</option>
+            }
+        </select>
+
+        <input type="submit" value="Xác nhận chỉnh sửa">
+    }
+</div>
