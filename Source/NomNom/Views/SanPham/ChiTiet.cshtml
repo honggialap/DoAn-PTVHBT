@@ -31,12 +31,24 @@
                 {
                     <h4 class="p-stock">Tình trạng: <span>Hết hàng</span></h4>  
                 }
-                <div class="quantity">
+                
+                @if (User.Identity.IsAuthenticated)
+                {
+                    using (Html.BeginForm("Them", "GioHang", FormMethod.Post))
+                    {
+                        <div class="quantity">
                     <p>Số lượng</p>
-                    <div class="pro-qty"><input type="text" value="1"></div>
+                    <div class="pro-qty"><input type="text" name="soluong" value="1"></div>
                 </div>
-                <a href="#" class="site-btn">Thêm vào giỏ</a>
+                        <input type="hidden" name="sanpham_id" value="@Model.id" />
+                        <input type="submit" class="site-btn" value="Thêm vào giỏ" />
+                    }
 
+                }
+                else
+                {
+                    <h6>Vui lòng đăng nhập để mua sản phẩm</h6>
+                }
                 <div id="accordion" class="accordion-area">
                     <div class="panel">
                         <div class="panel-header" id="headingOne">

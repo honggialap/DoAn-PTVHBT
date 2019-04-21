@@ -1,0 +1,68 @@
+﻿
+@model List<NomNomConnection.SanPham>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="cart-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="cart-table">
+                    <h3>Giỏ hàng của bạn</h3>
+                    <div class="cart-table-warp">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="product-th">Sản phẩm</th>
+                                    <th class="quy-th">Số lượng</th>
+                                    <th class="total-th">Tổng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var sp in Model)
+                                {
+                                <tr>
+                                    <td class="product-col">
+                                        <img src="~/Images/@sp.hinhanh" alt="">
+                                        <div class="pc-title">
+                                            <h4>@sp.ten</h4>
+                                            <p>@sp.giaban đồng</p>
+                                        </div>
+                                    </td>
+                                   @using (Html.BeginForm("CapNhat", "GioHang", FormMethod.Post))
+                                    {
+                                    <input type="hidden" name="sanpham_id" value="@sp.id" />
+                                    <td class="quy-col">
+                                        <div class="quantity">
+                                            <div class="pro-qty">
+                                                <input type="text" name="soluong" value="@sp.soluongton">
+                                            </div>
+                                        </div>
+                                        <input type="submit" class="btn-danger" value="Cập nhật"/>
+                                    </td>
+                                   
+                                    }
+
+                                    <td class="total-col"><h4>@(sp.soluongton * sp.giaban) đồng</h4></td>
+
+                                    
+                                    <td><a href="@Url.Action("Xoa","GioHang",new { sanpham_id=@sp.id})"><img src="~/Images/DeleteIcon.png" /></a></td>
+                                </tr>
+                                }                            
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="total-cost">
+                        <h6>Tổng tiền <span>@ViewBag.Tongtien đồng</span></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 card-right">               
+                <a href="" class="site-btn">Tiến hành đặt hàng</a>
+                <a href="@Url.Action("Index","SanPham")" class="site-btn sb-dark">Tiếp tục mua sắm</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- cart section end -->

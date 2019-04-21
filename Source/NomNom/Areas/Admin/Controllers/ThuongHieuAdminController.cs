@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace NomNom.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ThuongHieuAdminController : Controller
     {
         // GET: Admin/ThuongHieu

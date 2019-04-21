@@ -137,6 +137,298 @@ namespace NomNomConnection
 
     
 
+	[TableName("dbo.ChiTietDonHang")]
+
+
+
+	[PrimaryKey("donhang_id", AutoIncrement=false)]
+
+
+	[ExplicitColumns]
+
+    public partial class ChiTietDonHang : NomNomConnectionDB.Record<ChiTietDonHang>  
+    {
+
+
+
+		[Column] public string donhang_id { get; set; }
+
+
+
+
+
+		[Column] public string sanpham_id { get; set; }
+
+
+
+
+
+		[Column] public int soluong { get; set; }
+
+
+
+
+
+		[Column] public int giaorder { get; set; }
+
+
+
+	}
+
+    
+
+	[TableName("dbo.ChiTietHoaDon")]
+
+
+
+	[PrimaryKey("hoadon_id", AutoIncrement=false)]
+
+
+	[ExplicitColumns]
+
+    public partial class ChiTietHoaDon : NomNomConnectionDB.Record<ChiTietHoaDon>  
+    {
+
+
+
+		[Column] public string hoadon_id { get; set; }
+
+
+
+
+
+		[Column] public string sanpham_id { get; set; }
+
+
+
+
+
+		[Column] public int soluong { get; set; }
+
+
+
+
+
+		[Column] public int giaban { get; set; }
+
+
+
+	}
+
+    
+
+	[TableName("dbo.ChiTietPhieuNhap")]
+
+
+
+	[PrimaryKey("phieunhap_id", AutoIncrement=false)]
+
+
+	[ExplicitColumns]
+
+    public partial class ChiTietPhieuNhap : NomNomConnectionDB.Record<ChiTietPhieuNhap>  
+    {
+
+
+
+		[Column] public string phieunhap_id { get; set; }
+
+
+
+
+
+		[Column] public string sanpham_id { get; set; }
+
+
+
+
+
+		[Column] public int soluong { get; set; }
+
+
+
+
+
+		[Column] public int gianhap { get; set; }
+
+
+
+	}
+
+    
+
+	[TableName("dbo.DonHang")]
+
+
+
+	[PrimaryKey("id", AutoIncrement=false)]
+
+
+	[ExplicitColumns]
+
+    public partial class DonHang : NomNomConnectionDB.Record<DonHang>  
+    {
+
+
+
+		[Column] public string id { get; set; }
+
+
+
+
+
+		[Column] public DateTime ngay { get; set; }
+
+
+
+
+
+		[Column] public string khachhang_id { get; set; }
+
+
+
+
+
+		[Column] public int trigia { get; set; }
+
+
+
+
+
+		[Column] public int tinhtrang_id { get; set; }
+
+
+
+	}
+
+    
+
+	[TableName("dbo.GioHang")]
+
+
+
+	[PrimaryKey("taikhoan_id", AutoIncrement=false)]
+
+
+	[ExplicitColumns]
+
+    public partial class GioHang : NomNomConnectionDB.Record<GioHang>  
+    {
+
+
+
+		[Column] public string taikhoan_id { get; set; }
+
+
+
+
+
+		[Column] public string sanpham_id { get; set; }
+
+
+
+
+
+		[Column] public int soluong { get; set; }
+
+
+
+	}
+
+    
+
+	[TableName("dbo.HoaDon")]
+
+
+
+	[PrimaryKey("id", AutoIncrement=false)]
+
+
+	[ExplicitColumns]
+
+    public partial class HoaDon : NomNomConnectionDB.Record<HoaDon>  
+    {
+
+
+
+		[Column] public string id { get; set; }
+
+
+
+
+
+		[Column] public DateTime ngay { get; set; }
+
+
+
+
+
+		[Column] public string khachhang_id { get; set; }
+
+
+
+
+
+		[Column] public int trigia { get; set; }
+
+
+
+	}
+
+    
+
+	[TableName("dbo.KhachHang")]
+
+
+
+	[PrimaryKey("id", AutoIncrement=false)]
+
+
+	[ExplicitColumns]
+
+    public partial class KhachHang : NomNomConnectionDB.Record<KhachHang>  
+    {
+
+
+
+		[Column] public string id { get; set; }
+
+
+
+
+
+		[Column] public string ten { get; set; }
+
+
+
+
+
+		[Column] public string email { get; set; }
+
+
+
+
+
+		[Column] public string sdt { get; set; }
+
+
+
+
+
+		[Column] public string diachi { get; set; }
+
+
+
+
+
+		[Column] public string account_id { get; set; }
+
+
+
+	}
+
+    
+
 	[TableName("dbo.LoaiSanPham")]
 
 
@@ -198,6 +490,46 @@ namespace NomNomConnection
 
 
 		[Column] public int tinhtrang { get; set; }
+
+
+
+	}
+
+    
+
+	[TableName("dbo.PhieuNhap")]
+
+
+
+	[PrimaryKey("id", AutoIncrement=false)]
+
+
+	[ExplicitColumns]
+
+    public partial class PhieuNhap : NomNomConnectionDB.Record<PhieuNhap>  
+    {
+
+
+
+		[Column] public string id { get; set; }
+
+
+
+
+
+		[Column] public DateTime ngay { get; set; }
+
+
+
+
+
+		[Column] public string nhacungcap_id { get; set; }
+
+
+
+
+
+		[Column] public int chi { get; set; }
 
 
 
@@ -281,6 +613,34 @@ namespace NomNomConnection
 
     
 
+	[TableName("dbo.TaiKhoan")]
+
+
+
+	[PrimaryKey("id", AutoIncrement=false)]
+
+
+	[ExplicitColumns]
+
+    public partial class TaiKhoan : NomNomConnectionDB.Record<TaiKhoan>  
+    {
+
+
+
+		[Column] public string id { get; set; }
+
+
+
+
+
+		[Column] public string password { get; set; }
+
+
+
+	}
+
+    
+
 	[TableName("dbo.ThuongHieu")]
 
 
@@ -308,6 +668,34 @@ namespace NomNomConnection
 
 
 		[Column] public int tinhtrang { get; set; }
+
+
+
+	}
+
+    
+
+	[TableName("dbo.TinhTrang")]
+
+
+
+	[PrimaryKey("id", AutoIncrement=false)]
+
+
+	[ExplicitColumns]
+
+    public partial class TinhTrang : NomNomConnectionDB.Record<TinhTrang>  
+    {
+
+
+
+		[Column] public int id { get; set; }
+
+
+
+
+
+		[Column] public string ten { get; set; }
 
 
 
