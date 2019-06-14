@@ -1,5 +1,7 @@
-﻿using NomNom.Models.SanPhams;
+﻿using NomNom.Models.LoaiSanPhams;
+using NomNom.Models.SanPhams;
 using NomNom.Models.TaiKhoans;
+using NomNom.Models.ThuongHieus;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -17,5 +19,7 @@ namespace NomNom.Models
         
         public DbSet<TaiKhoan> TaiKhoans { get; set; }
         public DbSet<SanPham> SanPhams { get; set; }
+        public DbSet<LoaiSanPham> LoaiSanPhams { get; set; }
+        public DbSet<ThuongHieu> ThuongHieus { get; set; }
     }
 }

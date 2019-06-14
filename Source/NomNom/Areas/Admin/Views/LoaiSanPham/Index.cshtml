@@ -1,0 +1,55 @@
+﻿
+@model List<NomNom.Models.LoaiSanPhams.LoaiSanPhamDTO>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="~/Assets/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Page level plugins -->
+    <script src="~/Assets/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="~/Assets/admin/js/demo/datatables-demo.js"></script>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Danh mục Loại sản phẩm</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Loại sản phẩm</th>
+                            <th>Ghi chú</th>                          
+                        </tr>
+                    </thead>              
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td><a href="/TaiKhoan/Edit/@item.Id">Sửa</a></td>
+                                <td>@item.Ten</td>
+                                <td>@item.GhiChu</td>                          
+                            </tr>
+                        }
+                                                       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

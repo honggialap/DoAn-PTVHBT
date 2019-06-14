@@ -18,5 +18,7 @@ namespace NomNom.Models.SanPhams
         public string HinhAnh { get; set; }
         [Display(Name = "Thông tin chi tiết")]
         public string ThongTin { get; set; }
+        [Display(Name = "Giá bán")]
+        public double GiaBan { get; set; }
     }
 }
