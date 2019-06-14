@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NomNom.Models.SanPhams;
+using NomNom.Models.TaiKhoans;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -14,5 +16,6 @@ namespace NomNom.Models
         }
         
         public DbSet<TaiKhoan> TaiKhoans { get; set; }
+        public DbSet<SanPham> SanPhams { get; set; }
     }
 }

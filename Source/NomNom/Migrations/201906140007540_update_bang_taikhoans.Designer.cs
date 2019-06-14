@@ -7,13 +7,13 @@ namespace NomNom.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class them_bang_taikhoan : IMigrationMetadata
+    public sealed partial class update_bang_taikhoans : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(them_bang_taikhoan));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(update_bang_taikhoans));
         
         string IMigrationMetadata.Id
         {
-            get { return "201906132013074_them_bang_taikhoan"; }
+            get { return "201906140007540_update_bang_taikhoans"; }
         }
         
         string IMigrationMetadata.Source

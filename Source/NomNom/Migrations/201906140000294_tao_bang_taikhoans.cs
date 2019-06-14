@@ -3,7 +3,7 @@ namespace NomNom.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class them_bang_taikhoan : DbMigration
+    public partial class tao_bang_taikhoans : DbMigration
     {
         public override void Up()
         {
@@ -22,7 +22,7 @@ namespace NomNom.Migrations
         
         public override void Down()
         {
-            DropTable("dbo.TaiKhoans");
+          
         }
     }
 }
