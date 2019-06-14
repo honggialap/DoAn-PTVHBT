@@ -27,8 +27,27 @@ namespace NomNom.DAL
             else
                 return Update(input);
         }
-        
-       
+
+        public LoaiSanPhamInput GetForEdit(int Id)
+        {
+            var entity = db.LoaiSanPhams.Find(Id);
+            if (entity == null)
+                return null;
+            else
+                return Mapper.Map<LoaiSanPhamInput>(entity);
+        }
+       public bool Delete(int Id)
+        {
+            var entity = db.LoaiSanPhams.Find(Id);
+            if (entity == null)
+                return false;
+            else
+            {
+                entity.IsDeleted = true;
+                db.SaveChanges();
+                return true;
+            }
+        }
        public List<LoaiSanPhamDTO> GetLoaiSanPham(LoaiSanPhamFilter filter)
         {
 
@@ -40,10 +59,10 @@ namespace NomNom.DAL
             var list = new List<LoaiSanPhamDTO>();
             foreach(var item in result)
             {
-                var obj = new LoaiSanPhamDTO();
-                obj.Id = item.Id;
-                obj.Ten = item.Ten;
-                obj.GhiChu = item.GhiChu;
+                var obj = Mapper.Map<LoaiSanPhamDTO>(item);//new LoaiSanPhamDTO();
+                //obj.Id = item.Id;
+                //obj.Ten = item.Ten;
+                //obj.GhiChu = item.GhiChu;
                 list.Add(obj);
             }
             return list;
@@ -61,7 +80,9 @@ namespace NomNom.DAL
             var entity = db.LoaiSanPhams.SingleOrDefault(x => x.Id == input.Id);
             if (entity != null)
             {
-                entity = Mapper.Map<LoaiSanPham>(input);
+                //entity = Mapper.Map<LoaiSanPham>(input);        
+                entity.Ten = input.Ten;
+                entity.GhiChu = input.GhiChu;
                 db.SaveChanges();
                 return entity.Id;
             }

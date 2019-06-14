@@ -8,6 +8,7 @@ namespace NomNom.Models.LoaiSanPhams
 {
     public class LoaiSanPhamInput: Entity<int>
     {
+        [Required(ErrorMessage = "Vui lòng nhập loại sản phẩm")]
         [Display(Name="Loại sản phẩm")]
         public string Ten { get; set; }
         [Display(Name = "Ghi chú")]
