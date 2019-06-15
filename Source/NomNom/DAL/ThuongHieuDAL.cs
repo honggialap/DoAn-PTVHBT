@@ -33,9 +33,12 @@ namespace NomNom.DAL
         {
 
             var result = db.ThuongHieus.Where(x => !x.IsDeleted);
-            if (filter.Ten != null)
+            if (filter != null)
             {
-                result = result.Where(x => x.Ten.Contains(filter.Ten));            
+                if (filter.Ten != null)
+                {
+                    result = result.Where(x => x.Ten.Contains(filter.Ten));
+                }
             }
             var list = new List<ThuongHieuDTO>();
             foreach (var item in result)

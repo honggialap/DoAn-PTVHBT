@@ -6,17 +6,15 @@
 
 @section header{
 }
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 <div class="card shadow mb-4" style="width:auto">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary"><a href="@Url.Action("Index","LoaiSanPham")">Danh mục Loại sản phẩm</a> > Cập nhật</h6>
     </div>
     <div class="card-body">
         <div class="panel panel-info shadow mb-4" style="width:500px;margin:auto;border:1px groove">
-            <div class="panel-heading">
-                <div class="panel-title">Cập nhật</div>     
+            <div class="panel-heading" style="background-color: #d9edf7;padding: 10px 15px;color: #31708f;">
+                <div class="panel-title" style="font-size: 16px;color: inherit;">Cập nhật</div>
             </div>
             @using (Html.BeginForm("Edit", "LoaiSanPham", FormMethod.Post, new { @class = "login-form" }))
             {

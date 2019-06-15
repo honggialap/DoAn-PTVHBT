@@ -8,6 +8,7 @@ namespace NomNom.Models.ThuongHieus
 {
     public class ThuongHieuInput: Entity<int>
     {
+        [Required(ErrorMessage = "Vui lòng nhập tên thương hiệu")]
         [Display(Name="Tên thương hiệu")]
         public string Ten { get; set; }
         [Display(Name = "Ghi chú")]

@@ -50,11 +50,13 @@ namespace NomNom.DAL
         }
        public List<LoaiSanPhamDTO> GetLoaiSanPham(LoaiSanPhamFilter filter)
         {
-
             var result = db.LoaiSanPhams.Where(x => !x.IsDeleted);
-            if (filter.Ten != null&&filter.Ten!="")
+            if (filter != null)
             {
-                result = result.Where(x => x.Ten.Contains(filter.Ten));
+                if (filter.Ten != null && filter.Ten != "")
+                {
+                    result = result.Where(x => x.Ten.Contains(filter.Ten));
+                }
             }
             var list = new List<LoaiSanPhamDTO>();
             foreach(var item in result)
