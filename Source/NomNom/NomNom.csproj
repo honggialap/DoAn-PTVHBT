@@ -148,6 +148,7 @@
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\TaiKhoanController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ThuongHieuController.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\Encryptor.cs" />
@@ -176,9 +177,9 @@
     <Compile Include="Migrations\201906140503514_tao_bang_loaisanphams.Designer.cs">
       <DependentUpon>201906140503514_tao_bang_loaisanphams.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906140510035_tao_bang_thuonghieus.cs" />
-    <Compile Include="Migrations\201906140510035_tao_bang_thuonghieus.Designer.cs">
-      <DependentUpon>201906140510035_tao_bang_thuonghieus.cs</DependentUpon>
+    <Compile Include="Migrations\201906151011562_tao_bang_thuonghieus.cs" />
+    <Compile Include="Migrations\201906151011562_tao_bang_thuonghieus.Designer.cs">
+      <DependentUpon>201906151011562_tao_bang_thuonghieus.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -1993,6 +1994,9 @@
     <Content Include="Areas\Admin\Views\LoaiSanPham\Index.cshtml" />
     <Content Include="Areas\Admin\Views\LoaiSanPham\Create.cshtml" />
     <Content Include="Areas\Admin\Views\LoaiSanPham\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ThuongHieu\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ThuongHieu\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ThuongHieu\Edit.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -2051,8 +2055,8 @@
     <EmbeddedResource Include="Migrations\201906140503514_tao_bang_loaisanphams.resx">
       <DependentUpon>201906140503514_tao_bang_loaisanphams.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906140510035_tao_bang_thuonghieus.resx">
-      <DependentUpon>201906140510035_tao_bang_thuonghieus.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906151011562_tao_bang_thuonghieus.resx">
+      <DependentUpon>201906151011562_tao_bang_thuonghieus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

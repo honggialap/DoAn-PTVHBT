@@ -13,7 +13,7 @@ namespace NomNom.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201906140510035_tao_bang_thuonghieus"; }
+            get { return "201906151011562_tao_bang_thuonghieus"; }
         }
         
         string IMigrationMetadata.Source
