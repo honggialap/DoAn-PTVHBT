@@ -3,6 +3,7 @@
     using NomNom.Common;
     using NomNom.DAL;
     using NomNom.Models.LoaiSanPhams;
+    using NomNom.Models.SanPhams;
     using NomNom.Models.TaiKhoans;
     using NomNom.Models.ThuongHieus;
     using System;
@@ -21,7 +22,7 @@
         protected override void Seed(NomNom.Models.NomNomDbContext context)
         {
             //  This method will be called after migrating to the latest version.
-
+            int n;
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
@@ -57,15 +58,88 @@
             LoaiSanPham lsp = new LoaiSanPham();
 
             lsp.Id = 1;
-            lsp.Ten = "Thực phẩm ăn liền";
-            lsp.GhiChu = "Thực phẩm ăn liền là dạng thực phẩm không cần phải nấu nướng mà có thể thể sử dụng ngay,";
+            lsp.Ten = "Không có";
+            lsp.GhiChu = "Sử dụng khi không cần phân loại sản phẩm";
             loaisanphams.Add(lsp);
 
             lsp = new LoaiSanPham();
             lsp.Id = 2;
-            lsp.Ten = "Thực phẩm đóng hộp";
-            lsp.GhiChu = "Đóng hộp là một phương thức để bảo quản thực phẩm bằng cách chế biến và xử lý trong môi trường thiếu khí.";
+            lsp.Ten = "Rau - Củ - Quả";
+            lsp.GhiChu = "";
             loaisanphams.Add(lsp);
+
+            lsp = new LoaiSanPham();
+            lsp.Id = 3;
+            lsp.Ten = "Gia vị";
+            lsp.GhiChu = "";
+            loaisanphams.Add(lsp);
+
+            lsp = new LoaiSanPham();
+            lsp.Id = 4;
+            lsp.Ten = "Đồ hộp";
+            lsp.GhiChu = "";
+            loaisanphams.Add(lsp);
+
+            lsp = new LoaiSanPham();
+            lsp.Id = 5;
+            lsp.Ten = "Thực phẩm tươi";
+            lsp.GhiChu = "";
+            loaisanphams.Add(lsp);
+
+            lsp = new LoaiSanPham();
+            lsp.Id = 6;
+            lsp.Ten = "Thực phẩm khô";
+            lsp.GhiChu = "";
+            loaisanphams.Add(lsp);
+
+            lsp = new LoaiSanPham();
+            lsp.Id = 7;
+            lsp.Ten = "Thực phẩm ăn liền";
+            lsp.GhiChu = "";
+            loaisanphams.Add(lsp);
+
+            lsp = new LoaiSanPham();
+            lsp.Id = 8;
+            lsp.Ten = "Thực phẩm đông lạnh và bảo quản mát";
+            lsp.GhiChu = "";
+            loaisanphams.Add(lsp);
+
+            lsp = new LoaiSanPham();
+            lsp.Id = 9;
+            lsp.Ten = "Sữa - Kem & sản phẩm từ sữa";
+            lsp.GhiChu = "";
+            loaisanphams.Add(lsp);
+
+            lsp = new LoaiSanPham();
+            lsp.Id = 10;
+            lsp.Ten = "Thực phẩm bổ dưỡng";
+            lsp.GhiChu = "";
+            loaisanphams.Add(lsp);          
+
+            lsp = new LoaiSanPham();
+            lsp.Id = 11;
+            lsp.Ten = "Đồ ăn vặt";
+            lsp.GhiChu = "";
+            loaisanphams.Add(lsp);
+
+            lsp = new LoaiSanPham();
+            lsp.Id = 12;
+            lsp.Ten = "Bánh";
+            lsp.GhiChu = "";
+            loaisanphams.Add(lsp);
+
+            lsp = new LoaiSanPham();
+            lsp.Id = 13;
+            lsp.Ten = "Kẹo";
+            lsp.GhiChu = "";
+            loaisanphams.Add(lsp);
+
+            lsp = new LoaiSanPham();
+            lsp.Id = 14;
+            lsp.Ten = "Thực phẩm chay";
+            lsp.GhiChu = "";
+            loaisanphams.Add(lsp);
+
 
             context.LoaiSanPhams.AddOrUpdate(loaisanphams.ToArray());
             #endregion
@@ -73,73 +147,109 @@
             #region thuonghieu
             List<ThuongHieu> thuonghieus = new List<ThuongHieu>();
             ThuongHieu th = new ThuongHieu();
-
-            th.Id = 1;
-            th.Ten = "Organica";
-            th.GhiChu = "Cửa hàng Organica mở ra vào tháng 6/2013 với chỉ 5 - 6 loại rau trồng theo phương thức hữu cơ (quy mô của nhà cung cấp nhỏ)," +
-                " 4 loại gạo và 8 loại trà… với diện tích chỉ khoảng 25m2.\n Sau đó hai tháng," +
-                " một chủ trang trại rau từ Đà Lạt đang trồng theo hướng hữu cơ đã liên kết và cung cấp các sản phẩm ớt chuông," +
-                " cà chua, một số loại xà lách hữu cơ do họ trồng được, giúp mở rộng quy mô và đa dạng các mặt hàng cung cấp." +
-                " Organica là đơn vị đầu tiên cả nước có được hai chứng nhận quốc tế về organic cho vườn rau hữu cơ." +
-                " Hiện cửa hàng có danh sách trên 500 mặt hàng organic, được coi đa dạng và phong phú nhất trong các nhà cung cấp thực phẩm hữu cơ hiện tại.";
+            n = 1;
+            th.Id = n++;
+            th.Ten = "Không có";
+            th.GhiChu = "Sử dụng cho các sản phẩm không phân loại thương hiệu";
             thuonghieus.Add(th);
 
             th = new ThuongHieu();
-            th.Id = 2;
-            th.Ten = "Vườn Kogi";
-            th.GhiChu = "Tên của Vườn Kogi bắt nguồn từ tên của Bộ lạc da đỏ Kogi sống trên dãy núi Sierra Nevada ở Colombia." +
-                " Đây là bộ tộc ăn chay, không ăn thịt, cá mà chỉ ăn rau, củ, quả. Họ sống nương tựa và hòa mình vào thiên nhiên. " +
-                "Danh mục sản phẩm Kogi cung cấp cho khác hàng gồm các loại rau củ quả hữu cơ, trái cây hữu cơ, thực phẩm hữu cơ và đặc sản 3 miền.";
+            th.Id = n++;
+            th.Ten = "Vinamilk";
+            th.GhiChu = "Công ty Cổ phần Sữa Việt Nam, tên khác: Vinamilk, " +
+                "mã chứng khoán HOSE: VNM, là một công ty sản xuất, " +
+                "kinh doanh sữa và các sản phẩm từ sữa cũng như thiết " +
+                "bị máy móc liên quan tại Việt Nam. Theo thống kê của " +
+                "Chương trình Phát triển Liên Hiệp Quốc, đây là công ty " +
+                "lớn thứ 15 tại Việt Nam vào năm 2007.";
             thuonghieus.Add(th);
 
             th = new ThuongHieu();
-            th.Id = 3;
-            th.Ten = "Kirin";
-            th.GhiChu = "Công ty TNHH nước giải khát Kirin là công ty con của tập đoàn chuyên về nước giải khát Kirin Japan." +
-                " Kirin hợp tác với Interfood, công ty đã có hơn 20 năm kinh nghiệm trong thị trường Việt Nam " +
-                "và nổi tiếng với thương hiệu Wonderfarm, mở ra hai nhà máy ở Đồng Nai và Bình Dương, " +
-                "mong muốn sẽ làm hài lòng khách hàng với sản phẩm tốt nhất. Hiện tại, dòng sản phẩm của Kirin, " +
-                "ice+, Latte và Wonderfarm, đã được phâm phối toàn khắp các siêu thị ở Việt Nam, trở thành một " +
-                "nhãn hiệu quen thuộc với người tiêu dùng. ";
+            th.Id = n++;
+            th.Ten = "Light Coffee";
+            th.GhiChu = "Light Coffee là thương hiệu do Công ty CP Sản xuất " +
+                "và Thương mại Kim Cương Xanh sáng lập và sở hữu (về sau gọi " +
+                "Light Coffee đại diện cho công ty CP Sản xuất và Thương mại " +
+                "Kim Cương Xanh) Là thương hiệu cho các loại cà phê rang mộc " +
+                "nguyên chất 100% Robusta, Arabica, phối trộn bằng công thức " +
+                "độc quyền,...";
             thuonghieus.Add(th);
 
             th = new ThuongHieu();
-            th.Id = 4;
-            th.Ten = "Vina Acecook";
-            th.GhiChu = "Thành lập năm 1995, công ty cổ phần Acecook Việt Nam (Vina Acecook)" +
-                " là một nhà phân phối thực phẩm, chủ yếu mì gói. Với mục tiêu là mang đến cho" +
-                " khách hàng những sản phẩm chất lượng và an toàn, Acecook không ngừng học hỏi " +
-                "và áp dụng công nghệ hiện đại Nhật Bản vào hệ thống. Đạt được những giải thưởng" +
-                " danh giá như ISO 9001: 2000, ISO 14001: 2004…, Vina Acecook trở thành một trong " +
-                "những sự chọn lựa ưa thích của khách hàng. Càng nhiều sản phẩm như mì Hảo Hảo, " +
-                "Lẩu Thái, Kim Chi…được bán ra cả thị trường trong và ngoài nước, góp phần làm " +
-                "tăng lợi nhuận của Vina Acecook.";
+            th.Id = n++;
+            th.Ten = "Vifon";
+            th.GhiChu = "Là một trong những đơn vị đặt nền móng xây dựng nên " +
+                "ngành thực phẩm ăn liền Việt Nam, VIFON đã trở thành thương " +
+                "hiệu quen thuộc và gắn bó với người tiêu dùng thông qua nhiều" +
+                " sản phẩm sợi ăn liền và gia vị.";
             thuonghieus.Add(th);
 
             th = new ThuongHieu();
-            th.Id = 4;
-            th.Ten = "Nissin foods Vietnam";
-            th.GhiChu = "Là một chi nhánh của tập đoàn Nissin, Nissin Việt Nam đi vào hoạt động năm 2001. " +
-                "Với sự đầu tư mạnh trong việc xây dựng cơ sở vật chất kĩ thuật cao và công nghệ chuyển giao từ Nhật Bản," +
-                " Nissin Việt Nam cam kết mang lại cho người tiêu dùng những sản phẩm mì gói ngon, an toàn và hợp vệ sinh. " +
-                "Sản phẩm Nissin gồm những loại mì gói ăn liền đa dạng: mì bò tiêu xanh, mì rau răm… đều được phân phối trên" +
-                " các cửa hàng và hệ thống siêu thị ở Việt Nam.";
+            th.Id = n++;
+            th.Ten = "TH true MILK";
+            th.GhiChu = "Sự ra đời và phát triển ngoạn mục của thương hiệu sữa " +
+                "tươi sạch TH true Milk từ cuối năm 2010 đến nay đã tạo ra một " +
+                "hiện tượng trong ngành sữa Việt Nam. Bí quyết của thương hiệu " +
+                "này là “Câu chuyện thật của TH”. Đó là nguồn nguyên liệu sữa " +
+                "hoàn toàn tươi sạch từ Trang trại bò sữa TH tại Nghĩa Đàn, " +
+                "Nghệ An, áp dụng công nghệ hiện đại nhất của thế giới vào " +
+                "chăn nuôi, sản xuất; tạo ra sản phẩm thật, chất lượng cao " +
+                "bằng một chiến lược đầu tư bài bản.Nhờ các yếu tố này, " +
+                "nhận diện TH true MILK đã đi sâu vào tâm trí của người " +
+                "tiêu dùng Việt Nam.";
             thuonghieus.Add(th);
 
             th = new ThuongHieu();
-            th.Id = 5;
-            th.Ten = "Ajinomoto";
-            th.GhiChu = "Đi vào quĩ đạo hoạt động ở Việt Nam năm 1991, Ajinomoto Việt Nam, " +
-                "chuyên về các mặt hàng như bột nêm gia vị, giấm, nước sốt mayonnaise, nước giải khát," +
-                " là một nhánh của Ajinomoto Nhật Bản. Từ ngày thành lập, " +
-                "Ajinomoto không ngừng học hỏi và mở rộng hoạt động kinh doanh. " +
-                "Nhấn mạnh về tính an toàn và chất lượng cao, Ajinomoto là một nhãn hiệu thân thiết" +
-                " với khách hàng qua những sản phẩm như: bột ngọt Ajinomoto, nước sốt mayonnaise Ajinomoto," +
-                " cà phê Birdy, bột nêm Knorr…";
+            th.Id = n++;
+            th.Ten = "Nestlé";
+            th.GhiChu = "Nestlé là công ty thực phẩm và đồ uống được xếp " +
+                "hạng cao nhất trong nghiên cứu do APCO Insight, một công " +
+                "ty nghiên cứu thị trường toàn cầu thực hiện.";
             thuonghieus.Add(th);
             context.ThuongHieus.AddOrUpdate(thuonghieus.ToArray());
             #endregion
 
+            #region sanpham
+            List<SanPham> sanphams = new List<SanPham>();
+            SanPham sp = new SanPham();
+            n = 1;
+            sp.Id = n++;
+            sp.Ten = "Kem đặc có đường Ngôi Sao Phương Nam hộp 1,284kg";
+            sp.LoaiID = 9;
+            sp.ThuongHieuID = 2;
+            sp.HinhAnh = "/assets/filesimages/kemdacphuongnam.jpg";
+            sp.ThongTin = "- Được làm từ các nguyên liệu tự nhiên" +
+                " - Sản xuất theo công nghệ hiện đại" +
+                " - Dạng hộp đẹp mắt và tiện lợi sử dụng";
+            sp.GiaBan = 62900;
+            sanphams.Add(sp);
+
+            sp = new SanPham();
+            sp.Id = n++;
+            sp.Ten = "Sữa tươi tiệt trùng không đường 100% Organic Vinamilk hộp 1L";
+            sp.LoaiID = 9;
+            sp.ThuongHieuID = 2;
+            sp.HinhAnh = "/assets/filesimages/suatuoivinamilk.jpg";
+            sp.ThongTin = "Thương hiệu cao cấp, an toàn cho sức khỏe - " +
+                "Thành phần sữa giàu canxi, vitamin và các dưỡng chất - " +
+                "Hương vị thuần khiết, thơm ngon";
+            sp.GiaBan = 54500;
+            sanphams.Add(sp);
+
+            sp = new SanPham();
+            sp.Id = n++;
+            sp.Ten = "Sữa tươi tiệt trùng ít đường Vinamilk hộp 180ml";
+            sp.LoaiID = 9;
+            sp.ThuongHieuID = 2;
+            sp.HinhAnh = "/assets/filesimages/suatuoikhongduongvinamilk.jpg";
+            sp.ThongTin = "Sản xuất từ nguyên liệu tự nhiên, không chất bảo quản - " +
+                "Cung cấp canxi, vitamin D3, A, C và selen, hỗ trợ miễn dịch - " +
+                "Sản phẩm đóng lốc 4 hộp, có ống hút tiện dụng ";
+            sp.GiaBan = 7500;
+            sanphams.Add(sp);
+
+            context.SanPhams.AddOrUpdate(sanphams.ToArray());     
+            #endregion
 
 
         }

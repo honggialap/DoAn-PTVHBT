@@ -8,8 +8,10 @@ namespace NomNom.Models.SanPhams
 {
     public class SanPhamInput:Entity<int>
     {
+        [Required(ErrorMessage = "Vui lòng nhập tên sản phẩm")]
         [Display(Name = "Tên sản phẩm")]
         public string Ten { get; set; }
+
         [Display(Name = "Loại sản phẩm")]
         public int LoaiID { get; set; }
         [Display(Name = "Thương hiệu")]
@@ -20,5 +22,11 @@ namespace NomNom.Models.SanPhams
         public string ThongTin { get; set; }
         [Display(Name = "Giá bán")]
         public double GiaBan { get; set; }
+
+        public SanPhamInput()
+        {
+            this.LoaiID = 1;
+            this.ThuongHieuID = 1;
+        }
     }
 }

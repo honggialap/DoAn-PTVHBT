@@ -1,0 +1,91 @@
+﻿@model NomNom.Models.SanPhams.SanPhamInput
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+
+}
+@section jsFooter{
+
+    <script>
+        $('#btnSelectImage').on('click', function (e) {
+            e.preventDefault();
+                var finder = new CKFinder();
+                finder.selectActionFunction=function(url){
+                    $('#txtImage').val(url);
+                    document.getElementById("HinhAnh").src = url;
+                };
+                finder.popup();
+        })
+        
+    </script>
+
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary"><a href="@Url.Action("Index","SanPham")">Danh mục Sản phẩm</a> > Thêm mới</h6>
+    </div>
+    <div class="card-body">
+        <div class="panel panel-info shadow mb-4" style="width:700px;margin:auto;border:1px groove">
+            <div class="panel-heading" style="background-color: #d9edf7;padding: 10px 15px;color: #31708f;">
+                <div class="panel-title" style="font-size: 16px;color: inherit;">Thêm mới</div>
+            </div>
+            @using (Html.BeginForm("Create", "SanPham", FormMethod.Post, new { @class = "login-form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="col-11 d-flex justify-content-start align-items-start" style="margin-top:10px">
+                    <div class="col-7 form-row">
+                        <div class="w-100">@Html.LabelFor(model => model.Ten)</div>
+                        <div class="w-100">@Html.TextBoxFor(model => model.Ten, new { @class = "form-control" })</div>
+                        <div class="w-100">@Html.ValidationMessageFor(model => model.Ten, "", new { @class = "text-danger" })</div>
+                    </div>
+                    <div class="col-6 form-row just" style="margin-left:20px">
+                        <div class="w-100">@Html.LabelFor(model => model.LoaiID)</div>
+                        <div class="w-100">@Html.DropDownListFor(m => m.LoaiID, new SelectList(ViewBag.listLoaiSanPham, "Id", "Ten"), new { @class = "form-control" })</div>
+                    </div>
+                </div>
+                <div class="col-11 d-flex justify-content-start align-items-start" style="margin-top:10px">
+                    <div class="form-row" style="margin-left:20px;width:200px;height:200px">
+                    @if (Model!=null&&Model.HinhAnh != null)
+                    {
+                        <img id="HinhAnh" style="object-fit:contain" src="@Model.HinhAnh" />
+                    }
+                    else
+                    {
+                        <img id="HinhAnh" style="object-fit:contain" src="~/Assets/image/NoImage.png" />
+                    }
+                    </div>
+                    <div class="col-7 form-row" style="margin-left:30px">
+                        <div class="w-100">@Html.LabelFor(model => model.HinhAnh)</div>
+                        <div class="w-100 form-row">
+                            @Html.TextBoxFor(model => model.HinhAnh, new { @class = "form-control", @id = "txtImage", style = "width:200px",@readonly=true })
+                            <button id="btnSelectImage" class="btn btn-primary">
+                                <i class="fa fa-ellipsis-h"></i>
+                            </button>
+                        </div>
+                        <div class="w-100">@Html.LabelFor(model => model.ThuongHieuID)</div>
+                        <div class="w-100">@Html.DropDownListFor(m => m.ThuongHieuID, new SelectList(ViewBag.listThuongHieu, "Id", "Ten"), new { @class = "form-control" })</div>                       
+                        <div class="w-100">@Html.LabelFor(model => model.GiaBan)</div>
+                        <div class="w-100">@Html.TextBoxFor(model => model.GiaBan, new { @pattern = "[0-9]+",@id = "inputGiaBan", @class = "form-control"})</div>                          
+                    </div>
+
+                </div>
+                <div class="col-11 d-flex justify-content-center align-items-start" style="margin-left:20px;margin-top:10px">
+                    <div class="form-row w-100">
+                        <div class="w-100">@Html.LabelFor(model => model.ThongTin)</div>
+                        <div class="w-100">@Html.TextAreaFor(model => model.ThongTin, new { @class = "form-control",@style="height:200px" })</div>                       
+                    </div>
+                </div>
+
+                <div class="form-row" style="margin-top:10px;margin-bottom:10px">
+                    <input type="submit" value="Xác nhận" class="btn btn-primary" style="margin:auto" />
+                </div>
+            }
+        </div>
+    </div>
+</div>

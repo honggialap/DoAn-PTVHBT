@@ -27,34 +27,65 @@ namespace NomNom.DAL
             else
                 return Update(input);
         }
-        
-       
-       public List<SanPhamDTO> GetSanPham(SanPhamFilter filter)
+
+        public SanPhamInput GetForEdit(int Id)
+        {
+            var entity = db.SanPhams.Find(Id);
+            if (entity == null)
+                return null;
+            else
+                return Mapper.Map<SanPhamInput>(entity);
+        }
+        public List<SanPhamDTO> GetSanPham(SanPhamFilter filter)
         {
 
             var result = db.SanPhams.Where(x => !x.IsDeleted);
-            if (filter.Ten != null)
+            if (filter != null)
             {
-                result = result.Where(x => x.Ten.Contains(filter.Ten));
+                if (filter.Ten != null)
+                {
+                    result = result.Where(x => x.Ten.Contains(filter.Ten));
+                }
+                if (filter.LoaiID != 0)
+                {
+                    result = result.Where(x => x.LoaiID == filter.LoaiID);
+                }
+                if (filter.ThuongHieuID != 0)
+                {
+                    result = result.Where(x => x.ThuongHieuID == filter.ThuongHieuID);
+                }
+                if (filter.GiaBanMin != 0)
+                {
+                    result = result.Where(x => x.GiaBan > filter.GiaBanMin);
+                }
+                if (filter.GiaBanMax != 0)
+                {
+                    result = result.Where(x => x.GiaBan < filter.GiaBanMax);
+                }
             }
-            if (filter.LoaiID != 0)
+            var list = new List<SanPhamDTO>();
+            foreach (var item in result)
             {
-                result = result.Where(x => x.LoaiID == filter.LoaiID);
+                var obj = Mapper.Map<SanPhamDTO>(item);//new LoaiSanPhamDTO();
+                //obj.Id = item.Id;
+                //obj.Ten = item.Ten;
+                //obj.GhiChu = item.GhiChu;
+                list.Add(obj);
             }
-            if (filter.ThuongHieuID!=0)
+            return list;
+            //return result.Select(x=>Mapper.Map<SanPhamDTO>(x)).ToList();
+        }
+        public bool Delete(int Id)
+        {
+            var entity = db.SanPhams.Find(Id);
+            if (entity == null)
+                return false;
+            else
             {
-                result = result.Where(x => x.ThuongHieuID == filter.ThuongHieuID);
+                entity.IsDeleted = true;
+                db.SaveChanges();
+                return true;
             }
-            if (filter.GiaBanMin != 0)
-            {
-                result = result.Where(x => x.GiaBan > filter.GiaBanMin);
-            }
-            if (filter.GiaBanMax != 0)
-            {
-                result = result.Where(x => x.GiaBan < filter.GiaBanMax);
-            }     
-            
-            return result.Select(x=>Mapper.Map<SanPhamDTO>(x)).ToList();
         }
         private int Create(SanPhamInput input)
         {
@@ -68,7 +99,13 @@ namespace NomNom.DAL
             var entity = db.SanPhams.SingleOrDefault(x => x.Id == input.Id);
             if (entity != null)
             {
-                entity = Mapper.Map<SanPham>(input);
+                //entity = Mapper.Map<SanPham>(input);
+                entity.Ten = input.Ten;
+                entity.LoaiID = input.LoaiID;
+                entity.ThuongHieuID = input.ThuongHieuID;
+                entity.ThongTin = input.ThongTin;
+                entity.HinhAnh = input.HinhAnh;
+                entity.GiaBan = input.GiaBan;
                 db.SaveChanges();
                 return entity.Id;
             }
