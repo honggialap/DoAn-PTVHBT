@@ -1,0 +1,92 @@
+﻿@model NomNom.Models.PhieuNhaps.PhieuNhapInput
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary"><a href="@Url.Action("Index","PhieuNhap")">Quản lý phiếu nhập</a> > Thêm mới</h6>
+    </div>
+    <div class="card-body">
+        <div class="panel panel-info shadow mb-4" style="width:700px;margin:auto;border:1px groove">
+            <div class="panel-heading" style="background-color: #d9edf7;padding: 10px 15px;color: #31708f;">
+                <div class="panel-title" style="font-size: 16px;color: inherit;">Thêm mới</div>
+            </div>
+            @using (Html.BeginForm("Create", "PhieuNhap", FormMethod.Post, new { @class = "login-form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="col-12 d-flex justify-content-start align-items-start" style="margin-top:10px">
+            <div class="col-6 form-row">
+                <div class="w-100">@Html.LabelFor(model => model.Ngay)</div>
+                <div class="w-100">@Html.TextBoxFor(model => model.Ngay, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control" })</div>
+            </div>
+            <div class="col-6 form-row" style="margin-left:20px">
+                <div class="w-100">@Html.LabelFor(model => model.NhaCungCapID)</div>
+                <div class="w-100">@Html.DropDownListFor(m => m.NhaCungCapID, new SelectList(ViewBag.listNCC, "Id", "Ten"), new { @class = "form-control" })</div>
+            </div>
+        </div>
+        <div class="col-12 d-flex justify-content-start align-items-start" style="margin-top:10px">
+            <div class="col-12 form-row w-100">
+                <div class="w-100">@Html.LabelFor(model => model.GhiChu)</div>
+                <div class="w-100">@Html.TextAreaFor(model => model.GhiChu, new { @class = "form-control" })</div>
+                <div class="w-100">@Html.ValidationMessageFor(model => model.GhiChu, "", new { @class = "text-danger" })</div>
+            </div>
+        </div>
+        <div class="col-12 d-flex justify-content-start align-items-start" style="margin-top:10px">
+            <div class="col-12 form-row w-100">
+                <nav class="navbar navbar-expand-sm navbar-light margin-top-15" style="background-color: #e3f2fd;">
+                    <h4 class="modal-title">
+                        <i class="fa fa-table"></i>
+                        <span>Danh sách sản phẩm</span>
+                    </h4>
+                </nav>
+                <button type="button" class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill">
+                    <i class="fa fa-plus"></i>
+                </button>               
+            </div>
+        </div>
+        <div class="col-12 d-flex justify-content-start align-items-start" style="margin-top:10px">
+            <div class="col-12 form-row w-100">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>Tên sản phẩm</td>
+                            <td>Số lượng</td>
+                            <td>Giá nhập</td>
+                            <td>Xóa</td>
+                        </tr>
+                    </thead>
+                    <tbody id="tblData">
+                        <tr>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>Xóa</td>
+                        </tr>
+                        <tr>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>Xóa</td>
+                        </tr>
+                        <tr>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>Xóa</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="form-row" style="margin-top:10px;margin-bottom:10px">
+            <input type="submit" value="Xác nhận" class="btn btn-primary" style="margin:auto" />
+        </div>
+}
+        </div>
+    </div>
+</div>

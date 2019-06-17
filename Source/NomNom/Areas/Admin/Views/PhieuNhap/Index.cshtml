@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section jsFooter{
+    <script src="~/Scripts/plugins/mustache.min.js"></script>
+    <script src="~/Scripts/controllers/PhieuNhapController.js"></script>
+
+    <link href="~/Assets/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="~/Assets/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Assets/admin/js/demo/datatables-demo.js"></script>
+
+}
+<div class="card shadow mb-4">
+    <div class="form-row card-header py-3">
+        <div class="col-sm-12 col-md-5"><h6 class="m-0 font-weight-bold text-primary">Quản lý phiếu nhập</h6></div>
+        <div class="col-sm-12 col-md-7"><a href="@Url.Action("Create","PhieuNhap")"><button style="float:right" class="btn btn-primary">Thêm mới</button></a></div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <td>Id</td>
+                        <td>Ngày</td>
+                        <td>Nhà cung cấp</td>
+                        <td>Tổng chi</td>
+                        <td>Ghi chú</td>
+                    </tr>
+                </thead>
+
+                <tbody id="tblData"></tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+<script id="data-template" type="x-tmpl-mustache">
+    <tr>
+        <td>Sửa</td>
+        <td>{{Id}}</td>
+        <td>{{Ngay}}</td>
+        <td>{{NhaCungCapTen}}</td>
+        <td>{{TongChi}}</td>
+        <td>{{GhiChu}}</td>
+    </tr>
+</script>

@@ -161,6 +161,7 @@
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\NhaCungCapDAL.cs" />
+    <Compile Include="DAL\PhieuNhapDAL.cs" />
     <Compile Include="DAL\ThuongHieuDAL.cs" />
     <Compile Include="DAL\LoaiSanPhamDAL.cs" />
     <Compile Include="DAL\SanPhamDAL.cs" />
@@ -192,6 +193,10 @@
     <Compile Include="Migrations\201906170649318_tao_bang_nhacungcaps.Designer.cs">
       <DependentUpon>201906170649318_tao_bang_nhacungcaps.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906171030169_tao_bang_phieunhaps_chitietphieunhaps.cs" />
+    <Compile Include="Migrations\201906171030169_tao_bang_phieunhaps_chitietphieunhaps.Designer.cs">
+      <DependentUpon>201906171030169_tao_bang_phieunhaps_chitietphieunhaps.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Entity.cs" />
@@ -200,6 +205,10 @@
     <Compile Include="Models\LoaiSanPhams\LoaiSanPhamFilter.cs" />
     <Compile Include="Models\LoaiSanPhams\LoaiSanPhamInput.cs" />
     <Compile Include="Models\MapperProfile.cs" />
+    <Compile Include="Models\PhieuNhaps\PhieuNhap.cs" />
+    <Compile Include="Models\PhieuNhaps\PhieuNhapDTO.cs" />
+    <Compile Include="Models\PhieuNhaps\PhieuNhapFilter.cs" />
+    <Compile Include="Models\PhieuNhaps\PhieuNhapInput.cs" />
     <Compile Include="Models\SanPhams\SanPhamInput.cs" />
     <Compile Include="Models\SanPhams\SanPhamFilter.cs" />
     <Compile Include="Models\SanPhams\SanPhamDTO.cs" />
@@ -3054,7 +3063,10 @@
     <Content Include="Areas\Admin\Views\NhaCungCap\Create.cshtml" />
     <Content Include="Areas\Admin\Views\NhaCungCap\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\NhaCungCap\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\PhieuNhap\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\PhieuNhap\Create.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\controllers\PhieuNhapController.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -3065,6 +3077,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\plugins\mustache.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -3083,7 +3096,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Areas\Admin\Views\PhieuNhap\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -3118,6 +3130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906170649318_tao_bang_nhacungcaps.resx">
       <DependentUpon>201906170649318_tao_bang_nhacungcaps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906171030169_tao_bang_phieunhaps_chitietphieunhaps.resx">
+      <DependentUpon>201906171030169_tao_bang_phieunhaps_chitietphieunhaps.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

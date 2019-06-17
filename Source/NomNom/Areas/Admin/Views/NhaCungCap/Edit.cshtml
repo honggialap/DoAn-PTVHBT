@@ -26,8 +26,7 @@
                         <div class="w-100">@Html.TextBoxFor(model => model.Ten, new { @class = "form-control" })</div>
                         <div class="w-100">@Html.ValidationMessageFor(model => model.Ten, "", new { @class = "text-danger" })</div>
                     </div>
-                </div>
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                </div>               
                 <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
                     <div class="col-11 form-row w-100">
                         <div class="w-100">@Html.LabelFor(model => model.GhiChu)</div>

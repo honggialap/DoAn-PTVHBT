@@ -3,6 +3,7 @@
     using NomNom.Common;
     using NomNom.DAL;
     using NomNom.Models.LoaiSanPhams;
+    using NomNom.Models.NhaCungCaps;
     using NomNom.Models.SanPhams;
     using NomNom.Models.TaiKhoans;
     using NomNom.Models.ThuongHieus;
@@ -248,10 +249,35 @@
             sp.GiaBan = 7500;
             sanphams.Add(sp);
 
-            context.SanPhams.AddOrUpdate(sanphams.ToArray());     
+            context.SanPhams.AddOrUpdate(sanphams.ToArray());
             #endregion
 
+            #region nhacungcap
+            List<NhaCungCap> nhacungcaps = new List<NhaCungCap>();
+            NhaCungCap ncc = new NhaCungCap();
+            n = 1;
+            ncc.Id = n++;
+            ncc.Ten = "Không có";
+            ncc.GhiChu = "Sử dụng khi không cần chọn NCC";
+            nhacungcaps.Add(ncc);
 
+            ncc = new NhaCungCap();
+            ncc.Id = n++;
+            ncc.Ten = "Thực phẩm IPP MIEN BAC";
+            ncc.GhiChu = "Công ty TNHH MTV IPP Miền Bắc là công ty chuyên nhập khẩu" +
+                " và phân phối độc quyền các sản phẩm snack, bánh kẹo, sữa và phân " +
+                "phối độc quyền sữa hạt 137 Degrees Thái Lan từ Thailand.";
+            nhacungcaps.Add(ncc);
+
+            ncc = new NhaCungCap();
+            ncc.Id = n++;
+            ncc.Ten = "Công Ty Tnhh Thương Mại Dịch Vụ Xuất Nhập Khẩu Việt Liên Minh";
+            ncc.GhiChu = "Địa chỉ: 128/10 Trần Kế Xương, Phường 07, Quận Phú Nhuận, " +
+                "TP Hồ Chí Minh.  Mã số thuế: 0314318259";
+            nhacungcaps.Add(ncc);
+
+            context.NhaCungCaps.AddOrUpdate(nhacungcaps.ToArray());
+            #endregion
         }
     }
 }
