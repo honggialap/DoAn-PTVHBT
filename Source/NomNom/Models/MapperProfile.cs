@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using NomNom.Models.LoaiSanPhams;
+using NomNom.Models.NhaCungCaps;
 using NomNom.Models.SanPhams;
 using NomNom.Models.TaiKhoans;
 using NomNom.Models.ThuongHieus;
@@ -30,6 +31,10 @@ namespace NomNom.Models
             CreateMap<ThuongHieu, ThuongHieuDTO>();
             CreateMap<ThuongHieu, ThuongHieuInput>();
             CreateMap<ThuongHieuInput, ThuongHieu>();
+            //Nhà cung cấp
+            CreateMap<NhaCungCap, NhaCungCapDTO>();
+            CreateMap<NhaCungCap, NhaCungCapInput>();
+            CreateMap<NhaCungCapInput, NhaCungCap>();
         }
     }
 }

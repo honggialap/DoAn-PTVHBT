@@ -150,14 +150,17 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiSanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PhieuNhapController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\TaiKhoanController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NhaCungCapController.cs" />
     <Compile Include="Areas\Admin\Controllers\ThuongHieuController.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DAL\NhaCungCapDAL.cs" />
     <Compile Include="DAL\ThuongHieuDAL.cs" />
     <Compile Include="DAL\LoaiSanPhamDAL.cs" />
     <Compile Include="DAL\SanPhamDAL.cs" />
@@ -185,6 +188,10 @@
     <Compile Include="Migrations\201906151011562_tao_bang_thuonghieus.Designer.cs">
       <DependentUpon>201906151011562_tao_bang_thuonghieus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906170649318_tao_bang_nhacungcaps.cs" />
+    <Compile Include="Migrations\201906170649318_tao_bang_nhacungcaps.Designer.cs">
+      <DependentUpon>201906170649318_tao_bang_nhacungcaps.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Entity.cs" />
@@ -202,6 +209,10 @@
     <Compile Include="Models\NomNomDbContext.cs" />
     <Compile Include="Models\TaiKhoans\TaiKhoan.cs" />
     <Compile Include="Models\TaiKhoans\TaiKhoanInput.cs" />
+    <Compile Include="Models\NhaCungCaps\NhaCungCap.cs" />
+    <Compile Include="Models\NhaCungCaps\NhaCungCapDTO.cs" />
+    <Compile Include="Models\NhaCungCaps\NhaCungCapFilter.cs" />
+    <Compile Include="Models\NhaCungCaps\NhaCungCapInput.cs" />
     <Compile Include="Models\ThuongHieus\ThuongHieu.cs" />
     <Compile Include="Models\ThuongHieus\ThuongHieuDTO.cs" />
     <Compile Include="Models\ThuongHieus\ThuongHieuFilter.cs" />
@@ -3040,6 +3051,9 @@
     <Content Include="Assets\admin\plugins\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Assets\admin\plugins\ckfinder\userfiles\.htaccess" />
     <Content Include="Areas\Admin\Views\SanPham\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\NhaCungCap\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\NhaCungCap\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\NhaCungCap\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -3069,6 +3083,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
+    <Folder Include="Areas\Admin\Views\PhieuNhap\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -3100,6 +3115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906151011562_tao_bang_thuonghieus.resx">
       <DependentUpon>201906151011562_tao_bang_thuonghieus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906170649318_tao_bang_nhacungcaps.resx">
+      <DependentUpon>201906170649318_tao_bang_nhacungcaps.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,4 +1,5 @@
 ﻿using NomNom.Models.LoaiSanPhams;
+using NomNom.Models.NhaCungCaps;
 using NomNom.Models.SanPhams;
 using NomNom.Models.TaiKhoans;
 using NomNom.Models.ThuongHieus;
@@ -21,5 +22,6 @@ namespace NomNom.Models
         public DbSet<SanPham> SanPhams { get; set; }
         public DbSet<LoaiSanPham> LoaiSanPhams { get; set; }
         public DbSet<ThuongHieu> ThuongHieus { get; set; }
+        public DbSet<NhaCungCap> NhaCungCaps { get; set; }
     }
 }

@@ -1,0 +1,49 @@
+﻿
+@model List<NomNom.Models.NhaCungCaps.NhaCungCapDTO>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+
+}
+
+<link href="~/Assets/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<!-- Page level plugins -->
+<script src="~/Assets/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="~/Assets/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Page level custom scripts -->
+<script src="~/Assets/admin/js/demo/datatables-demo.js"></script>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="form-row card-header py-3">
+        <div class="col-sm-12 col-md-5"><h6 class="m-0 font-weight-bold text-primary">Danh mục Nhà cung cấp</h6></div>
+        <div class="col-sm-12 col-md-7"><a href="@Url.Action("Create","NhaCungCap")"><button style="float:right" class="btn btn-primary">Thêm mới</button></a></div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nhà cung cấp</th>
+                        <th>Ghi chú</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><a href="@Url.Action("Edit","NhaCungCap",new { Id = item.Id})">Sửa <a href="@Url.Action("Delete","NhaCungCap",new { Id = item.Id})">Xóa </a></td>
+                            <td>@item.Ten</td>
+                            <td>@item.GhiChu</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
