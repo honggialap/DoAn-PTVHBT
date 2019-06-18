@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -16,6 +17,12 @@ namespace NomNom.Models.PhieuNhaps
         public int SoLuong { get; set; }
         [Display(Name = "Giá nhập")]
         public double GiaNhap { get; set; }
+        public ChiTietPhieuNhapInput(int SanPhamID,int SoLuong,double GiaNhap)
+        {
+            this.SanPhamID = SanPhamID;
+            this.SoLuong = SoLuong;
+            this.GiaNhap = GiaNhap;
+        }
     }
     public class PhieuNhapInput: Entity<int>
     {   
@@ -29,5 +36,23 @@ namespace NomNom.Models.PhieuNhaps
         public string GhiChu { get; set; }
         [Display(Name = "You won't see this")]
         public List<ChiTietPhieuNhapInput> ChiTiets { get; set; }
+        public PhieuNhapInput()
+        {
+
+        }
+        public PhieuNhapInput(string json)
+        {
+            JObject jObject = JObject.Parse(json);
+            Id = jObject["Id"]==null?0:(int)jObject["Id"];
+            Ngay = Convert.ToDateTime(jObject["Ngay"].ToString());
+            NhaCungCapID = (int)jObject["NhaCungCapID"];
+            GhiChu = jObject["GhiChu"].ToString();
+            var temp = jObject["ChiTiets"];
+            ChiTiets = new List<ChiTietPhieuNhapInput>();
+            foreach (var o in temp.Children<JToken>())
+            {
+                ChiTiets.Add(new ChiTietPhieuNhapInput((int)o["SanPhamID"], (int)o["SoLuong"], (double)o["GiaNhap"]));
+            }
+        }
     }
 }

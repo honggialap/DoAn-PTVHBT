@@ -101,5 +101,21 @@ namespace NomNom.Areas.Admin.Controllers
                 //return view báo lỗi
                 return RedirectToAction("Index", "SanPham");
         }
+        [HttpGet]
+        public JsonResult LoadData(string Ten)
+        {
+            var dal = new SanPhamDAL();
+            var filter = new SanPhamFilter();
+            filter.Ten = Ten;
+            var result = dal.GetSanPham(filter);
+            var status = false;
+            if (result.Count(x => true) != 0)
+                status = true;
+            return Json(new
+            {
+                data = result,
+                status = status
+            }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -1,20 +1,42 @@
 ﻿@model NomNom.Models.PhieuNhaps.PhieuNhapInput
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 @section jsFooter{
     <script src="~/Scripts/plugins/mustache.min.js"></script>
 
     <script>
+        function loadChiTiets() {
+            var jsonString = '@ViewBag.listChiTiet';
+            jsonString = jsonString.replace(/&quot;/ig, '"');         
+            var ChiTiets = JSON.parse(jsonString);
+            
+            if (ChiTiets.length > 0) {
+                var template = $('#ChiTietTemplate').html();
+                var html = '';
+                $.each(ChiTiets,function (index, item) {
+                    html += Mustache.render(template, {
+                        Id: item.SanPhamID,
+                        Ten: item.SanPhamTen,
+                        SoLuong: item.SoLuong,
+                        GiaNhap: item.GiaNhap
+                    });
+                    console.log(item);
+                });
+                $('#dataChiTiet').html(html);
+            }
+        }
+        loadChiTiets();
         function passChiTiets() {
             var data = {
+                Id: $('#Id').val(),
                 Ngay: new Date($('#Ngay').val()),
                 NhaCungCapID: $('#NhaCungCapID').val(),
                 GhiChu: $('#GhiChu').val(),
                 ChiTiets: new Array()
             };
-
+            console.log(data.Id);
             $('#tblChiTiet tr:gt(0)').each(function () {
                 var currentRow = $(this);
                 var SanPhamID = currentRow.find('td:eq(0)').text();
@@ -56,7 +78,7 @@
                         alert('Server gặp lỗi');
                 }
             })
-            
+
         }
         function ThemSP() {
             var template = $('#ChiTietTemplate').html();
@@ -70,6 +92,8 @@
                     html += Mustache.render(template, {
                         Id: Id,
                         Ten: Ten,
+                        SoLuong: 0,
+                        GiaNhap:0
                     })
                 }
             });
@@ -81,10 +105,10 @@
             var listID = [];
             $('#tblChiTiet tr:gt(0)').each(function () {
                 var currentRow = $(this);
-                var Id = currentRow.find('td:eq(0)').text();              
+                var Id = currentRow.find('td:eq(0)').text();
                 listID.push(Id);
             });
-           
+
 
             var str = $('#txtTimKiem').val();
             $.ajax({
@@ -118,7 +142,7 @@
 
             })
         }
-        
+
     </script>
     <script>        
         $('#tblChiTiet').on('click', 'button[type="button"]', function (e) {
@@ -173,8 +197,8 @@
     <tr>
         <td style="display:none">{{Id}}</td>
         <td>{{Ten}}</td>
-        <td style="width:125px"><input style="width:100px" type="number" min="1" step="1" placeholder="Nhập số lượng"/></td>
-        <td style="width:125px"><input style="width:100px" type="text" pattern = "[0-9]+" placeholder="Nhập giá" /></td>
+        <td style="width:125px"><input style="width:100px" type="number" min="1" step="1" placeholder="Nhập số lượng" value="{{SoLuong}}"/></td>
+        <td style="width:125px"><input style="width:100px" type="text" pattern = "[0-9]+" placeholder="Nhập giá" value="{{GiaNhap}}"/></td>
         <td style="width:75px"><button type="button" class="btn btn-danger">Xóa</button></td>
     </tr>
 </script>
@@ -190,7 +214,7 @@
             @using (Html.BeginForm("Create", "PhieuNhap", FormMethod.Post, new { @class = "login-form" }))
             {
                 @Html.AntiForgeryToken()
-
+                @Html.TextBoxFor(model => model.Id, new { @class = "form-control",@style="display:none" })
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="col-12 d-flex justify-content-start align-items-start" style="margin-top:10px">
                     <div class="col-6 form-row">

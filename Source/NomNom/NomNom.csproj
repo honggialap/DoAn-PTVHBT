@@ -3065,6 +3065,7 @@
     <Content Include="Areas\Admin\Views\NhaCungCap\Index.cshtml" />
     <Content Include="Areas\Admin\Views\PhieuNhap\Index.cshtml" />
     <Content Include="Areas\Admin\Views\PhieuNhap\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\PhieuNhap\Edit.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\controllers\PhieuNhapController.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

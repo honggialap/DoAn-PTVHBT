@@ -67,6 +67,15 @@ namespace NomNom.DAL
         }
         private int Create(PhieuNhapInput input)
         {
+            //Tăng số lượng
+            foreach(var item in input.ChiTiets)
+            {
+                var spEntity = db.SanPhams.Find(item.SanPhamID);
+                if (spEntity != null)
+                {
+                    spEntity.SoLuong += item.SoLuong;
+                }
+            }
             //Tính tổng tiền
             input.TongChi = 0;
             foreach(var item in input.ChiTiets)
@@ -108,6 +117,7 @@ namespace NomNom.DAL
 
         private int Update(PhieuNhapInput input)
         {
+            
             //Tính tổng tiền
             input.TongChi = 0;
             foreach (var item in input.ChiTiets)
@@ -124,22 +134,48 @@ namespace NomNom.DAL
             entity.TongChi = input.TongChi;
             entity.Ngay = input.Ngay;
             entity.NhaCungCapID = input.NhaCungCapID;
-       
+
+            //
+            
             //Add bảng chi tiết phiếu nhập
-                //Xóa bản ghi cũ
-                var dbChiTiets = db.ChiTietPhieuNhaps.Where(x => !x.IsDeleted&&x.PhieuNhapID==entity.Id);
+            //Xóa bản ghi cũ
+            var dbChiTiets = db.ChiTietPhieuNhaps.Where(x => !x.IsDeleted&&x.PhieuNhapID==entity.Id).ToArray();
+                
                 foreach (var item in dbChiTiets)
                 {
+                    var spEntity = db.SanPhams.Find(item.SanPhamID);
+                    if (spEntity != null)
+                    {
+                        spEntity.SoLuong -= item.SoLuong;
+                    }
                     if (!input.ChiTiets.Exists(x => x.SanPhamID == item.SanPhamID))
                     {
                         item.IsDeleted = true;
                     }
                 }
-                //--
+            //Cập nhật số lượng
+
+            foreach (var item in input.ChiTiets)
+            {
+                var spEntity = db.SanPhams.Find(item.SanPhamID);
+                if (spEntity != null)
+                {
+                    spEntity.SoLuong += item.SoLuong;
+                }
+            }
+            //--
             //Thêm hoặc update chi tiết phiếu nhập
             foreach (var chitiet in input.ChiTiets)
             {
-                var chitietEntity = db.ChiTietPhieuNhaps.SingleOrDefault(x=>!x.IsDeleted&&x.SanPhamID==chitiet.SanPhamID);
+                var chitietEntity=new ChiTietPhieuNhap();
+                try
+                {
+                    chitietEntity = db.ChiTietPhieuNhaps.SingleOrDefault(x => !x.IsDeleted &&x.PhieuNhapID==entity.Id&& x.SanPhamID == chitiet.SanPhamID);
+                }
+                catch(Exception e)
+                {
+                    chitietEntity = null;
+                }
                 if (chitietEntity != null)
                 {
                     chitietEntity.SoLuong = chitiet.SoLuong;
@@ -148,6 +184,7 @@ namespace NomNom.DAL
                 else
                 {
                     chitietEntity = Mapper.Map<ChiTietPhieuNhap>(chitiet);
+                    chitietEntity.PhieuNhapID = entity.Id;
                     db.ChiTietPhieuNhaps.Add(chitietEntity);
                 }
             }

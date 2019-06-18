@@ -13,4 +13,12 @@ namespace NomNom.Models.PhieuNhaps
         public string GhiChu { get; set; }
         public string NhaCungCapTen { get; set; }
     }
+    public class ChiTietPhieuNhapDTO : Entity<int>
+    {
+        public int PhieuNhapID { get; set; }
+        public string SanPhamTen { get; set; }
+        public int SanPhamID { get; set; }
+        public int SoLuong { get; set; }
+        public double GiaNhap { get; set; }
+    }
 }
