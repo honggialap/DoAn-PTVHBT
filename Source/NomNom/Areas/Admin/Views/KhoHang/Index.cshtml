@@ -1,0 +1,86 @@
+﻿
+@model List<NomNom.Models.SanPhams.SanPhamDTO>
+@{
+    ViewBag.Title = "Kho hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section jsFooter{
+    <script src="~/Scripts/plugins/notify.min.js"></script>
+    <script>
+        $('.txtGiaBan').off('keypress').on('keypress', function (e) {
+            if (e.which == 13) {
+                var Id = $(this).data('id');
+                var GiaBan = $(this).val();
+                UpdateGiaBan(Id, GiaBan);
+            }
+
+        })
+        function UpdateGiaBan(Id, GiaBan) {
+            $.ajax({
+                url: '/Admin/SanPham/UpdateGiaBan',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    Id: Id,
+                    GiaBan: GiaBan
+                },
+                success: function (response) {
+                    if (response.status) {
+                        $.notify("Update thành công", "success");
+                    }
+                    else
+                        $.notify("Update thất bại", "error");
+                }
+            })
+        }
+    </script>
+}
+
+<link href="~/Assets/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<!-- Page level plugins -->
+<script src="~/Assets/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="~/Assets/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Page level custom scripts -->
+<script src="~/Assets/admin/js/demo/datatables-demo.js"></script>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="form-row card-header py-3">
+        <div class="col-sm-12 col-md-5"><h6 class="m-0 font-weight-bold text-primary">Danh mục Sản phẩm</h6></div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Hình ảnh</th>
+                        <th>Sản phẩm</th>
+                        <th>Số lượng tồn</th>
+                        <th>Giá bán</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            @if (item.HinhAnh != null)
+                            {
+                                @*về sau chỉnh lại khúc hình ảnh cho nó load thumb của ảnh thay vì resize*@
+                                <td><a href="@item.HinhAnh"><img src="@item.HinhAnh" style="object-fit:contain;width:50px;height:50px"></a></td>
+                            }
+                            else
+                            {
+                                <td><img src="~/Assets/image/NoImage.png" style="object-fit:contain;width:50px;height:50px"></td>
+                            }
+                            <td>@item.Ten</td>
+                            <td>@item.SoLuong</td>
+                            <td><input data-id="@item.Id" class="txtGiaBan form-control" type="text" pattern="[0-9]+" value="@item.GiaBan" /></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

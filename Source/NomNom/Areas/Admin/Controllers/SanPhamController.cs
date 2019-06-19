@@ -117,5 +117,21 @@ namespace NomNom.Areas.Admin.Controllers
                 status = status
             }, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult UpdateGiaBan(int Id,double GiaBan)
+        {
+            var dal = new SanPhamDAL();
+            var result = dal.UpdateGiaBan(Id, GiaBan);
+            bool status;
+            if (!result)
+                status = false;
+            else
+                status = true;
+            return Json(new
+            {
+                status = status
+            },JsonRequestBehavior.AllowGet);
+        
+        }
     }
 }

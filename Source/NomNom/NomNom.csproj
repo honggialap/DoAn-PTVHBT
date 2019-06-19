@@ -148,6 +148,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KhoHangController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiSanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\PhieuNhapController.cs" />
@@ -3066,6 +3067,7 @@
     <Content Include="Areas\Admin\Views\PhieuNhap\Index.cshtml" />
     <Content Include="Areas\Admin\Views\PhieuNhap\Create.cshtml" />
     <Content Include="Areas\Admin\Views\PhieuNhap\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\KhoHang\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\controllers\PhieuNhapController.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -3079,6 +3081,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\plugins\mustache.min.js" />
+    <Content Include="Scripts\plugins\notify.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

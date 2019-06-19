@@ -87,6 +87,18 @@ namespace NomNom.DAL
                 return true;
             }
         }
+        public bool UpdateGiaBan(int Id,double GiaBan)
+        {
+            var entity = db.SanPhams.Find(Id);
+            if (entity == null)
+                return false;
+            else
+            {
+                entity.GiaBan = GiaBan;
+                db.SaveChanges();
+                return true;
+            }
+        }
         private int Create(SanPhamInput input)
         {
             var entity = Mapper.Map<SanPham>(input);

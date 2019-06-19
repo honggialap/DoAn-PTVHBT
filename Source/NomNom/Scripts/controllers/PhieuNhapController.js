@@ -1,7 +1,7 @@
 ﻿var PhieuNhapController = {
     init: function () {
         PhieuNhapController.registerEvent();
-        
+
     },
     registerEvent: function () {
         PhieuNhapController.loadData();
@@ -24,13 +24,13 @@
                             NhaCungCapTen: item.NhaCungCapTen,
                             TongChi: item.TongChi,
                             GhiChu: item.GhiChu
-                        })
-                    })
+                        });
+                    });
                     $('#tblData').html(html);
                 }
-                
+
             }
-        })
+        });
     }
-}
+};
 PhieuNhapController.init();
