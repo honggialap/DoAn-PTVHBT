@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
+using NomNom.Models.KhuVucs;
 using NomNom.Models.LoaiSanPhams;
 using NomNom.Models.NhaCungCaps;
 using NomNom.Models.PhieuNhaps;
 using NomNom.Models.SanPhams;
 using NomNom.Models.TaiKhoans;
 using NomNom.Models.ThuongHieus;
+using NomNom.Models.TinhTrangDonHangs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,6 +45,12 @@ namespace NomNom.Models
             //Chi tiết phiếu nhập
             CreateMap<ChiTietPhieuNhap, ChiTietPhieuNhapInput>();
             CreateMap<ChiTietPhieuNhapInput, ChiTietPhieuNhap>();
+            //Tình trạng đơn hàng
+            CreateMap<TinhTrangDonHang, TinhTrangDonHangDTO>();
+            //Khu vực
+            CreateMap<KhuVuc, KhuVucDTO>();
+            CreateMap<KhuVucInput, KhuVuc>();
+            CreateMap<KhuVuc, KhuVucInput>();
         }
     }
 }

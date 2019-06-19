@@ -10,7 +10,7 @@ using System.Web.Script.Serialization;
 
 namespace NomNom.Areas.Admin.Controllers
 {
-    public class PhieuNhapController : Controller
+    public class PhieuNhapController : BaseController
     {
         // GET: Admin/PhieuNhap
         public ActionResult Index()

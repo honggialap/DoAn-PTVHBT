@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace NomNom.Areas.Admin.Controllers
 {
-    public class SanPhamController : Controller
+    public class SanPhamController : BaseController
     {
         // GET: Admin/SanPham
         public ActionResult Index()

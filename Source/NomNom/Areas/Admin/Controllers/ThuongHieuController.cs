@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace NomNom.Areas.Admin.Controllers
 {
-    public class ThuongHieuController : Controller
+    public class ThuongHieuController : BaseController
     {
         // GET: Admin/ThuongHieu
         public ActionResult Index(string Ten)

@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace NomNom.Areas.Admin.Controllers
 {
-    public class KhoHangController : Controller
+    public class KhoHangController : BaseController
     {
         // GET: Admin/KhoHang
         public ActionResult Index()

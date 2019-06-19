@@ -1,6 +1,7 @@
 ﻿using NomNom.Models.LoaiSanPhams;
 using NomNom.Models.NhaCungCaps;
 using NomNom.Models.PhieuNhaps;
+using NomNom.Models.TinhTrangDonHangs;
 using NomNom.Models.SanPhams;
 using NomNom.Models.TaiKhoans;
 using NomNom.Models.ThuongHieus;
@@ -9,6 +10,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using NomNom.Models.KhuVucs;
+using NomNom.Models.DonHangs;
 
 namespace NomNom.Models
 {
@@ -26,6 +29,9 @@ namespace NomNom.Models
         public DbSet<NhaCungCap> NhaCungCaps { get; set; }
         public DbSet<PhieuNhap> PhieuNhaps { get; set; }
         public DbSet<ChiTietPhieuNhap> ChiTietPhieuNhaps { get; set; }
-
+        public DbSet<TinhTrangDonHang> TinhTrangDonHangs { get; set; }
+        public DbSet<KhuVuc> KhuVucs { get; set; }
+        public DbSet<DonHang> DonHangs { get; set; }
+        public DbSet<ChiTietDonHang> ChiTietDonHangs { get; set; }
     }
 }

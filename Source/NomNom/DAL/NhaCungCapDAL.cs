@@ -78,7 +78,9 @@ namespace NomNom.DAL
             var entity = db.NhaCungCaps.SingleOrDefault(x => x.Id == input.Id);
             if (entity != null)
             {
-                entity = Mapper.Map<NhaCungCap>(input);             
+                //entity = Mapper.Map<NhaCungCap>(input);   
+                entity.Ten = input.Ten;
+                entity.GhiChu = input.GhiChu;
                 db.SaveChanges();
                 return entity.Id;
             }

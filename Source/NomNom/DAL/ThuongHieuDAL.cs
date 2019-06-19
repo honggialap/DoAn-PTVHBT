@@ -78,7 +78,9 @@ namespace NomNom.DAL
             var entity = db.ThuongHieus.SingleOrDefault(x => x.Id == input.Id);
             if (entity != null)
             {
-                entity = Mapper.Map<ThuongHieu>(input);             
+                // entity = Mapper.Map<ThuongHieu>(input);   
+                entity.Ten = input.Ten;
+                entity.GhiChu = input.GhiChu;
                 db.SaveChanges();
                 return entity.Id;
             }

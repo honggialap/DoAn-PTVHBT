@@ -2,11 +2,13 @@
 {
     using NomNom.Common;
     using NomNom.DAL;
+    using NomNom.Models.KhuVucs;
     using NomNom.Models.LoaiSanPhams;
     using NomNom.Models.NhaCungCaps;
     using NomNom.Models.SanPhams;
     using NomNom.Models.TaiKhoans;
     using NomNom.Models.ThuongHieus;
+    using NomNom.Models.TinhTrangDonHangs;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -278,6 +280,116 @@
 
             context.NhaCungCaps.AddOrUpdate(nhacungcaps.ToArray());
             #endregion
+
+            #region tinhtrangdonhang
+            //Hiện tại không nên sửa ở đây
+            List<TinhTrangDonHang> tinhtrangdonhangs = new List<TinhTrangDonHang>();
+            TinhTrangDonHang ttdh = new TinhTrangDonHang();
+
+            ttdh.Id = 1;
+            ttdh.Ten = "Đang chờ duyệt";
+            ttdh.GhiChu = "Sử dụng cho các đơn hàng đang chờ duyệt";
+            tinhtrangdonhangs.Add(ttdh);
+
+            ttdh = new TinhTrangDonHang();
+            ttdh.Id = 2;
+            ttdh.Ten = "Đã duyệt";
+            ttdh.GhiChu = "Sử dụng cho các đơn hàng đã duyệt";
+            tinhtrangdonhangs.Add(ttdh);
+
+            ttdh = new TinhTrangDonHang();
+            ttdh.Id = 3;
+            ttdh.Ten = "Đang giao";
+            ttdh.GhiChu = "Sử dụng cho các đơn hàng đang trong quá trình giao hàng";
+            tinhtrangdonhangs.Add(ttdh);
+
+            ttdh = new TinhTrangDonHang();
+            ttdh.Id = 4;
+            ttdh.Ten = "Hoàn tất";
+            ttdh.GhiChu = "Sử dụng cho các đơn hàng đã giao và thanh toán";
+            tinhtrangdonhangs.Add(ttdh);
+
+            ttdh = new TinhTrangDonHang();
+            ttdh.Id = 5;
+            ttdh.Ten = "Đã hủy";
+            ttdh.GhiChu = "Sử dụng cho các đơn hàng đã bị hủy";
+            tinhtrangdonhangs.Add(ttdh);
+
+
+
+            context.TinhTrangDonHangs.AddOrUpdate(tinhtrangdonhangs.ToArray());
+            #endregion
+
+            #region khuvuc
+            List<KhuVuc> khuvucs = new List<KhuVuc>()
+            {
+                new KhuVuc(1,0,"An Giang"), new KhuVuc(33,0,"Kon Tum"),
+                new KhuVuc(2,0,"Bà Rịa – Vũng Tàu"), new KhuVuc(34,0,"Lai Châu"),
+                new KhuVuc(3,0,"Bắc Giang"), new KhuVuc(35,0,"Lâm Đồng"),
+                new KhuVuc(4,0,"Bắc Kạn "), new KhuVuc(36,0,"Lạng Sơn"),
+                new KhuVuc(5,0,"Bạc Liêu"), new KhuVuc(37,0,"Lào Cai"),
+                new KhuVuc(6,0,"Bắc Ninh"), new KhuVuc(38,0,"Long An"),
+                new KhuVuc(7,0,"Bến Tre "), new KhuVuc(39,0,"Nam Định"),
+                new KhuVuc(8,0,"Bình Định"), new KhuVuc(40,0,"Nghệ An"),
+                new KhuVuc(9,0,"Bình Dương"), new KhuVuc(41,0,"Ninh Bình"),
+                new KhuVuc(10,0,"Bình Phước"), new KhuVuc(42,0,"Ninh Thuận"),
+                new KhuVuc(11,0,"Bình Thuận"), new KhuVuc(43,0,"Phú Thọ"),
+                new KhuVuc(12,0,"Cà Mau"), new KhuVuc(44,0,"Phú Yên"),
+                new KhuVuc(13,0,"Cần Thơ "), new KhuVuc(45,0,"Quảng Bình"),
+                new KhuVuc(14,0,"Cao Bằng"), new KhuVuc(46,0,"Quảng Nam"),
+                new KhuVuc(15,0,"Đà Nẵng"), new KhuVuc(47,0,"Quảng Ngãi"),
+                new KhuVuc(16,0,"Đắk Lắk"), new KhuVuc(48,0,"Quảng Ninh"),
+                new KhuVuc(17,0,"Đắk Nông"), new KhuVuc(49,0,"Quảng Trị"),
+                new KhuVuc(18,0,"Điện Biên"), new KhuVuc(50,0,"Sóc Trăng"),
+                new KhuVuc(19,0,"Đồng Nai"), new KhuVuc(51,0,"Sơn La"),
+                new KhuVuc(20,0,"Đồng Tháp"), new KhuVuc(52,0,"Tây Ninh"),
+                new KhuVuc(21,0,"Gia Lai "), new KhuVuc(53,0,"Thái Bình"),
+                new KhuVuc(22,0,"Hà Giang"), new KhuVuc(54,0,"Thái Nguyên"),
+                new KhuVuc(23,0,"Hà Nam"), new KhuVuc(55,0,"Thanh Hóa"),
+                new KhuVuc(24,0,"Hà Nội"), new KhuVuc(56,0,"Thừa Thiên Huế"),
+                new KhuVuc(25,0,"Hà Tĩnh"), new KhuVuc(57,0,"Tiền Giang"),
+                new KhuVuc(26,0,"Hải Dương"), new KhuVuc(58,0,"TP Hồ Chí Minh"),
+                new KhuVuc(27,0,"Hải Phòng"), new KhuVuc(59,0,"Trà Vinh"),
+                new KhuVuc(28,0,"Hậu Giang"), new KhuVuc(60,0,"Tuyên Quang"),
+                new KhuVuc(29,0,"Hòa Bình"), new KhuVuc(61,0,"Vĩnh Long"),
+                new KhuVuc(30,0,"Hưng Yên"), new KhuVuc(62,0,"Vĩnh Phúc"),
+                new KhuVuc(31,0,"Khánh Hòa"), new KhuVuc(63,0,"Yên Bái"),
+                new KhuVuc(32,0,"Kiên Giang"),
+                new KhuVuc(64,58,"Quận 1"),
+                new KhuVuc(65,58,"Quận 12"),
+                new KhuVuc(66,58,"Quận Thủ Đức"),
+                new KhuVuc(67,58,"Quận 9"),
+                new KhuVuc(68,58,"Quận Gò Vấp"),
+                new KhuVuc(69,58,"Quận Bình Thạnh"),
+                new KhuVuc(70,58,"Quận Tân Bình"),
+                new KhuVuc(71,58,"Quận Tân Phú"),
+                new KhuVuc(72,58,"Quận Phú Nhuận"),
+                new KhuVuc(73,58,"Quận 2"),
+                new KhuVuc(74,58,"Quận 3"),
+                new KhuVuc(75,58,"Quận 10"),
+                new KhuVuc(76,58,"Quận 11"),
+                new KhuVuc(77,58,"Quận 4"),
+                new KhuVuc(78,58,"Quận 5"),
+                new KhuVuc(79,58,"Quận 6"),
+                new KhuVuc(80,58,"Quận 8"),
+                new KhuVuc(81,58,"Quận Bình Tân"),
+                new KhuVuc(82,58,"Quận 7"),
+                new KhuVuc(83,58,"Huyện Củ Chi"),
+                new KhuVuc(84,58,"Huyện Hóc Môn"),
+                new KhuVuc(85,58,"Huyện Bình Chánh"),
+                new KhuVuc(86,58,"Huyện Nhà Bè"),
+                new KhuVuc(87,58,"Huyện Cần Giờ"),
+            };
+            var KhuVucN = 88;
+            for (int i = 0; i < 63; i++)
+            {
+                if (i + 1 != 58) 
+                khuvucs.Add(new KhuVuc(KhuVucN + i, i + 1, "Tạm thời chưa có"));
+            }
+
+            context.KhuVucs.AddOrUpdate(khuvucs.ToArray());
+            #endregion
         }
+        
     }
 }

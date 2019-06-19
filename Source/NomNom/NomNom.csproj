@@ -161,12 +161,14 @@
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DAL\KhuVucDAL.cs" />
     <Compile Include="DAL\NhaCungCapDAL.cs" />
     <Compile Include="DAL\PhieuNhapDAL.cs" />
     <Compile Include="DAL\ThuongHieuDAL.cs" />
     <Compile Include="DAL\LoaiSanPhamDAL.cs" />
     <Compile Include="DAL\SanPhamDAL.cs" />
     <Compile Include="DAL\TaiKhoanDAL.cs" />
+    <Compile Include="DAL\TinhTrangDonHangDAL.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -198,9 +200,28 @@
     <Compile Include="Migrations\201906171030169_tao_bang_phieunhaps_chitietphieunhaps.Designer.cs">
       <DependentUpon>201906171030169_tao_bang_phieunhaps_chitietphieunhaps.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906190442350_them_bang_tinhtrangdonhangs.cs" />
+    <Compile Include="Migrations\201906190442350_them_bang_tinhtrangdonhangs.Designer.cs">
+      <DependentUpon>201906190442350_them_bang_tinhtrangdonhangs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906190647294_tao_bang_khuvucs.cs" />
+    <Compile Include="Migrations\201906190647294_tao_bang_khuvucs.Designer.cs">
+      <DependentUpon>201906190647294_tao_bang_khuvucs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906190940272_tao_bang_donhang_chitietdonhangs.cs" />
+    <Compile Include="Migrations\201906190940272_tao_bang_donhang_chitietdonhangs.Designer.cs">
+      <DependentUpon>201906190940272_tao_bang_donhang_chitietdonhangs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\DonHangs\DonHang.cs" />
+    <Compile Include="Models\DonHangs\DonHangDTO.cs" />
+    <Compile Include="Models\DonHangs\DonHangFilter.cs" />
+    <Compile Include="Models\DonHangs\DonHangInput.cs" />
     <Compile Include="Models\Entity.cs" />
+    <Compile Include="Models\KhuVucs\KhuVuc.cs" />
+    <Compile Include="Models\KhuVucs\KhuVucDTO.cs" />
+    <Compile Include="Models\KhuVucs\KhuVucInput.cs" />
     <Compile Include="Models\LoaiSanPhams\LoaiSanPham.cs" />
     <Compile Include="Models\LoaiSanPhams\LoaiSanPhamDTO.cs" />
     <Compile Include="Models\LoaiSanPhams\LoaiSanPhamFilter.cs" />
@@ -227,6 +248,8 @@
     <Compile Include="Models\ThuongHieus\ThuongHieuDTO.cs" />
     <Compile Include="Models\ThuongHieus\ThuongHieuFilter.cs" />
     <Compile Include="Models\ThuongHieus\ThuongHieuInput.cs" />
+    <Compile Include="Models\TinhTrangDonHangs\TinhTrangDonHang.cs" />
+    <Compile Include="Models\TinhTrangDonHangs\TinhTrangDonHangDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -3137,6 +3160,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906171030169_tao_bang_phieunhaps_chitietphieunhaps.resx">
       <DependentUpon>201906171030169_tao_bang_phieunhaps_chitietphieunhaps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906190442350_them_bang_tinhtrangdonhangs.resx">
+      <DependentUpon>201906190442350_them_bang_tinhtrangdonhangs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906190647294_tao_bang_khuvucs.resx">
+      <DependentUpon>201906190647294_tao_bang_khuvucs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906190940272_tao_bang_donhang_chitietdonhangs.resx">
+      <DependentUpon>201906190940272_tao_bang_donhang_chitietdonhangs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

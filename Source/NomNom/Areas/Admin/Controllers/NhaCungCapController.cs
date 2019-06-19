@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace NomNom.Areas.Admin.Controllers
 {
-    public class NhaCungCapController : Controller
+    public class NhaCungCapController : BaseController
     {
         // GET: Admin/NhaCungCap
         public ActionResult Index(string Ten)
