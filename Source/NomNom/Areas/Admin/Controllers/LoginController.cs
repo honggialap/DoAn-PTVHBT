@@ -14,7 +14,14 @@ namespace NomNom.Areas.Admin.Controllers
         // GET: Admin/Login
         public ActionResult Index()
         {
+            if ((UserLogin)Session[CommonConstants.ADMIN_SESSION] !=null)
+                return Redirect("/Admin/Home");
             return View();
+        }
+        public ActionResult DangXuat()
+        {
+            Session.Abandon();
+            return View("Index");
         }
         public ActionResult Login(LoginModel model)
         {
@@ -27,6 +34,15 @@ namespace NomNom.Areas.Admin.Controllers
                     var Login = new UserLogin();
                     Login.UserID = dal.GetId(model.TenTaiKhoan);
                     Login.UserName = model.TenTaiKhoan;
+                    var tk = dal.GetForView(Login.UserID);
+                    if (tk.Ten != null && tk.Ten != "")
+                        Login.Name = tk.Ten;
+                    else
+                        Login.Name = tk.TenTaiKhoan;
+                    if (tk.Avatar != null && tk.Avatar != "")
+                        Login.Avatar = tk.Avatar;
+                    else
+                        Login.Avatar = "/assets/image/NoImage.png";
                     Session.Add(CommonConstants.ADMIN_SESSION, Login);
                     return RedirectToAction("Index", "Home");
                 }

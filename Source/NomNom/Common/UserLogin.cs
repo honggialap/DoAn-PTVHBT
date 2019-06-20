@@ -9,5 +9,7 @@ namespace NomNom.Common
     {
         public int UserID { set; get; }
         public string UserName { set; get; }
+        public string Avatar { get; set; }
+        public string Name { get; set; }
     }
 }
