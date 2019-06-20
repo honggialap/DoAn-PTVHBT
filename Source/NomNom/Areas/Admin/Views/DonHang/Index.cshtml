@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Đơn hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Quản lý đơn hàng</h6>
+    </div>
+    <div class="card-body">
+        <a href="/Admin/DonHang/ChoDuyet"><button type="button" class="btn btn-primary">Đơn hàng đang chờ duyệt</button></a>
+        <a href="/Admin/DonHang/DaDuyet"><button type="button" class="btn btn-primary">Đơn hàng đã duyệt</button></a>
+        <a href="/Admin/DonHang/DangGiao"><button type="button" class="btn btn-primary">Đơn hàng đang giao</button></a>
+        <a href="/Admin/DonHang/DaHoanTat"><button type="button" class="btn btn-primary">Đơn hàng đã hoàn tất</button></a>
+        <a href="/Admin/DonHang/DaHuy"><button type="button" class="btn btn-danger">Đơn hàng đã hủy</button></a>
+    </div>
+</div>

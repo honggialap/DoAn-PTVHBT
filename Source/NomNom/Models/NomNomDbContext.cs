@@ -12,6 +12,7 @@ using System.Linq;
 using System.Web;
 using NomNom.Models.KhuVucs;
 using NomNom.Models.DonHangs;
+using NomNom.Models.ChucVus;
 
 namespace NomNom.Models
 {
@@ -33,5 +34,6 @@ namespace NomNom.Models
         public DbSet<KhuVuc> KhuVucs { get; set; }
         public DbSet<DonHang> DonHangs { get; set; }
         public DbSet<ChiTietDonHang> ChiTietDonHangs { get; set; }
+        public DbSet<ChucVu> ChucVus { get; set; }
     }
 }

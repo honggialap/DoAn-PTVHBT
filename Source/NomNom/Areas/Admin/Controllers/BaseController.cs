@@ -12,7 +12,7 @@ namespace NomNom.Areas.Admin.Controllers
     {
         protected override void OnActionExecuted(ActionExecutedContext filterContext)
         {
-            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            var session = (UserLogin)Session[CommonConstants.ADMIN_SESSION];
             if (session == null)
             {
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index", Area = "Admin" }));

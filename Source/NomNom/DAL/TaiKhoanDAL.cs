@@ -11,10 +11,19 @@ namespace NomNom.DAL
 {
     public class TaiKhoanDAL
     {
-        NomNomDbContext db = null;
+        private NomNomDbContext db = null;
         public TaiKhoanDAL()
         {
             db = new NomNomDbContext();
+        }
+        public TaiKhoanDTO GetForView(int Id)
+        {
+            var result = db.TaiKhoans.Find(Id);
+            if (result != null)
+            {
+                return Mapper.Map<TaiKhoanDTO>(result);
+            }
+            return null;
         }
         public int CreateOrEdit(TaiKhoanInput input)
         {
@@ -29,6 +38,18 @@ namespace NomNom.DAL
         {
             matkhau = Encryptor.MD5Hash(matkhau);
             var result = db.TaiKhoans.Count(x => !x.IsDeleted && x.TenTaiKhoan == tentaikhoan && x.MatKhau == matkhau);
+            if (result > 0)
+            {
+                return true;
+            }
+            {
+                return false;
+            }
+        }
+        public bool LoginAdmin(string tentaikhoan, string matkhau)
+        {
+            matkhau = Encryptor.MD5Hash(matkhau);
+            var result = db.TaiKhoans.Count(x => !x.IsDeleted && x.TenTaiKhoan == tentaikhoan && x.MatKhau == matkhau&&x.ChucVuID==CommonConstants.CHUC_VU_ADMIN);
             if (result > 0)
             {
                 return true;

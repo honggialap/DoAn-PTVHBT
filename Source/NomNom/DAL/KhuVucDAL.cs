@@ -10,7 +10,7 @@ namespace NomNom.DAL
 {
     public class KhuVucDAL
     {
-        NomNomDbContext db = null;
+        private NomNomDbContext db = null;
         public KhuVucDAL()
         {
             db = new NomNomDbContext();

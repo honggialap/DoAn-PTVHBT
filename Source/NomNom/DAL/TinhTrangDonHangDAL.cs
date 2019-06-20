@@ -10,7 +10,7 @@ namespace NomNom.DAL
 {
     public class TinhTrangDonHangDAL
     {
-        NomNomDbContext db = null;
+        private NomNomDbContext db = null;
         public TinhTrangDonHangDAL()
         {
             db = new NomNomDbContext();

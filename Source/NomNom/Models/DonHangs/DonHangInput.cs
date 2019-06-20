@@ -24,6 +24,8 @@ namespace NomNom.Models.DonHangs
         public string DiaChi { get; set; }
         public int KhuVucID { get; set; }
         public double PhiShip { get; set; }
+        public DateTime NgayGiaoDuKienMin { get; set; }
+        public DateTime NgayGiaoDuKienMax { get; set; }
         public List<ChiTietDonHangInput> ChiTiets { get; set; }
     }
 }

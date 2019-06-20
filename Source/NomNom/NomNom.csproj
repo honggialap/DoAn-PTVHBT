@@ -147,6 +147,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DonHangController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\KhoHangController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiSanPhamController.cs" />
@@ -162,6 +163,7 @@
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DAL\DonHangDAL.cs" />
     <Compile Include="DAL\KhuVucDAL.cs" />
     <Compile Include="DAL\NhaCungCapDAL.cs" />
     <Compile Include="DAL\PhieuNhapDAL.cs" />
@@ -213,8 +215,35 @@
     <Compile Include="Migrations\201906190940272_tao_bang_donhang_chitietdonhangs.Designer.cs">
       <DependentUpon>201906190940272_tao_bang_donhang_chitietdonhangs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906201723553_cap_nhat_bang_donhangs.cs" />
+    <Compile Include="Migrations\201906201723553_cap_nhat_bang_donhangs.Designer.cs">
+      <DependentUpon>201906201723553_cap_nhat_bang_donhangs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906201744411_tao_bang_chucvus.cs" />
+    <Compile Include="Migrations\201906201744411_tao_bang_chucvus.Designer.cs">
+      <DependentUpon>201906201744411_tao_bang_chucvus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906201757379_cap_nhat_bang_taikhoans.cs" />
+    <Compile Include="Migrations\201906201757379_cap_nhat_bang_taikhoans.Designer.cs">
+      <DependentUpon>201906201757379_cap_nhat_bang_taikhoans.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906201810484_cap_nhat_bang_taikhoans1.cs" />
+    <Compile Include="Migrations\201906201810484_cap_nhat_bang_taikhoans1.Designer.cs">
+      <DependentUpon>201906201810484_cap_nhat_bang_taikhoans1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906201830018_capnhat_bang_donhangs.cs" />
+    <Compile Include="Migrations\201906201830018_capnhat_bang_donhangs.Designer.cs">
+      <DependentUpon>201906201830018_capnhat_bang_donhangs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906201925093_cap_nhat_bang_donhangs1.cs" />
+    <Compile Include="Migrations\201906201925093_cap_nhat_bang_donhangs1.Designer.cs">
+      <DependentUpon>201906201925093_cap_nhat_bang_donhangs1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\ChucVus\ChucVu.cs" />
+    <Compile Include="Models\ChucVus\ChucVuDTO.cs" />
+    <Compile Include="Models\ChucVus\ChucVuInput.cs" />
     <Compile Include="Models\DonHangs\DonHang.cs" />
     <Compile Include="Models\DonHangs\DonHangDTO.cs" />
     <Compile Include="Models\DonHangs\DonHangFilter.cs" />
@@ -3096,6 +3125,13 @@
     <Content Include="Areas\Admin\Views\KhuVuc\TinhThanh.cshtml" />
     <Content Include="Areas\Admin\Views\KhuVuc\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\KhuVuc\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHang\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHang\ChoDuyet.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHang\DaDuyet.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHang\DangGiao.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHang\DaHoanTat.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHang\ChiTiet.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHang\DaHuy.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\controllers\PhieuNhapController.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -3174,6 +3210,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906190940272_tao_bang_donhang_chitietdonhangs.resx">
       <DependentUpon>201906190940272_tao_bang_donhang_chitietdonhangs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906201723553_cap_nhat_bang_donhangs.resx">
+      <DependentUpon>201906201723553_cap_nhat_bang_donhangs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906201744411_tao_bang_chucvus.resx">
+      <DependentUpon>201906201744411_tao_bang_chucvus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906201757379_cap_nhat_bang_taikhoans.resx">
+      <DependentUpon>201906201757379_cap_nhat_bang_taikhoans.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906201810484_cap_nhat_bang_taikhoans1.resx">
+      <DependentUpon>201906201810484_cap_nhat_bang_taikhoans1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906201830018_capnhat_bang_donhangs.resx">
+      <DependentUpon>201906201830018_capnhat_bang_donhangs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906201925093_cap_nhat_bang_donhangs1.resx">
+      <DependentUpon>201906201925093_cap_nhat_bang_donhangs1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

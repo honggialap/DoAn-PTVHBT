@@ -7,10 +7,17 @@ namespace NomNom.Models.DonHangs
 {
     public class DonHangFilter
     {
-        public DonHangFilter(string Ten)
+        public DonHangFilter()
         {
-            this.Ten = Ten;
+            KhachHangID = 0;
+            TinhTrangID = 0;
+            Ngay = null;
+            NgayHoanTat = null;
         }
-        public string Ten { get; set; }
+        public int KhachHangID { get; set; }
+        public int TinhTrangID { get; set; }
+        public DateTime? Ngay { get; set; }
+        public DateTime? NgayHoanTat { get; set; }
+
     }
 }

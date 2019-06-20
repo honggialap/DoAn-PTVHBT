@@ -13,7 +13,7 @@ namespace NomNom.DAL
 {
     public class ThuongHieuDAL
     {
-        NomNomDbContext db = null;
+        private NomNomDbContext db = null;
         public ThuongHieuDAL()
         {
             db = new NomNomDbContext();

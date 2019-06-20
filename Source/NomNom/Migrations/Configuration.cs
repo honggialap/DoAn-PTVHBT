@@ -2,6 +2,8 @@
 {
     using NomNom.Common;
     using NomNom.DAL;
+    using NomNom.Models.ChucVus;
+    using NomNom.Models.DonHangs;
     using NomNom.Models.KhuVucs;
     using NomNom.Models.LoaiSanPhams;
     using NomNom.Models.NhaCungCaps;
@@ -35,6 +37,7 @@
             obj.Id = 1;
             obj.TenTaiKhoan = "admin";
             obj.MatKhau = "123456";
+            obj.ChucVuID = CommonConstants.CHUC_VU_ADMIN;
             obj.IsDeleted = false;
             obj.MatKhau = Encryptor.MD5Hash(obj.MatKhau);
             taikhoans.Add(obj);
@@ -42,6 +45,13 @@
             obj.Id = 2;
             obj.TenTaiKhoan = "hoaithu";
             obj.MatKhau = "123456";
+            obj.SDT = "0343562031";
+            obj.Ten = "Hoài Thu";
+            obj.Ho = "Nguyễn";
+            obj.NgaySinh = new DateTime(1998,11,16);
+            
+            obj.Email = "hoaithu7604@gmail.com";
+            obj.ChucVuID = CommonConstants.CHUC_VU_ADMIN;
             obj.IsDeleted = false;
             obj.MatKhau = Encryptor.MD5Hash(obj.MatKhau);
             taikhoans.Add(obj);
@@ -49,6 +59,15 @@
             obj.Id = 3;
             obj.TenTaiKhoan = "gialap";
             obj.MatKhau = "123456";
+            obj.ChucVuID = CommonConstants.CHUC_VU_ADMIN;
+            obj.IsDeleted = false;
+            obj.MatKhau = Encryptor.MD5Hash(obj.MatKhau);
+            taikhoans.Add(obj);
+            obj = new TaiKhoan();
+            obj.Id = 4;
+            obj.TenTaiKhoan = "khachhang";
+            obj.MatKhau = "123456";
+            obj.ChucVuID = CommonConstants.CHUC_VU_KHACH_HANG;
             obj.IsDeleted = false;
             obj.MatKhau = Encryptor.MD5Hash(obj.MatKhau);
             taikhoans.Add(obj);
@@ -286,25 +305,25 @@
             List<TinhTrangDonHang> tinhtrangdonhangs = new List<TinhTrangDonHang>();
             TinhTrangDonHang ttdh = new TinhTrangDonHang();
 
-            ttdh.Id = 1;
+            ttdh.Id = CommonConstants.TINH_TRANG_CHO_DUYET;
             ttdh.Ten = "Đang chờ duyệt";
             ttdh.GhiChu = "Sử dụng cho các đơn hàng đang chờ duyệt";
             tinhtrangdonhangs.Add(ttdh);
 
             ttdh = new TinhTrangDonHang();
-            ttdh.Id = 2;
+            ttdh.Id = CommonConstants.TINH_TRANG_DA_DUYET;
             ttdh.Ten = "Đã duyệt";
             ttdh.GhiChu = "Sử dụng cho các đơn hàng đã duyệt";
             tinhtrangdonhangs.Add(ttdh);
 
             ttdh = new TinhTrangDonHang();
-            ttdh.Id = 3;
+            ttdh.Id = CommonConstants.TINH_TRANG_DANG_GIAO;
             ttdh.Ten = "Đang giao";
             ttdh.GhiChu = "Sử dụng cho các đơn hàng đang trong quá trình giao hàng";
             tinhtrangdonhangs.Add(ttdh);
 
             ttdh = new TinhTrangDonHang();
-            ttdh.Id = 4;
+            ttdh.Id = CommonConstants.TINH_TRANG_HOAN_TAT;
             ttdh.Ten = "Hoàn tất";
             ttdh.GhiChu = "Sử dụng cho các đơn hàng đã giao và thanh toán";
             tinhtrangdonhangs.Add(ttdh);
@@ -389,7 +408,64 @@
 
             context.KhuVucs.AddOrUpdate(khuvucs.ToArray());
             #endregion
+
+            #region chucvu
+            List<ChucVu> chucvus = new List<ChucVu>();
+            ChucVu cv = new ChucVu();
+            cv.Id = CommonConstants.CHUC_VU_ADMIN;
+            cv.Ten = "Admin";
+            cv.GhiChu = "";
+            chucvus.Add(cv);
+
+            cv = new ChucVu();
+            cv.Id = CommonConstants.CHUC_VU_KHACH_HANG;
+            cv.Ten = "Khách hàng";
+            cv.GhiChu = "";
+            chucvus.Add(cv);           
+            context.ChucVus.AddOrUpdate(chucvus.ToArray());
+            #endregion
+
+            #region donhang
+            List<DonHang> donhangs = new List<DonHang>();
+            DonHang dh = new DonHang();
+            n = 1;
+            dh.Id = n++;
+            dh.KhachHangID = 2;
+            dh.TinhTrangID = CommonConstants.TINH_TRANG_CHO_DUYET;
+            dh.ThanhTien = 30000;
+            dh.TenNguoiNhan = "Hoài Thu";
+            dh.SoDienThoai = "0343562031";
+            dh.DiaChi = "Địa chỉ x";
+            dh.KhuVucID = 85;
+            dh.PhiShip = 10000;
+            dh.Ngay = DateTime.Now;
+            dh.NgayGiaoDuKienMin = new DateTime(2019, 7, 1);
+            dh.NgayGiaoDuKienMax = new DateTime(2019, 7, 2);
+            donhangs.Add(dh);
+            context.DonHangs.AddOrUpdate(donhangs.ToArray());
+            #endregion
+
+            #region chitietdonhang
+            List<ChiTietDonHang> chitietdonhangs = new List<ChiTietDonHang>();
+            ChiTietDonHang ctdh = new ChiTietDonHang();
+            n = 1;
+            ctdh.Id = n++;
+            ctdh.SanPhamID = 1;
+            ctdh.SoLuong = 2;
+            ctdh.GiaOrder = 5000;
+            ctdh.DonHangID = 1;
+            chitietdonhangs.Add(ctdh);
+            ctdh = new ChiTietDonHang();
+            ctdh.Id = n++;
+            ctdh.SanPhamID = 2;
+            ctdh.SoLuong = 2;
+            ctdh.GiaOrder = 10000;
+            ctdh.DonHangID = 1;
+            chitietdonhangs.Add(ctdh);
+            context.ChiTietDonHangs.AddOrUpdate(chitietdonhangs.ToArray());
+            #endregion
+
         }
-        
+
     }
 }

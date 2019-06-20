@@ -1,0 +1,117 @@
+﻿@model NomNom.Models.DonHangs.DonHangDTO
+@{
+    ViewBag.Title = "Đơn hàng - Chi tiết";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary"><a href="/Admin/DonHang/Index">Quản lý đơn hàng</a> > Chi tiết</h6>
+    </div>
+    <div class="card-body">
+        <div class="panel panel-info shadow mb-4" style="width:700px;margin:auto;border:1px groove">
+            <div class="panel-heading" style="background-color: #d9edf7;padding: 10px 15px;color: #31708f;">
+                <div class="panel-title" style="font-size: 16px;color: inherit;">Chi tiết đơn hàng</div>
+            </div>
+            <div class="col-11 d-flex justify-content-start align-items-start" style="margin-top:10px">
+                <div class="col-6 form-row">
+                    <div class="w-100"><label for="KhachHang">Khách hàng</label></div>
+                    <div class="w-100"><input id="KhachHang" class="form-control" readonly value="@Model.KhachHangTen" /></div>
+                </div>
+                <div class="col-6 form-row" style="margin-left:20px">
+                    <div class="w-100"><label for="NguoiNhan">Người nhận</label></div>
+                    <div class="w-100"><input id="NguoiNhan" class="form-control" readonly value="@Model.TenNguoiNhan" /></div>
+                </div>
+            </div>
+            <div class="col-11 d-flex justify-content-start align-items-start" style="margin-top:10px">
+                <div class="col-6 form-row">
+                    <div class="w-100"><label for="DiaChi">Địa chỉ giao hàng</label></div>
+                    <div class="w-100"><input id="DiaChi" class="form-control" readonly value="@Model.DiaChi" /></div>
+                </div>
+                <div class="col-6 form-row" style="margin-left:20px">
+                    <div class="w-100"><label for="KhuVuc">Khu vực giao hàng</label></div>
+                    <div class="w-100"><input id="KhuVuc" class="form-control" readonly value="@Model.KhuVucTen" /></div>
+                </div>
+            </div>
+            <div class="col-11 d-flex justify-content-start align-items-start" style="margin-top:10px">
+                <div class="col-6 form-row">
+                    <div class="w-100"><label for="SoDienThoai">Số điện thoại</label></div>
+                    <div class="w-100"><input id="SoDienThoai" class="form-control" readonly value="@Model.SoDienThoai" /></div>
+                </div>
+                <div class="col-6 form-row" style="margin-left:20px">
+                    <div class="w-100"><label for="ThanhTien">Thành tiền</label></div>
+                    <div class="w-100"><input id="ThanhTien" class="form-control" readonly value="@Model.ThanhTien" /></div>
+                </div>
+            </div>
+            <div class="col-11 d-flex justify-content-start align-items-start" style="margin-top:10px">
+                <div class="col-6 form-row">
+                    <label for="NgayGiaoHangMin">Ngày giao hàng dự kiến</label>
+                    @if (DateTime.Compare(Model.NgayGiaoDuKienMin, Model.NgayGiaoDuKienMax) == 0)
+                    {
+                        <div class="w-100"><input id="NgayGiaoHang" class="form-control" readonly value="@Model.NgayGiaoDuKienMin.ToString("dd/M/yyyy")" /></div>
+                    }
+                    else
+                    {
+                        <div class="w-100"><input id="NgayGiaoHang" class="form-control" readonly value="Từ @Model.NgayGiaoDuKienMin.ToString("dd/M/yyyy") đến @Model.NgayGiaoDuKienMax.ToString("dd/M/yyyy")" /></div>
+                    }
+                </div>
+                <div class="col-6 form-row" style="margin-left:20px">
+                    <div class="w-100"><label for="PhiShip">Phí ship</label></div>
+                    <div class="w-100"><input id="PhiShip" class="form-control" readonly value="@Model.PhiShip" /></div>
+                </div>
+            </div>
+            <div class="col-11 d-flex justify-content-start align-items-start" style="margin-top:10px">
+                <div class="col-6 form-row">
+                    <div class="w-100"><label for="TinhTrang">Tình trạng đơn hàng</label></div>
+                    <div class="w-100"><input id="TinhTrang" class="form-control" readonly value="@Model.TinhTrangTen" /></div>
+                </div>              
+            </div>
+            <div class="col-12 d-flex justify-content-start align-items-start" style="margin-top:10px">
+                <div class="col-12 form-row w-100">
+                    <nav class="navbar navbar-expand-sm navbar-light margin-top-15" style="background-color: #e3f2fd;">
+                        <h4 class="modal-title">
+                            <i class="fa fa-table"></i>
+                            <span>Danh sách sản phẩm</span>
+                        </h4>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-12 d-flex justify-content-start align-items-start" style="margin-top:10px">
+                <div class="col-12 form-row w-100">
+                    <table id="tblSanPham" class="table" style="table-layout:fixed">
+                        <thead>
+                            <tr>
+                                <td style="display:none"></td>
+                                <td style="width:50px">HA</td>
+                                <td>Tên sản phẩm</td>
+                                <td style="width:125px">Số lượng</td>
+                                <td style="width:125px">Giá order</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var sp in ViewBag.listSanPham)
+                            {
+                                <tr>
+                                    <td style="display:none">@sp.Id</td>
+                                    @if (@sp.SanPhamHinhAnh != null)
+                                    {
+                                        <td style="width:50px"><a href="@sp.SanPhamHinhAnh"><img src="@sp.SanPhamHinhAnh" style="object-fit:contain;width:50px;height:50px"></a></td>
+                                    }
+                                    else
+                                    {
+                                        <td style="width:50px"><img src="~/Assets/image/NoImage.png" style="object-fit:contain;width:50px;height:50px"></td>
+                                    }
+                                    
+                                    <td>@sp.SanPhamTen</td>
+                                    <td style="width:125px">@sp.SoLuong</td>
+                                    <td style="width:125px">@sp.GiaOrder</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

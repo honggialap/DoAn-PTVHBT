@@ -13,7 +13,7 @@ namespace NomNom.DAL
 {
     public class NhaCungCapDAL
     {
-        NomNomDbContext db = null;
+        private NomNomDbContext db = null;
         public NhaCungCapDAL()
         {
             db = new NomNomDbContext();

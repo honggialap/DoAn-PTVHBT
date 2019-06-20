@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using NomNom.Models.ChucVus;
+using NomNom.Models.DonHangs;
 using NomNom.Models.KhuVucs;
 using NomNom.Models.LoaiSanPhams;
 using NomNom.Models.NhaCungCaps;
@@ -51,6 +53,18 @@ namespace NomNom.Models
             CreateMap<KhuVuc, KhuVucDTO>();
             CreateMap<KhuVucInput, KhuVuc>();
             CreateMap<KhuVuc, KhuVucInput>();
+            //Đon hàng
+            CreateMap<DonHang, DonHangDTO>();
+            CreateMap<DonHang, DonHangInput>();
+            CreateMap<DonHangInput, DonHang>();
+            //Chi tiết đơn hàng
+            CreateMap<ChiTietDonHang, ChiTietDonHangDTO>();
+            CreateMap<ChiTietDonHang, ChiTietDonHangInput>();
+            CreateMap<ChiTietDonHangInput, ChiTietDonHang>();
+            //Chức vụ
+            CreateMap<ChucVu, ChucVuDTO>();
+            CreateMap<ChucVu, ChucVuInput>();
+            CreateMap<ChucVuInput, ChucVu>();
         }
     }
 }

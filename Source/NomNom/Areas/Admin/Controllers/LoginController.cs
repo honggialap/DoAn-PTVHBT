@@ -21,13 +21,13 @@ namespace NomNom.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var dal = new TaiKhoanDAL();
-                var result = dal.Login(model.TenTaiKhoan, model.MatKhau);
+                var result = dal.LoginAdmin(model.TenTaiKhoan, model.MatKhau);
                 if (result)
                 {
-                    var userSession = new UserLogin();
-                    userSession.UserID = dal.GetId(model.TenTaiKhoan);
-                    userSession.UserName = model.TenTaiKhoan;
-                    Session.Add(CommonConstants.USER_SESSION, userSession);
+                    var Login = new UserLogin();
+                    Login.UserID = dal.GetId(model.TenTaiKhoan);
+                    Login.UserName = model.TenTaiKhoan;
+                    Session.Add(CommonConstants.ADMIN_SESSION, Login);
                     return RedirectToAction("Index", "Home");
                 }
                 else

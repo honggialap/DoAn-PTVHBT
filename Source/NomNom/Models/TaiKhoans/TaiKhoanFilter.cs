@@ -8,5 +8,11 @@ namespace NomNom.Models.TaiKhoans
     public class TaiKhoanFilter
     {
         public string TenTaiKhoan { get; set; }
+        public int ChucVuID { get; set; }
+        TaiKhoanFilter()
+        {
+            TenTaiKhoan = null;
+            ChucVuID = 0;
+        }
     }
 }

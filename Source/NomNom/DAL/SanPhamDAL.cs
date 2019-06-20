@@ -13,7 +13,7 @@ namespace NomNom.DAL
 {
     public class SanPhamDAL
     {
-        NomNomDbContext db = null;
+        private NomNomDbContext db = null;
         public SanPhamDAL()
         {
             db = new NomNomDbContext();

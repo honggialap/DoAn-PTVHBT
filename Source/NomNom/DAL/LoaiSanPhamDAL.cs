@@ -13,7 +13,7 @@ namespace NomNom.DAL
 {
     public class LoaiSanPhamDAL
     {
-        NomNomDbContext db = null;
+        private NomNomDbContext db = null;
         public LoaiSanPhamDAL()
         {
             db = new NomNomDbContext();

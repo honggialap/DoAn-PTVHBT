@@ -14,7 +14,7 @@ namespace NomNom.DAL
 {
     public class PhieuNhapDAL
     {
-        NomNomDbContext db = null;
+        private NomNomDbContext db = null;
         public PhieuNhapDAL()
         {
             db = new NomNomDbContext();
