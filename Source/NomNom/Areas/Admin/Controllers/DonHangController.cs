@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace NomNom.Areas.Admin.Controllers
 {
-    public class DonHangController : Controller
+    public class DonHangController : BaseController
     {
         // GET: Admin/DonHang
         public ActionResult Index()
