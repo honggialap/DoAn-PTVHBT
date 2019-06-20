@@ -44,16 +44,16 @@
             obj = new TaiKhoan();
             obj.Id = 2;
             obj.TenTaiKhoan = "hoaithu";
-            obj.MatKhau = "123456";
             obj.SDT = "0343562031";
             obj.Ten = "Hoài Thu";
             obj.Ho = "Nguyễn";
-            obj.NgaySinh = new DateTime(1998,11,16);
-            
+            obj.NgaySinh = new DateTime(1998,11,16);          
             obj.Email = "hoaithu7604@gmail.com";
             obj.ChucVuID = CommonConstants.CHUC_VU_ADMIN;
             obj.IsDeleted = false;
-            obj.MatKhau = Encryptor.MD5Hash(obj.MatKhau);
+            obj.MatKhau = "a78ca5c33a0db8b698d44c7bab7c7f22";
+            obj.Avatar = "/assets/filesimages/NomNomLogo.png";
+            obj.DiaChi = "khu phố 6, Thủ Đức, Ho Chi Minh City";
             taikhoans.Add(obj);
             obj = new TaiKhoan();
             obj.Id = 3;

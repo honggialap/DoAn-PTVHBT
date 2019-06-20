@@ -13,28 +13,28 @@ namespace NomNom.Areas.Admin.Controllers
         // GET: Admin/TaiKhoan
         public ActionResult Index()
         {
-            return View();
+            var dal = new TaiKhoanDAL();
+            return View(dal.GetTaiKhoan(null));
         }
-        [HttpGet]
-        public ActionResult Create()
+        public ActionResult Khoa(int Id)
         {
-            return View();
+            var dal = new TaiKhoanDAL();
+            var result = dal.Ban(Id, true);
+            return Redirect("/Admin/TaiKhoan");
         }
-        [HttpPost]
-        public ActionResult Create(TaiKhoanInput input)
+        public ActionResult MoKhoa(int Id)
         {
-            if (ModelState.IsValid)
-            {
-                var dal = new TaiKhoanDAL();
-                var result = dal.CreateOrEdit(input);
-                if (result == 0)
-                {
-                    ModelState.AddModelError("", "Thêm tài khoản thất bại.");
-                }
-                else
-                    return RedirectToAction("Index", "TaiKhoan");
-            }
-            return View("Index");
+            var dal = new TaiKhoanDAL();
+            var result = dal.Ban(Id, false);
+            return Redirect("/Admin/TaiKhoan");
+        }
+        public ActionResult ChiTiet(int Id)
+        {
+            var dal = new TaiKhoanDAL();
+            var result = dal.GetForView(Id);
+            if (result!=null)
+                return View(result);
+            return Redirect("/Admin/TaiKhoan");
         }
     }
 }

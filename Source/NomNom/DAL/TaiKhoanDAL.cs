@@ -16,12 +16,57 @@ namespace NomNom.DAL
         {
             db = new NomNomDbContext();
         }
+        public bool Ban(int Id,bool isBan)
+        {
+            var result = db.TaiKhoans.Find(Id);
+            if (result != null&&result.ChucVuID!=CommonConstants.CHUC_VU_ADMIN)
+            {
+                result.IsBan = isBan;
+                db.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+        public List<TaiKhoanDTO> GetTaiKhoan(TaiKhoanFilter filter)
+        {
+            var result = db.TaiKhoans.Where(x => !x.IsDeleted);
+
+            if (filter != null)
+            {
+                if (filter.TenTaiKhoan != null)
+                    result.Where(x => x.TenTaiKhoan.Contains(filter.TenTaiKhoan));
+                if (filter.ChucVuID != 0)
+                    result.Where(x => x.ChucVuID == filter.ChucVuID);
+            }
+
+            var list = new List<TaiKhoanDTO>();
+            foreach(var item in result)
+            {
+                var obj = Mapper.Map<TaiKhoanDTO>(item);
+                list.Add(obj);
+            }
+            foreach(var obj in list)
+            {
+                var cv = db.ChucVus.Find(obj.ChucVuID);
+                if (cv != null)
+                    obj.ChucVuTen = cv.Ten;
+                else
+                    obj.ChucVuTen = "";
+            }
+            return list;
+        }
         public TaiKhoanDTO GetForView(int Id)
         {
             var result = db.TaiKhoans.Find(Id);
             if (result != null)
             {
-                return Mapper.Map<TaiKhoanDTO>(result);
+                var obj = Mapper.Map<TaiKhoanDTO>(result);
+                var cv = db.ChucVus.Find(obj.ChucVuID);
+                if (cv != null)
+                    obj.ChucVuTen = cv.Ten;
+                else
+                    obj.ChucVuTen = "";
+                return obj;
             }
             return null;
         }

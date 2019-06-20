@@ -10,6 +10,7 @@ namespace NomNom.Models.TaiKhoans
         public string TenTaiKhoan { get; set; }
         public string MatKhau { get; set; }
         public int ChucVuID { get; set; }
+        public string ChucVuTen { get; set; }
         public string Ten { get; set; }
         public string Ho { get; set; }
         public DateTime? NgaySinh { get; set; }

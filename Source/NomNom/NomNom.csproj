@@ -3084,7 +3084,6 @@
     <Content Include="Assets\admin\vendor\jquery\jquery.slim.min.map" />
     <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
     <Content Include="Areas\Admin\Views\TaiKhoan\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\TaiKhoan\Create.cshtml" />
     <Content Include="Areas\Admin\Views\SanPham\Index.cshtml" />
     <Content Include="Areas\Admin\Views\LoaiSanPham\Index.cshtml" />
     <Content Include="Areas\Admin\Views\LoaiSanPham\Create.cshtml" />
@@ -3132,6 +3131,7 @@
     <Content Include="Areas\Admin\Views\DonHang\DaHoanTat.cshtml" />
     <Content Include="Areas\Admin\Views\DonHang\ChiTiet.cshtml" />
     <Content Include="Areas\Admin\Views\DonHang\DaHuy.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoan\ChiTiet.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\controllers\PhieuNhapController.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

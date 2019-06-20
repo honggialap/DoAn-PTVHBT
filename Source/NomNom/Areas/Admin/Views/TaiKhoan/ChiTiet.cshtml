@@ -1,0 +1,79 @@
+﻿@model NomNom.Models.TaiKhoans.TaiKhoanDTO
+@{
+    ViewBag.Title = Model.TenTaiKhoan;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary"><a href="/Admin/TaiKhoan">Quản lý Tài khoản</a> > @Model.TenTaiKhoan</h6>
+    </div>
+    <div class="card-body">
+        <div class="panel panel-info shadow mb-4" style="width:700px;margin:auto;border:1px groove">
+            <div class="panel-heading" style="background-color: #d9edf7;padding: 10px 15px;color: #31708f;">
+                <div class="panel-title" style="font-size: 16px;color: inherit;">Thông tin chi tiết</div>
+            </div>
+            <div class="col-11 d-flex justify-content-start align-items-start" style="margin-top:10px">
+                <div class="form-row" style="margin-left:20px;width:200px;height:200px">
+                    @if (Model!=null&&Model.Avatar != null&&Model.Avatar!="")
+                    {
+                        <img id="Avatar" style="object-fit:contain" src="@Model.Avatar" />
+                    }
+                    else
+                    {
+                        <img id="HinhAnh" style="object-fit:contain" src="~/Assets/image/NoImage.png" />
+                    }
+                </div>
+                <div class="col-7 form-row" style="margin-left:30px">
+                    <div class="w-100"><label for="TenTaiKhoan">Tên tài khoản</label></div>
+                    <div class="w-100"><input id="TenTaiKhoan" class="form-control" readonly value="@Model.TenTaiKhoan" /></div>
+                    <div class="w-100"><label for="ChucVuTen">Chức vụ</label></div>
+                    <div class="w-100"><input id="ChucVuTen" class="form-control" readonly value="@Model.ChucVuTen" /></div>
+                    <div class="w-100"><label for="HoTen">Họ tên</label></div>
+                    <div class="w-100"><input id="HoTen" class="form-control" readonly value="@Model.Ho @Model.Ten" /></div>
+                </div>               
+            </div>
+            <div class="col-11 d-flex justify-content-start align-items-start" style="margin-top:10px">
+                <div class="col-6 form-row">
+                    <div class="w-100"><label for="DiaChi">Địa chỉ</label></div>
+                    <div class="w-100"><input id="DiaChi" class="form-control" readonly value="@Model.DiaChi" /></div>                   
+                </div>
+                <div class="col-6 form-row" style="margin-left:20px">
+                    <div class="w-100"><label for="NgaySinh">Ngày sinh</label></div>
+                    @if (Model.NgaySinh != null)
+            {
+                <div class="w-100"><input id="NgaySinh" class="form-control" readonly value="@Model.NgaySinh.Value.ToString("dd/M/yyyy")" /></div>
+    }
+    else
+    {
+        <div class="w-100"><input id="NgaySinh" class="form-control" readonly value="Không có thông tin" /></div>
+}
+                </div>
+            </div>
+            <div class="col-11 d-flex justify-content-start align-items-start" style="margin-top:10px">          
+                <div class="col-6 form-row">
+                    <div class="w-100"><label for="Email">Địa chỉ Email</label></div>
+                    <div class="w-100"><input id="Email" class="form-control" readonly value="@Model.Email" /></div>
+                </div>
+                <div class="col-6 form-row" style="margin-left:20px">
+                    <div class="w-100"><label for="SDT">Số điện thoại</label></div>
+                    <div class="w-100"><input id="SDT" class="form-control" readonly value="@Model.SDT" /></div>
+                </div>
+            </div>
+            <div class="col-11 d-flex justify-content-start align-items-start" style="margin-top:10px">              
+                <div class="col-6 form-row" style="margin-bottom:20px">
+                    <div class="w-100"><label for="TinhTrang">Tình trạng tài khoản</label></div>
+                    @if (Model.IsBan)
+                    {
+                        <div class="w-100"><button id="TinhTrang" class="btn btn-danger">Bị khóa</button></div>
+                    }
+                    else
+                    {
+                        <div class="w-100"><button id="TinhTrang" class="btn btn-success">Bình thường</button></div>
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
