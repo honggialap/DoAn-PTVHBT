@@ -15,27 +15,49 @@ namespace NomNom.DAL
         {
             db = new NomNomDbContext();
         }
+        public int CreateOrEdit(KhuVucInput input)
+        {
+            if (input.Id == 0)
+            {
+                return Create(input);
+            }
+            else
+                return Update(input);
+        }
         public KhuVucInput GetForEdit(int Id)
         {
             var entity = db.KhuVucs.Find(Id);
             //Tạm thời ko cho edit thành phố
-            if (entity == null || entity.ParentID == 0)
+            if (entity == null || entity.ParentID == 0 || entity.IsDeleted)
                 return null;
             else
                 return Mapper.Map<KhuVucInput>(entity);
         }
+        public KhuVucDTO GetForView(int Id)
+        {
+            var entity = db.KhuVucs.Find(Id );
+            if (entity == null || entity.IsDeleted)
+                return null;
+            else
+                return Mapper.Map<KhuVucDTO>(entity);
+        }
 
         public List<KhuVucDTO> GetQuanHuyen(int Id)
-        {
-            var result = db.KhuVucs.Where(x => !x.IsDeleted && x.ParentID == Id);
-            var list = new List<KhuVucDTO>();
-            foreach (var item in result)
+        {          
+            var tinhthanh = db.KhuVucs.Find(Id);
+            if (tinhthanh != null && tinhthanh.ParentID == 0)
             {
-                var obj = Mapper.Map<KhuVucDTO>(item);
+                var result = db.KhuVucs.Where(x => !x.IsDeleted && x.ParentID == Id);
+                var list = new List<KhuVucDTO>();
+                foreach (var item in result)
+                {
+                    var obj = Mapper.Map<KhuVucDTO>(item);
 
-                list.Add(obj);
+                    list.Add(obj);
+                }
+                return list;
             }
-            return list;
+            else return null;
 
         }
         public List<KhuVucDTO> GetThanhPho()
@@ -74,7 +96,7 @@ namespace NomNom.DAL
         private int Update(KhuVucInput input)
         {
             var entity = db.KhuVucs.SingleOrDefault(x => x.Id == input.Id);
-            if (entity != null)
+            if (entity != null&&entity.ParentID!=0)
             {
                 // entity = Mapper.Map<KhuVuc>(input);   
                 entity.HoatDong = input.HoatDong;

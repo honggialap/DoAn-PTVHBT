@@ -1,0 +1,58 @@
+﻿
+@model List<NomNom.Models.KhuVucs.KhuVucDTO>
+@{
+    ViewBag.Title = "Khu vực";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Assets/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<!-- Page level plugins -->
+<script src="~/Assets/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="~/Assets/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Page level custom scripts -->
+<script src="~/Assets/admin/js/demo/datatables-demo.js"></script>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="form-row card-header py-3">
+        <div class="col-sm-12 col-md-5"><h6 class="m-0 font-weight-bold text-primary"><a href="@Url.Action("Index","KhuVuc")">Danh mục Khu vực</a> > @ViewBag.ThanhPho.Ten</h6></div>
+        <div class="col-sm-12 col-md-7"><a href="@Url.Action("Create","KhuVuc",new { tpID=@ViewBag.ThanhPho.Id})"><button style="float:right" class="btn btn-primary">Thêm mới</button></a></div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Khu vực</th>
+                        <th>Phí ship</th>
+                        <th>Thời gian giao hàng</th>
+                        <th>Hoạt động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a href="@Url.Action("Edit","KhuVuc",new { Id = item.Id})">Sửa </a>
+                                <a href="@Url.Action("Delete","KhuVuc",new { Id = item.Id})">Xóa</a>
+                            </td>
+                            <td>@item.Ten</td>
+                            <td>@item.PhiShip</td>
+                            @if (item.ThoiGianShipMax == item.ThoiGianShipMin)
+                            {
+                                <td>@item.ThoiGianShipMin ngày</td>
+                            }
+                            else
+                            {
+                                <td>Từ @item.ThoiGianShipMin đến @item.ThoiGianShipMax ngày</td>
+                            }
+                            <td>@(item.HoatDong?"Có":"Không")</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

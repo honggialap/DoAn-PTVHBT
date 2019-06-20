@@ -1,0 +1,69 @@
+﻿@model NomNom.Models.KhuVucs.KhuVucInput
+@{
+    ViewBag.Title = ViewBag.ThanhPho + " - Tạo mới";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary"><a href="@Url.Action("Index","KhuVuc")">Danh mục Khu vực</a> > <a href="@Url.Action("TinhThanh","KhuVuc",new { Id = ViewBag.ThanhPho.Id})">@ViewBag.ThanhPho.Ten</a> > Tạo mới</h6>
+    </div>
+    <div class="card-body">
+        <div class="panel panel-info shadow mb-4" style="width:500px;margin:auto;border:1px groove">
+            <div class="panel-heading" style="background-color: #d9edf7;padding: 10px 15px;color: #31708f;">
+                <div class="panel-title" style="font-size: 16px;color: inherit;">Cập nhật</div>
+            </div>
+            @using (Html.BeginForm("Create", "KhuVuc", FormMethod.Post, new { @class = "login-form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.ParentID)
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="col-12 d-flex justify-content-start align-items-start" style="margin-top:10px">
+                    <div class="col-6 form-row">
+                        <div class="w-100">@Html.LabelFor(model => model.Ten)</div>
+                        <div class="w-100">@Html.TextBoxFor(model => model.Ten, new { @class = "form-control" })</div>
+                        <div class="w-100">@Html.ValidationMessageFor(model => model.Ten, "", new { @class = "text-danger" })</div>
+                    </div>
+                    <div class="col-6 form-row">
+                        <div class="w-100">@Html.LabelFor(model => model.PhiShip)</div>
+                        <div class="w-100">@Html.TextBoxFor(model => model.PhiShip, new { @class = "form-control" })</div>
+                        <div class="w-100">@Html.ValidationMessageFor(model => model.PhiShip, "", new { @class = "text-danger" })</div>
+                    </div>
+                </div>
+                <div class="col-12 d-flex justify-content-start align-items-start" style="margin-top:10px">
+                    <div class="col-6 form-row">
+                        <div class="w-100">@Html.LabelFor(model => model.ThoiGianShipMin)</div>
+                        <div class="w-100">@Html.TextBoxFor(model => model.ThoiGianShipMin, new { @class = "form-control", @pattern = "[0-9]+" })</div>
+                        <div class="w-100">@Html.ValidationMessageFor(model => model.ThoiGianShipMin, "", new { @class = "text-danger" })</div>
+                    </div>
+                    <div class="col-6 form-row">
+                        <div class="w-100">@Html.LabelFor(model => model.ThoiGianShipMax)</div>
+                        <div class="w-100">@Html.TextBoxFor(model => model.ThoiGianShipMax, new { @class = "form-control", @pattern = "[0-9]+" })</div>
+                        <div class="w-100">@Html.ValidationMessageFor(model => model.ThoiGianShipMax, "", new { @class = "text-danger" })</div>
+                    </div>
+                </div>
+                <div class="col-12 d-flex justify-content-start align-items-start" style="margin-top:10px">
+                    <div class="col-11 form-row w-100">
+                        <div class="w-100">@Html.LabelFor(model => model.GhiChu)</div>
+                        <div class="w-100">@Html.TextAreaFor(model => model.GhiChu, new { @class = "form-control" })</div>
+                        <div class="w-100">@Html.ValidationMessageFor(model => model.GhiChu, "", new { @class = "text-danger" })</div>
+                    </div>
+                </div>
+                <div class="col-12 d-flex justify-content-start align-items-start" style="margin-top:10px">
+                    <div class="col-11 form-row w-100">
+                        <div class="w-100">
+                            @Html.LabelFor(model => model.HoatDong)
+                            @Html.CheckBoxFor(model => model.HoatDong)
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="form-row" style="margin-top:10px;margin-bottom:10px">
+                    <input type="submit" value="Xác nhận" class="btn btn-primary" style="margin:auto" />
+                </div>
+            }
+        </div>
+    </div>
+</div>

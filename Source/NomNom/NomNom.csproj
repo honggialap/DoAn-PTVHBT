@@ -155,6 +155,7 @@
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\TaiKhoanController.cs" />
     <Compile Include="Areas\Admin\Controllers\NhaCungCapController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KhuVucController.cs" />
     <Compile Include="Areas\Admin\Controllers\ThuongHieuController.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="Common\CommonConstants.cs" />
@@ -3091,6 +3092,10 @@
     <Content Include="Areas\Admin\Views\PhieuNhap\Create.cshtml" />
     <Content Include="Areas\Admin\Views\PhieuNhap\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\KhoHang\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\KhuVuc\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\KhuVuc\TinhThanh.cshtml" />
+    <Content Include="Areas\Admin\Views\KhuVuc\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\KhuVuc\Create.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\controllers\PhieuNhapController.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
