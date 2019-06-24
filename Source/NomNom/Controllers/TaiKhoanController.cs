@@ -73,7 +73,7 @@ namespace NomNom.Controllers
                         var hpf = HttpContext.Request.Files[0];
                         if (hpf.ContentLength > 0)
                         {
-                            input.Avatar = "/Assets/image/avatar/"+"USERAVATAR_" +input.Id+".jpg";
+                            user.Avatar = input.Avatar = "/Assets/image/avatar/"+"USERAVATAR_" +user.UserID+"_"+user.UserName+".jpg";
                             string fullpathwithfilename = "~"+input.Avatar;
                             hpf.SaveAs(Server.MapPath(fullpathwithfilename));
                         }                     
@@ -87,7 +87,10 @@ namespace NomNom.Controllers
                 input.Id = user.UserID;
                 var result = dal.UpdateThongTin(input);
                 if (result == 1)
-                    return Redirect("/TaiKhoan");              
+                {
+                    Session.Add(CommonConstants.USER_SESSION, user);
+                    return Redirect("/TaiKhoan");
+                }
             }
             return View();
         }
