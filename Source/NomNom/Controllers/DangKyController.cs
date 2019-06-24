@@ -14,7 +14,9 @@ namespace NomNom.Controllers
         // GET: DangKy
         public ActionResult Index()
         {
+            if (Session[NomNom.Common.CommonConstants.USER_SESSION]==null)
             return View();
+            return Redirect("~/home");
         }
         public ActionResult DangKyThanhCong()
         {

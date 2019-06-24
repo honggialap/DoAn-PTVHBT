@@ -163,8 +163,10 @@
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\DangKyController.cs" />
+    <Compile Include="Controllers\DangNhapController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
+    <Compile Include="Controllers\TaiKhoanController.cs" />
     <Compile Include="DAL\DonHangDAL.cs" />
     <Compile Include="DAL\KhuVucDAL.cs" />
     <Compile Include="DAL\NhaCungCapDAL.cs" />
@@ -2849,10 +2851,13 @@
     <Content Include="Views\SanPham\Index.cshtml" />
     <Content Include="Views\DangKy\Index.cshtml" />
     <Content Include="Views\DangKy\DangKyThanhCong.cshtml" />
+    <Content Include="Views\DangNhap\Index.cshtml" />
+    <Content Include="Views\DangNhap\DangNhapThanhCong.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
+    <Folder Include="Views\TaiKhoan\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

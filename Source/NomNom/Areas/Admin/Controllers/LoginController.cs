@@ -14,8 +14,18 @@ namespace NomNom.Areas.Admin.Controllers
         // GET: Admin/Login
         public ActionResult Index()
         {
-            if ((UserLogin)Session[CommonConstants.ADMIN_SESSION] !=null)
-                return Redirect("/Admin/Home");
+            
+            var session = Session[CommonConstants.USER_SESSION];
+            if (session != null)
+            {
+                var userLogin = (UserLogin)session;
+                var dal = new TaiKhoanDAL();
+                var ChucVuID = dal.GetForView(userLogin.UserID).ChucVuID;
+                if (ChucVuID == CommonConstants.CHUC_VU_ADMIN)
+                    return Redirect("/Admin/Home");
+                else
+                    return Content("Bạn không có quyền");
+            }          
             return View();
         }
         public ActionResult DangXuat()
@@ -28,8 +38,8 @@ namespace NomNom.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var dal = new TaiKhoanDAL();
-                var result = dal.LoginAdmin(model.TenTaiKhoan, model.MatKhau);
-                if (result)
+                var result = dal.Login(model.TenTaiKhoan, model.MatKhau);
+                if (result == CommonConstants.DANG_KY_TAI_KHOAN_THANH_CONG)
                 {
                     var Login = new UserLogin();
                     Login.UserID = dal.GetId(model.TenTaiKhoan);
@@ -43,7 +53,7 @@ namespace NomNom.Areas.Admin.Controllers
                         Login.Avatar = tk.Avatar;
                     else
                         Login.Avatar = "/assets/image/NoImage.png";
-                    Session.Add(CommonConstants.ADMIN_SESSION, Login);
+                    Session.Add(CommonConstants.USER_SESSION, Login);
                     return RedirectToAction("Index", "Home");
                 }
                 else

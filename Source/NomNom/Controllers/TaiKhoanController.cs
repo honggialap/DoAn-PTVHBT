@@ -6,12 +6,17 @@ using System.Web.Mvc;
 
 namespace NomNom.Controllers
 {
-    public class HomeController : Controller
+    public class TaiKhoanController : Controller
     {
+        // GET: TaiKhoan
         public ActionResult Index()
         {
             return View();
         }
-       
+        public ActionResult DangXuat()
+        {
+            Session.Abandon();
+            return Redirect("~/home");
+        }
     }
 }

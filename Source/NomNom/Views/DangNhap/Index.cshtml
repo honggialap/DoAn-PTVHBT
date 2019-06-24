@@ -1,0 +1,37 @@
+﻿@model NomNom.Models.TaiKhoans.TaiKhoanInput
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-info shadow mb-4" style="width:500px;margin:auto;margin-top:20px">
+    <div class="panel-heading" style="background-color: #282828;padding: 10px 15px;color: #ffffff;">
+        <div class="panel-title" style="font-size: 16px;color: inherit;">Đăng nhập</div>
+    </div>
+    @using (Html.BeginForm("Login", "DangNhap", FormMethod.Post, new { @class = "login-form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+   
+        <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
+            <div class="col-11 form-row w-100">
+                <div class="w-100">@Html.LabelFor(model => model.TenTaiKhoan)</div>
+                <div class="w-100">@Html.TextBoxFor(model => model.TenTaiKhoan, new { @class = "form-control" })</div>
+                <div class="w-100">@Html.ValidationMessageFor(model => model.TenTaiKhoan, "", new { @class = "text-danger" })</div>
+            </div>
+        </div>
+        <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
+            <div class="col-11 form-row w-100">
+                <div class="w-100">@Html.LabelFor(model => model.MatKhau)</div>
+                <div class="w-100">@Html.TextBoxFor(model => model.MatKhau, new { @type = "password", @class = "form-control" })</div>
+                <div class="w-100">@Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })</div>
+            </div>
+        </div>
+       
+
+        <div class="form-row" style="margin-top:10px;margin-bottom:10px">
+            <input type="submit" value="Xác nhận" class="btn btn-dark" style="margin:auto" />
+        </div>
+    }
+</div>

@@ -71,29 +71,21 @@ namespace NomNom.DAL
             return null;
         }
      
-        public bool Login(string tentaikhoan, string matkhau)
+        public int Login(string tentaikhoan, string matkhau)
         {
             matkhau = Encryptor.MD5Hash(matkhau);
-            var result = db.TaiKhoans.Count(x => !x.IsDeleted && x.TenTaiKhoan == tentaikhoan && x.MatKhau == matkhau);
-            if (result > 0)
-            {
-                return true;
-            }
-            {
-                return false;
-            }
-        }
-        public bool LoginAdmin(string tentaikhoan, string matkhau)
-        {
-            matkhau = Encryptor.MD5Hash(matkhau);
-            var result = db.TaiKhoans.Count(x => !x.IsDeleted && x.TenTaiKhoan == tentaikhoan && x.MatKhau == matkhau&&x.ChucVuID==CommonConstants.CHUC_VU_ADMIN);
-            if (result > 0)
-            {
-                return true;
-            }
-            {
-                return false;
-            }
+            var rs = db.TaiKhoans.Where(x => !x.IsDeleted);
+            rs = rs.Where(x => x.TenTaiKhoan == tentaikhoan);
+            if (rs.Count() == 0)
+                return CommonConstants.DANG_NHAP_TAI_KHOAN_KHONG_TON_TAI;
+            rs = rs.Where(x => x.MatKhau == matkhau);
+            if (rs.Count() == 0)
+                return CommonConstants.DANG_NHAP_MAT_KHAU_KHONG_DUNG;
+            rs = rs.Where(x => !x.IsBan);
+            if (rs.Count()==0)
+                return CommonConstants.DANG_NHAP_TAI_KHOAN_BI_KHOA;
+
+            return CommonConstants.DANG_NHAP_THANH_CONG;
         }
         public int GetId(string tentaikhoan)
         {

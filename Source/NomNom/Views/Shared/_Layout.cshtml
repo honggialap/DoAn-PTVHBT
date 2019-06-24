@@ -48,8 +48,29 @@
                     <div class="col-xl-4 col-lg-5">
                         <div class="user-panel">
                             <div class="up-item">
-                                <i class="flaticon-profile"></i>
-                                <a href="#">Đăng nhập</a> hoặc <a href="~/DangKy">Đăng ký</a>
+
+                                @if (HttpContext.Current.Session[NomNom.Common.CommonConstants.USER_SESSION] != null)
+                                {
+                                    <ul class="main-menu">
+                                        <li>
+                                            <a>
+                                                <i class="flaticon-profile"></i>
+                                                <span>Chào @(((NomNom.Common.UserLogin)(HttpContext.Current.Session[NomNom.Common.CommonConstants.USER_SESSION])).Name)</span>
+                                                <img class="img-profile rounded-circle" style="width:40px" src="@(((NomNom.Common.UserLogin)(HttpContext.Current.Session[NomNom.Common.CommonConstants.USER_SESSION])).Avatar)">
+                                            </a>
+                                            <ul class="sub-menu">
+                                                <li><a href="~/TaiKhoan/Index">Thông tin tài khoản</a></li>
+                                                <li><a href="~/GioHang/Index">Giỏ hàng</a></li>
+                                                <li><a data-toggle="modal" data-target="#logoutModal">Đăng xuất</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <a href="~/DangNhap">Đăng nhập</a> <a> hoặc </a> <a href="~/DangKy">Đăng ký</a>
+                                }
+
                             </div>
                             <div class="up-item">
                                 <div class="shopping-card">
@@ -69,18 +90,18 @@
                 <ul class="main-menu">
                     <li><a href="~/Home/Index">Trang chủ</a></li>
                     <li><a href="~/SanPham/Index">Sản phẩm</a></li>
-                   
+
                     @*<li>
-                        <a href="#">Pages</a>
-                        <ul class="sub-menu">
-                            <li><a href="./product.html">Product Page</a></li>
-                            <li><a href="./category.html">Category Page</a></li>
-                            <li><a href="./cart.html">Cart Page</a></li>
-                            <li><a href="./checkout.html">Checkout Page</a></li>
-                            <li><a href="./contact.html">Contact Page</a></li>
-                        </ul>
-                    </li>*@
-                    
+                            <a href="#">Pages</a>
+                            <ul class="sub-menu">
+                                <li><a href="./product.html">Product Page</a></li>
+                                <li><a href="./category.html">Category Page</a></li>
+                                <li><a href="./cart.html">Cart Page</a></li>
+                                <li><a href="./checkout.html">Checkout Page</a></li>
+                                <li><a href="./contact.html">Contact Page</a></li>
+                            </ul>
+                        </li>*@
+
                 </ul>
             </div>
         </nav>
@@ -89,42 +110,60 @@
     @RenderBody()
     <!-- Footer section -->
     @*<section class="footer-section">
-        <div class="container">
-            <div class="footer-logo text-center">
-                <a href="~/Home/Index"><img src="~/Assets/client/img/NomNomLogo.png" style="height:200px"alt=""></a>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="footer-widget about-widget">
-                        <h2>About</h2>
-                        <p>Website thực phẩm sạch online</p>                       
-                    </div>
-                </div>
-                
-               
-            </div>
-        </div>
-        <div class="social-links-warp">
             <div class="container">
-                <div class="social-links">
-                    <a href="" class="instagram"><i class="fa fa-instagram"></i><span>instagram</span></a>
-                    <a href="" class="google-plus"><i class="fa fa-google-plus"></i><span>g+plus</span></a>
-                    <a href="" class="pinterest"><i class="fa fa-pinterest"></i><span>pinterest</span></a>
-                    <a href="" class="facebook"><i class="fa fa-facebook"></i><span>facebook</span></a>
-                    <a href="" class="twitter"><i class="fa fa-twitter"></i><span>twitter</span></a>
-                    <a href="" class="youtube"><i class="fa fa-youtube"></i><span>youtube</span></a>
-                    <a href="" class="tumblr"><i class="fa fa-tumblr-square"></i><span>tumblr</span></a>
+                <div class="footer-logo text-center">
+                    <a href="~/Home/Index"><img src="~/Assets/client/img/NomNomLogo.png" style="height:200px"alt=""></a>
                 </div>
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="footer-widget about-widget">
+                            <h2>About</h2>
+                            <p>Website thực phẩm sạch online</p>
+                        </div>
+                    </div>
 
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                <p class="text-white text-center mt-5">
-                    Copyright &copy;
-                    <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                </p>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
+                </div>
             </div>
-        </div>
-    </section>*@
+            <div class="social-links-warp">
+                <div class="container">
+                    <div class="social-links">
+                        <a href="" class="instagram"><i class="fa fa-instagram"></i><span>instagram</span></a>
+                        <a href="" class="google-plus"><i class="fa fa-google-plus"></i><span>g+plus</span></a>
+                        <a href="" class="pinterest"><i class="fa fa-pinterest"></i><span>pinterest</span></a>
+                        <a href="" class="facebook"><i class="fa fa-facebook"></i><span>facebook</span></a>
+                        <a href="" class="twitter"><i class="fa fa-twitter"></i><span>twitter</span></a>
+                        <a href="" class="youtube"><i class="fa fa-youtube"></i><span>youtube</span></a>
+                        <a href="" class="tumblr"><i class="fa fa-tumblr-square"></i><span>tumblr</span></a>
+                    </div>
+
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <p class="text-white text-center mt-5">
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    </p>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+                </div>
+            </div>
+        </section>*@
 </body>
 
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xác nhận đăng xuất</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Xác nhận đăng xuất</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy bỏ</button>
+                <a class="btn btn-primary" href="~/TaiKhoan/DangXuat">Đăng xuất</a>
+            </div>
+        </div>
+    </div>
+</div>
