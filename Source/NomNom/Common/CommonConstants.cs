@@ -19,5 +19,10 @@ namespace NomNom.Common
         public static int TINH_TRANG_DA_HUY = 5;
         public static int CHUC_VU_ADMIN = 1;
         public static int CHUC_VU_KHACH_HANG = 2;
+        public static int DANG_KY_TAI_KHOAN_THANH_CONG = 1;
+        public static int DANG_KY_TAI_KHOAN_THAT_BAI = 0;
+        public static int DANG_KY_TAI_KHOAN_EMAIL_DA_TON_TAI = -1;
+        public static int DANG_KY_TAI_KHOAN_TEN_TAI_KHOAN_DA_TON_TAI = -2;
+        public static int DANG_KY_TAI_KHOAN_MAT_KHAU_DUOI_8 = -3;
     }
 }

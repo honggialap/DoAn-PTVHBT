@@ -6,13 +6,12 @@ using System.Web.Mvc;
 
 namespace NomNom.Controllers
 {
-    public class HomeController : Controller
+    public class SanPhamController : Controller
     {
+        // GET: SanPham
         public ActionResult Index()
         {
             return View();
         }
-        
-       
     }
 }

@@ -70,15 +70,7 @@ namespace NomNom.DAL
             }
             return null;
         }
-        public int CreateOrEdit(TaiKhoanInput input)
-        {
-            if (input.Id == 0)
-            {
-                return Create(input);
-            }
-            else
-                return Update(input);
-        }
+     
         public bool Login(string tentaikhoan, string matkhau)
         {
             matkhau = Encryptor.MD5Hash(matkhau);
@@ -111,29 +103,21 @@ namespace NomNom.DAL
             else
                 return 0;
         }
-        //trả vê 0 nếu tên tài khoản đã tôn tại
-        //trả về id nếu tạo thành công
-        private int Create(TaiKhoanInput input)
+        public int CreateKH(TaiKhoanInput input)
         {
-            if (GetId(input.TenTaiKhoan) != 0)
-                return 0;
+            if (db.TaiKhoans.Where(x => x.Email == input.Email).Count() > 0)
+                return CommonConstants.DANG_KY_TAI_KHOAN_EMAIL_DA_TON_TAI;
+            if (db.TaiKhoans.Where(x => x.TenTaiKhoan == input.TenTaiKhoan).Count()>0)
+                return CommonConstants.DANG_KY_TAI_KHOAN_TEN_TAI_KHOAN_DA_TON_TAI;
+            if (input.MatKhau.Length < 8)
+                return CommonConstants.DANG_KY_TAI_KHOAN_MAT_KHAU_DUOI_8;
             var entity = Mapper.Map<TaiKhoan>(input);
+            entity.ChucVuID = CommonConstants.CHUC_VU_KHACH_HANG;
             entity.MatKhau = Encryptor.MD5Hash(entity.MatKhau);
             db.TaiKhoans.Add(entity);
             db.SaveChanges();
-            return entity.Id;
+            return CommonConstants.DANG_KY_TAI_KHOAN_THANH_CONG;
         }
-        private int Update(TaiKhoanInput input)
-        {
-            var entity = db.TaiKhoans.SingleOrDefault(x => x.Id == input.Id);
-            if (entity != null)
-            {
-                entity = Mapper.Map<TaiKhoan>(input);
-                entity.MatKhau = Encryptor.MD5Hash(entity.MatKhau);
-                db.SaveChanges();
-                return entity.Id;
-            }
-            return 0;
-        }
+        
     }
 }
