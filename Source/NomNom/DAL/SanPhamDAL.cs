@@ -36,6 +36,28 @@ namespace NomNom.DAL
             else
                 return Mapper.Map<SanPhamInput>(entity);
         }
+        public List<SanPhamDTO> GetSanPhamArr(List<int> lsp,List<int> th, List<string> ten,int count)
+        {
+            var result = db.SanPhams.Where(x => !x.IsDeleted).ToList();
+            if (lsp.Count()>0)
+            result = result.Where(x => lsp.Exists(y => x.LoaiID == y)).ToList();
+            if(th.Count()>0)
+            result = result.Where(x => th.Exists(y => x.ThuongHieuID == y)).ToList();
+            if(ten.Count()>0)
+            result = result.Where(x => ten.Exists(y => x.Ten.Contains(y))).ToList();
+            result = result.Take(count).ToList();
+
+
+
+
+            var list = new List<SanPhamDTO>();
+            foreach (var item in result)
+            {
+                var obj = Mapper.Map<SanPhamDTO>(item);               
+                list.Add(obj);
+            }
+            return list;
+        }
         public List<SanPhamDTO> GetSanPham(SanPhamFilter filter)
         {
 
