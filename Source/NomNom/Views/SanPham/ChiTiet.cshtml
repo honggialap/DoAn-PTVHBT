@@ -1,0 +1,66 @@
+﻿@model NomNom.Models.SanPhams.SanPhamDTO
+    @{
+        ViewBag.Title = Model.Ten;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+<div class="container" style="margin-top:20px">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="product-pic-zoom">
+                <img class="product-big-img" src="@Model.HinhAnh" style="" alt="">
+            </div>
+            <div class="product-thumbs" tabindex="1" style="overflow: hidden; outline: none;">
+                <div class="product-thumbs-track">
+                    <div class="pt active" data-imgbigurl="@Model.HinhAnh"><img src="@Model.HinhAnh" alt=""></div>
+                    <div class="pt" data-imgbigurl="@Model.HinhAnh"><img src="@Model.HinhAnh" alt=""></div>
+                    <div class="pt" data-imgbigurl="@Model.HinhAnh"><img src="@Model.HinhAnh" alt=""></div>
+                    <div class="pt" data-imgbigurl="@Model.HinhAnh"><img src="@Model.HinhAnh" alt=""></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 product-details">
+            <h2 class="p-title">@Model.Ten</h2>
+            <h3 class="p-price">@Model.GiaBan₫</h3>
+            @if (Model.SoLuong > 0)
+            {
+                <h4 class="p-stock">Tình trạng <span>Còn hàng</span></h4>
+            }
+            else
+            {
+                <h4 class="p-stock">Tình trạng <span>Hết hàng</span></h4>
+            }       
+            <div class="quantity">
+                <p>Số lượng</p>
+                <div class="pro-qty"><input type="text" value="1"></div>
+            </div>
+            <a href="#" class="site-btn">Thêm vào giỏ</a>
+            <div id="accordion" class="accordion-area">
+                <div class="panel">
+                    <div class="panel-header" id="headingOne">
+                        <button class="panel-link active" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">Thông tin sản phẩm</button>
+                    </div>
+                    <div id="collapse1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="panel-body">
+                            @Model.ThongTin
+                        </div>
+                    </div>
+                </div>
+                
+                @*<div class="panel">
+                    <div class="panel-header" id="headingThree">
+                        <button class="panel-link" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">shipping & Returns</button>
+                    </div>
+                    <div id="collapse3" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div class="panel-body">
+                            <h4>7 Days Returns</h4>
+                            <p>Cash on Delivery Available<br>Home Delivery <span>3 - 4 days</span></p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra tempor so dales. Phasellus sagittis auctor gravida. Integer bibendum sodales arcu id te mpus. Ut consectetur lacus leo, non scelerisque nulla euismod nec.</p>
+                        </div>
+                    </div>
+                </div>*@
+
+            </div>
+
+        </div>
+    </div>
+    </div>

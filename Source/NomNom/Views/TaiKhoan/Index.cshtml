@@ -1,0 +1,68 @@
+﻿@model NomNom.Models.TaiKhoans.TaiKhoanInput
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-info shadow mb-4" style="width:500px;margin:auto;margin-top:20px">
+    <div class="panel-heading" style="background-color: #282828;padding: 10px 15px;color: #ffffff;">
+        <div class="panel-title" style="font-size: 16px;color: inherit;">Thông tin tài khoản</div>
+    </div>
+            <div class="col-11 d-flex justify-content-start align-items-start" style="margin-top:10px">
+                <div class="col-6 form-row">
+                    <a href="/TaiKhoan/CapNhat"><button type="button" class="btn btn-dark">Cập nhật thông tin</button></a>
+                </div>
+                <div class="col-6 form-row">
+                    <a href="/TaiKhoan/DoiMatKhau"><button type="button" class="btn btn-dark">Đổi mật khẩu</button></a>
+                </div>
+            </div>
+            <div class="col-11 d-flex justify-content-start align-items-start" style="margin-top:10px">
+                    <div class="form-row" style="margin-left:20px;width:200px;height:200px">
+                        @if (Model!=null&&Model.Avatar != null&&Model.Avatar!="")
+                        {
+                            <img id="Avatar" style="object-fit:contain" src="@Model.Avatar" />
+                        }
+                        else
+                        {
+                            <img id="HinhAnh" style="object-fit:contain" src="~/Assets/image/NoImage.png" />
+                        }
+                    </div>
+                    <div class="col-7 form-row" style="margin-left:30px">
+                        <div class="w-100"><label for="TenTaiKhoan">Tên tài khoản</label></div>
+                        <div class="w-100"><input id="TenTaiKhoan" class="form-control" readonly value="@Model.TenTaiKhoan" /></div>               
+                        <div class="w-100"><label for="HoTen">Họ tên</label></div>
+                        <div class="w-100"><input id="HoTen" class="form-control" readonly value="@Model.Ho @Model.Ten" /></div>
+                    </div>               
+                </div>
+            <div class="col-11 d-flex justify-content-start align-items-start" style="margin-top:10px">
+                <div class="col-6 form-row">
+                    <div class="w-100"><label for="DiaChi">Địa chỉ</label></div>
+                    <div class="w-100"><input id="DiaChi" class="form-control" readonly value="@Model.DiaChi" /></div>                   
+                </div>
+                <div class="col-6 form-row" style="margin-left:20px">
+                    <div class="w-100"><label for="NgaySinh">Ngày sinh</label></div>
+                    @if (Model.NgaySinh != null)
+                    {
+                        <div class="w-100"><input id="NgaySinh" class="form-control" readonly value="@Model.NgaySinh.Value.ToString("dd/M/yyyy")" /></div>
+                    }
+                    else
+                    {
+                         <div class="w-100"><input id="NgaySinh" class="form-control" readonly value="Không có thông tin" /></div>
+                    }
+                </div>
+            </div>
+            <div class="col-11 d-flex justify-content-start align-items-start" style="margin-top:10px;margin-bottom:20px">          
+                <div class="col-6 form-row">
+                    <div class="w-100"><label for="Email">Địa chỉ Email</label></div>
+                    <div class="w-100"><input id="Email" class="form-control" readonly value="@Model.Email" /></div>
+                </div>
+                <div class="col-6 form-row" style="margin-left:20px">
+                    <div class="w-100"><label for="SDT">Số điện thoại</label></div>
+                    <div class="w-100"><input id="SDT" class="form-control" readonly value="@Model.SDT" /></div>
+                </div>
+            </div>
+       
+       
+
+
+</div>

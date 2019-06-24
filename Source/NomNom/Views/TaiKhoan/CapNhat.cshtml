@@ -1,0 +1,65 @@
+﻿@model NomNom.Models.TaiKhoans.TaiKhoanInput
+@{
+    ViewBag.Title = "Tài khoản - Cập nhật";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-info shadow mb-4" style="width:500px;margin:auto;margin-top:20px">
+    <div class="panel-heading" style="background-color: #282828;padding: 10px 15px;color: #ffffff;">
+        <div class="panel-title" style="font-size: 16px;color: inherit;">Cập nhật thông tin</div>
+    </div>
+    @using (Html.BeginForm("CapNhat", "TaiKhoan", FormMethod.Post, new { @class = "login-form" , enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="col-11 d-flex justify-content-start align-items-start" style="margin-top:10px">
+            <div class="form-row" style="margin-left:20px;width:200px;height:200px">
+                @if (Model != null && Model.Avatar != null && Model.Avatar != "")
+                {
+                    <img id="Avatar" style="object-fit:contain" src="@Model.Avatar" />
+                }
+                else
+                {
+                    <img id="Avatar" style="object-fit:contain" src="~/Assets/image/NoImage.png" />
+                }
+            </div>
+            <div class="col-7 form-row" style="margin-left:30px">
+                <div class="w-100">@Html.LabelFor(model => model.Avatar)</div>
+                <div class="w-100">
+                    <input type="file" id="hinhanh" name="hinhanh" onchange="previewfile();" />
+                </div>
+                <div class="w-100">@Html.LabelFor(model => model.Ho)</div>
+                <div class="w-100">@Html.TextBoxFor(model => model.Ho, new { @class = "form-control" })</div>
+                <div class="w-100">@Html.LabelFor(model => model.Ten)</div>
+                <div class="w-100">@Html.TextBoxFor(model => model.Ten, new { @class = "form-control" })</div>
+            </div>
+        </div>
+        <div class="col-11 d-flex justify-content-start align-items-start" style="margin-top:10px">
+            <div class="col-6 form-row">
+                <div class="w-100">@Html.LabelFor(model => model.DiaChi)</div>
+                <div class="w-100">@Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control" })</div>
+            </div>
+            <div class="col-6 form-row" style="margin-left:20px">
+                <div class="w-100">@Html.LabelFor(model => model.NgaySinh)</div>
+                <div class="w-100">@Html.TextBoxFor(model => model.NgaySinh, "{0:yyyy-MM-dd}", new { @type = "date", @class = "form-control" })</div>
+            </div>
+        </div>
+        <div class="col-11 d-flex justify-content-start align-items-start" style="margin-top:10px;margin-bottom:20px">
+            <div class="col-6 form-row">
+                <div class="w-100">@Html.LabelFor(model => model.Email)</div>
+                <div class="w-100">@Html.TextBoxFor(model => model.Email, new { @class = "form-control" })</div>
+            </div>
+            <div class="col-6 form-row" style="margin-left:20px">
+                <div class="w-100">@Html.LabelFor(model => model.SDT)</div>
+                <div class="w-100">@Html.TextBoxFor(model => model.SDT, new { @class = "form-control" })</div>
+            </div>
+        </div>
+        <div class="form-row" style="margin-top:10px;margin-bottom:10px">
+            <input type="submit" value="Xác nhận" class="btn btn-primary" style="margin:auto" />
+        </div>
+    }
+
+
+
+</div>

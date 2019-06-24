@@ -70,7 +70,17 @@ namespace NomNom.DAL
             }
             return null;
         }
-     
+        public TaiKhoanInput GetForEdit(int Id)
+        {
+            var result = db.TaiKhoans.Find(Id);
+            if (result != null)
+            {
+                var obj = Mapper.Map<TaiKhoanInput>(result);
+                return obj;
+            }
+            return null;
+        }
+
         public int Login(string tentaikhoan, string matkhau)
         {
             matkhau = Encryptor.MD5Hash(matkhau);
@@ -110,6 +120,45 @@ namespace NomNom.DAL
             db.SaveChanges();
             return CommonConstants.DANG_KY_TAI_KHOAN_THANH_CONG;
         }
-        
+        public int UpdateThongTin(TaiKhoanInput input)
+        {
+            var entity = db.TaiKhoans.SingleOrDefault(x => x.Id == input.Id);
+            if (entity != null)
+            {
+                //entity = Mapper.Map<SanPham>(input);
+                
+                entity.Email = input.Email;
+                entity.DiaChi = input.DiaChi;
+                entity.Ho = input.Ho;
+                entity.Ten = input.Ten;
+                if (input.Avatar!=null&&input.Avatar!="")
+                    entity.Avatar = input.Avatar;
+                entity.NgaySinh = input.NgaySinh;
+                entity.SDT = input.SDT;
+                db.SaveChanges();
+                return 1;
+            }
+            return 0;
+        }
+        public int DoiMatKhau(int Id,string MatKhauCu, string MatKhauMoi)
+        {
+            var entity = db.TaiKhoans.SingleOrDefault(x => x.Id == Id);
+            if (entity != null)
+            {
+                if (MatKhauMoi.Length < 8)
+                    return CommonConstants.DOI_MAT_KHAU_MAT_KHAU_MOI_DUOI_8;
+                MatKhauCu = Encryptor.MD5Hash(MatKhauCu);
+                if (MatKhauCu == entity.MatKhau)
+                {
+                    MatKhauMoi = Encryptor.MD5Hash(MatKhauMoi);
+                    entity.MatKhau = MatKhauMoi;
+                    db.SaveChanges();
+                    return CommonConstants.DOI_MAT_KHAU_THANH_CONG;
+                }
+                else
+                    return CommonConstants.DOI_MAT_KHAU_MAT_KHAU_CU_KHONG_DUNG;
+            }
+            return CommonConstants.DOI_MAT_KHAU_THAT_BAI;
+        }
     }
 }

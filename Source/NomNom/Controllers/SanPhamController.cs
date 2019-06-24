@@ -19,6 +19,12 @@ namespace NomNom.Controllers
             ViewBag.listThuongHieu = thDAL.GetThuongHieu(null);
             return View();
         }
+        public ActionResult ChiTiet(int Id)
+        {
+            var dal = new SanPhamDAL();
+            var input = dal.GetForView(Id);
+            return View(input);
+        }
         [HttpGet]
         public JsonResult LoadData(string jsonFilter)
         {

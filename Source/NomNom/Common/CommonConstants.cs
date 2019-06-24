@@ -29,5 +29,9 @@ namespace NomNom.Common
         public static int DANG_NHAP_TAI_KHOAN_BI_KHOA = -3;
         public static int DANG_NHAP_THAT_BAI = -4;
         public static int DANG_NHAP_THANH_CONG = 1;
+        public static int DOI_MAT_KHAU_THAT_BAI = 0;
+        public static int DOI_MAT_KHAU_MAT_KHAU_CU_KHONG_DUNG = -1;
+        public static int DOI_MAT_KHAU_THANH_CONG = 1;
+        public static int DOI_MAT_KHAU_MAT_KHAU_MOI_DUOI_8 = -2;
     }
 }

@@ -27,7 +27,14 @@ namespace NomNom.DAL
             else
                 return Update(input);
         }
-
+        public SanPhamDTO GetForView(int Id)
+        {
+            var entity = db.SanPhams.Find(Id);
+            if (entity == null)
+                return null;
+            else
+                return Mapper.Map<SanPhamDTO>(entity);
+        }
         public SanPhamInput GetForEdit(int Id)
         {
             var entity = db.SanPhams.Find(Id);

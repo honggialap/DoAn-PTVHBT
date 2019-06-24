@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Tài khoản - Đổi mật khẩu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-info shadow mb-4" style="width:500px;margin:auto;margin-top:20px">
+    <div class="panel-heading" style="background-color: #282828;padding: 10px 15px;color: #ffffff;">
+        <div class="panel-title" style="font-size: 16px;color: inherit;">Cập nhật thông tin</div>
+    </div>
+    @using (Html.BeginForm("DoiMatKhau", "TaiKhoan", FormMethod.Post, new { @class = "login-form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="col-11 d-flex justify-content-start align-items-start" style="margin-top:10px">
+            <div class="w-100"><label for="MatKhauCu">Mật khẩu cũ</label></div>
+            <div class="w-100"><input name="MatKhauCu" type="password" id="MatKhauCu" required /></div>
+        </div>
+        <div class="col-11 d-flex justify-content-start align-items-start" style="margin-top:10px">
+            <div class="w-100"><label for="MatKhauMoi">Mật khẩu mới</label></div>
+            <div class="w-100"><input name="MatKhauMoi" type="password" id="MatKhauMoi" required /></div>
+        </div>
+        <div class="col-11 d-flex justify-content-start align-items-start" style="margin-top:10px">
+            <div class="w-100"><label for="MatKhau2">Xác nhận mật khẩu</label></div>
+            <div class="w-100"><input name="MatKhau2" type="password" id="MatKhau2" required /></div>
+        </div>
+
+        <div class="form-row" style="margin-top:10px;margin-bottom:10px">
+            <input type="submit" value="Xác nhận" class="btn btn-primary" style="margin:auto" />
+        </div>
+    }
+
+
+
+</div>

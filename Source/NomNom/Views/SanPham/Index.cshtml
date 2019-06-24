@@ -143,19 +143,22 @@
 <!-- Category section end -->
 <script id="data-template" type="x-tmpl-mustache">
     <div class="col-lg-4 col-sm-6">
-        <div class="product-item">
-            <div class="pi-pic">
-                <img src="{{HinhAnh}}" alt="">
-                <div class="pi-links">
-                    <a id="{{Id}}" href="#" class="add-card"><i class="flaticon-bag"></i><span>Thêm vào giỏ</span></a>
+        <a href="/SanPham/ChiTiet/{{Id}}">
+            <div class="product-item">
+                <div class="pi-pic">
+                    <img src="{{HinhAnh}}" alt="">
+                    <div class="pi-links">
+                        <a id="{{Id}}" href="#" class="add-card"><i class="flaticon-bag"></i><span>Thêm vào giỏ</span></a>
+                    </div>
+                </div>
+                <div class="pi-text">
+                    <h6>{{GiaBan}}₫</h6>
+                    <p>{{Ten}}</p>
                 </div>
             </div>
-            <div class="pi-text">
-                <h6>{{GiaBan}}₫</h6>
-                <p>{{Ten}}</p>
-            </div>
-        </div>
+        </a>
     </div>
+    
 </script>
 <script id="lspFilter-template" type="x-tmpl-mustache">
     <button class="btn btn-dark" id="LSP{{Id}}" onclick="lspFilterRemove('{{Id}}')">Loại thực phẩm: {{Ten}}</button>
