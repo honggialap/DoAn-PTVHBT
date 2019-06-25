@@ -165,6 +165,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DangKyController.cs" />
     <Compile Include="Controllers\DangNhapController.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
@@ -172,6 +173,7 @@
     <Compile Include="DAL\KhuVucDAL.cs" />
     <Compile Include="DAL\NhaCungCapDAL.cs" />
     <Compile Include="DAL\PhieuNhapDAL.cs" />
+    <Compile Include="DAL\GioHangDAL.cs" />
     <Compile Include="DAL\ThuongHieuDAL.cs" />
     <Compile Include="DAL\LoaiSanPhamDAL.cs" />
     <Compile Include="DAL\SanPhamDAL.cs" />
@@ -244,6 +246,10 @@
     <Compile Include="Migrations\201906201925093_cap_nhat_bang_donhangs1.Designer.cs">
       <DependentUpon>201906201925093_cap_nhat_bang_donhangs1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906250411252_tao-bang-giohangs.cs" />
+    <Compile Include="Migrations\201906250411252_tao-bang-giohangs.Designer.cs">
+      <DependentUpon>201906250411252_tao-bang-giohangs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\ChucVus\ChucVu.cs" />
@@ -254,6 +260,8 @@
     <Compile Include="Models\DonHangs\DonHangFilter.cs" />
     <Compile Include="Models\DonHangs\DonHangInput.cs" />
     <Compile Include="Models\Entity.cs" />
+    <Compile Include="Models\GioHangs\GioHangDTO.cs" />
+    <Compile Include="Models\GioHangs\GioHang.cs" />
     <Compile Include="Models\KhuVucs\KhuVuc.cs" />
     <Compile Include="Models\KhuVucs\KhuVucDTO.cs" />
     <Compile Include="Models\KhuVucs\KhuVucInput.cs" />
@@ -2858,6 +2866,7 @@
     <Content Include="Views\TaiKhoan\Index.cshtml" />
     <Content Include="Views\TaiKhoan\CapNhat.cshtml" />
     <Content Include="Views\TaiKhoan\DoiMatKhau.cshtml" />
+    <Content Include="Views\GioHang\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2926,6 +2935,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906201925093_cap_nhat_bang_donhangs1.resx">
       <DependentUpon>201906201925093_cap_nhat_bang_donhangs1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906250411252_tao-bang-giohangs.resx">
+      <DependentUpon>201906250411252_tao-bang-giohangs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

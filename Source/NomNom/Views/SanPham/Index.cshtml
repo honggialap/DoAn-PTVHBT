@@ -5,13 +5,30 @@
 }
 @section jsFooter{
     <script src="~/Scripts/plugins/mustache.min.js"></script>
+    <script src="~/Scripts/plugins/notify.min.js"></script>
     <script>
         var filter = {
             Ten: new Array(),
             LoaiSanPham: new Array(),
             ThuongHieu: new Array(),
-            spCount:20
-        };    
+            spCount: 20
+        };
+        function ThemSP(Id) {
+            $.ajax({
+                url: '/GioHang/Them',
+                type: 'POST',
+                data: { SanPhamID: Id },
+                dataType: 'json',
+                success: function (response) {
+                    if (response.status == 1)
+                        $.notify("Thêm thành công", "success");
+                    else if (response.status == 0)
+                        $.notify("Thêm thất bại", "error");
+                    else if (response.status == -1)
+                        $.notify("Sản phẩm đã có trong giỏ", "error");
+                }
+            })
+        }
         function loadData() {
             $.ajax({
                 url: '/SanPham/LoadData',
@@ -37,7 +54,7 @@
                     else {
                         $('#SanPhamData').html('Không có sản phẩm');
                     }
-                   
+
                 }
             });
         }
@@ -51,9 +68,9 @@
                     Ten: Ten
                 });
                 $('#Filter').html(html);
-            }           
+            }
         }
-        function addTH(Id,Ten) {
+        function addTH(Id, Ten) {
             if (filter.ThuongHieu.find(x => x == Id) == undefined) {
                 filter.ThuongHieu.push(Id);
                 var html = $('#Filter').html();
@@ -65,8 +82,8 @@
                 $('#Filter').html(html);
             }
         }
-        function lspFilterRemove(Id) {         
-            filter.LoaiSanPham = filter.LoaiSanPham.filter(x => x != Id);        
+        function lspFilterRemove(Id) {
+            filter.LoaiSanPham = filter.LoaiSanPham.filter(x => x != Id);
             $("#LSP" + Id).remove();
         }
         function thFilterRemove(Id) {
@@ -75,7 +92,7 @@
         }
         function tenFilterRemove(Id) {
             filter.Ten = filter.Ten.filter(x => x != Id);
-            $("#TenSP"+Id).remove();
+            $("#TenSP" + Id).remove();
         }
         $('#txtTenSP').off('keypress').on('keypress', function (e) {
             if (e.which == 13) {
@@ -99,42 +116,42 @@
         }
         loadData();
     </script>
-    }
+}
 <div id="Filter" class="container"></div>
 <!-- Category section -->
 <section class="category-section spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 order-2 order-lg-1">
-                 <div class="filter-widget">
+                <div class="filter-widget">
                     <h2 class="fw-title">Tên sản phẩm</h2>
                     <input id="txtTenSP" type="text" class="form-control" placeholder="Nhập tên sản phẩm" />
-                     <button onclick="loadData()" class="form-control">Cập nhật</button>
+                    <button onclick="loadData()" class="form-control">Cập nhật</button>
                 </div>
                 <div class="filter-widget">
                     <h2 class="fw-title">Loại sản phẩm</h2>
                     <ul class="category-menu">
-                        @foreach(var item in ViewBag.listLoaiSanPham)
+                        @foreach (var item in ViewBag.listLoaiSanPham)
                         {
                             <li id="LSP@item.Id"><a id="LSP@item.Id" onclick="addLSP(@item.Id,'@item.Ten')">@item.Ten</a></li>
                         }
-                        
+
                     </ul>
                 </div>
-               <div class="filter-widget">
+                <div class="filter-widget">
                     <h2 class="fw-title">Thương hiệu</h2>
                     <ul class="category-menu">
-                        @foreach(var item in ViewBag.listThuongHieu)
+                        @foreach (var item in ViewBag.listThuongHieu)
                         {
                             <li id="TH@item.Id"><a id="TH@item.Id" onclick="addTH(@item.Id,'@item.Ten')">@item.Ten</a></li>
                         }
-                        
+
                     </ul>
                 </div>
             </div>
 
             <div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
-                <div id="SanPhamData" class="row">                                                
+                <div id="SanPhamData" class="row">
                 </div>
             </div>
         </div>
@@ -148,7 +165,7 @@
                 <div class="pi-pic">
                     <img src="{{HinhAnh}}" alt="">
                     <div class="pi-links">
-                        <a id="{{Id}}" href="#" class="add-card"><i class="flaticon-bag"></i><span>Thêm vào giỏ</span></a>
+                        <a id="{{Id}}" onclick="ThemSP({{Id}})" class="add-card"><i class="flaticon-bag"></i><span>Thêm vào giỏ</span></a>
                     </div>
                 </div>
                 <div class="pi-text">
@@ -158,7 +175,7 @@
             </div>
         </a>
     </div>
-    
+
 </script>
 <script id="lspFilter-template" type="x-tmpl-mustache">
     <button class="btn btn-dark" id="LSP{{Id}}" onclick="lspFilterRemove('{{Id}}')">Loại thực phẩm: {{Ten}}</button>

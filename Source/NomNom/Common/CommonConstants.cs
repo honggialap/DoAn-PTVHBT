@@ -33,5 +33,8 @@ namespace NomNom.Common
         public static int DOI_MAT_KHAU_MAT_KHAU_CU_KHONG_DUNG = -1;
         public static int DOI_MAT_KHAU_THANH_CONG = 1;
         public static int DOI_MAT_KHAU_MAT_KHAU_MOI_DUOI_8 = -2;
+        public static int GIO_HANG_THEM_THANH_CONG = 1;
+        public static int GIO_HANG_THEM_THAT_BAI = 0;
+        public static int GIO_HANG_SAN_PHAM_DA_CO = -1;
     }
 }
