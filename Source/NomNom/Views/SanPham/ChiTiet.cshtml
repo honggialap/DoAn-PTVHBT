@@ -1,8 +1,29 @@
 ﻿@model NomNom.Models.SanPhams.SanPhamDTO
-    @{
-        ViewBag.Title = Model.Ten;
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    }
+@{
+    ViewBag.Title = Model.Ten;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section jsFooter{
+    <script src="~/Scripts/plugins/notify.min.js"></script>
+    <script>
+        function ThemSP(Id) {
+            $.ajax({
+                url: '/GioHang/Them',
+                type: 'POST',
+                data: { SanPhamID: Id },
+                dataType: 'json',
+                success: function (response) {
+                    if (response.status == 1)
+                        $.notify("Thêm thành công", "success");
+                    else if (response.status == 0)
+                        $.notify("Thêm thất bại", "error");
+                    else if (response.status == -1)
+                        $.notify("Sản phẩm đã có trong giỏ", "error");
+                }
+            })
+        }
+    </script>
+}
 <div class="container" style="margin-top:20px">
     <div class="row">
         <div class="col-lg-6">
@@ -28,12 +49,12 @@
             else
             {
                 <h4 class="p-stock">Tình trạng <span>Hết hàng</span></h4>
-            }       
+            }
             <div class="quantity">
                 <p>Số lượng</p>
                 <div class="pro-qty"><input type="text" value="1"></div>
             </div>
-            <a href="#" class="site-btn">Thêm vào giỏ</a>
+            <a onclick="ThemSP(@Model.Id)" class="site-btn">Thêm vào giỏ</a>
             <div id="accordion" class="accordion-area">
                 <div class="panel">
                     <div class="panel-header" id="headingOne">
@@ -45,22 +66,22 @@
                         </div>
                     </div>
                 </div>
-                
+
                 @*<div class="panel">
-                    <div class="panel-header" id="headingThree">
-                        <button class="panel-link" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">shipping & Returns</button>
-                    </div>
-                    <div id="collapse3" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                        <div class="panel-body">
-                            <h4>7 Days Returns</h4>
-                            <p>Cash on Delivery Available<br>Home Delivery <span>3 - 4 days</span></p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra tempor so dales. Phasellus sagittis auctor gravida. Integer bibendum sodales arcu id te mpus. Ut consectetur lacus leo, non scelerisque nulla euismod nec.</p>
+                        <div class="panel-header" id="headingThree">
+                            <button class="panel-link" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">shipping & Returns</button>
                         </div>
-                    </div>
-                </div>*@
+                        <div id="collapse3" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                            <div class="panel-body">
+                                <h4>7 Days Returns</h4>
+                                <p>Cash on Delivery Available<br>Home Delivery <span>3 - 4 days</span></p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra tempor so dales. Phasellus sagittis auctor gravida. Integer bibendum sodales arcu id te mpus. Ut consectetur lacus leo, non scelerisque nulla euismod nec.</p>
+                            </div>
+                        </div>
+                    </div>*@
 
             </div>
 
         </div>
     </div>
-    </div>
+</div>
