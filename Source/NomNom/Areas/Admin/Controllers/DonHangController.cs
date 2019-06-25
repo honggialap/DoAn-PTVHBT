@@ -102,7 +102,7 @@ namespace NomNom.Areas.Admin.Controllers
             if (result)
                 return Redirect("/Admin/DonHang/"+ redirect);
             else
-                return Redirect("/Admin/DonHang/ChoDuyet"+ redirect);
+                return Redirect("/Admin/DonHang/"+ redirect);
         }
     }
 }

@@ -37,19 +37,19 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td style="width:100px">
-                                <a href="/Admin/DonHang/ChiTiet/@item.Id"><button type="button" class="btn btn-success">Chi tiết</button></a>                              
-                            </td>
-                            <td>@item.Id</td>
-                            <td>@item.KhachHangTen</td>
-                            <td>@item.TenNguoiNhan</td>
-                            <td>@item.DiaChi @item.KhuVucTen</td>
-                            <td>@item.SoDienThoai</td>
-                            <th>@item.NgayGiaoDuKienMin.ToString("dd/M/yyyy") - @item.NgayGiaoDuKienMax.ToString("dd/M/yyyy")</th>
-                            <td>@item.ThanhTien</td>
-                            <td>@item.PhiShip</td>
-                        </tr>
+                    <tr>
+                        <td style="width:100px">
+                            <a href="/Admin/DonHang/ChiTiet/@item.Id"><button type="button" class="btn btn-success">Chi tiết</button></a>
+                        </td>
+                        <td>@item.Id</td>
+                        <td>@item.KhachHangTen</td>
+                        <td>@item.TenNguoiNhan</td>
+                        <td>@item.DiaChi @item.KhuVucTen</td>
+                        <td>@item.SoDienThoai</td>
+                        <th>@item.NgayGiaoDuKienMin.ToString("dd/M/yyyy") - @item.NgayGiaoDuKienMax.ToString("dd/M/yyyy")</th>
+                        <td>@item.PhiShip</td>
+                        <td>@item.ThanhTien</td>
+                    </tr>
                     }
                 </tbody>
             </table>

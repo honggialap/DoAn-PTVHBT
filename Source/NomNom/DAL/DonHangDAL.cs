@@ -17,6 +17,53 @@ namespace NomNom.DAL
         {
             db = new NomNomDbContext();
         }
+        public int LapDonHang(DonHangInput input)
+        {
+            var kv = db.KhuVucs.Find(input.KhuVucID);
+            if (kv != null||!kv.HoatDong)
+            {
+                input.TinhTrangID = CommonConstants.TINH_TRANG_CHO_DUYET;
+                input.PhiShip = kv.PhiShip;
+                input.Ngay = DateTime.Now;
+                input.NgayGiaoDuKienMin = input.Ngay.AddDays(kv.ThoiGianShipMin);
+                input.NgayGiaoDuKienMax = input.Ngay.AddDays(kv.ThoiGianShipMax);
+                var entity = Mapper.Map<DonHang>(input);
+                try
+                {
+                    db.DonHangs.Add(entity);
+                    db.SaveChanges();
+                }
+                catch
+                {
+                    return 0;
+                }
+                var list = db.GioHangs.Where(x => x.TaiKhoanID == entity.KhachHangID).ToList();
+                double TongTien = 0;
+                foreach(var item in list)
+                {
+                    var obj = new ChiTietDonHang();
+                    obj.DonHangID = entity.Id;
+                    obj.SanPhamID = item.SanPhamID;
+                    obj.SoLuong = item.SoLuong;
+                    var sp = db.SanPhams.Find(item.SanPhamID);
+                    obj.GiaOrder = sp.GiaBan;
+                    TongTien += obj.GiaOrder * obj.SoLuong;
+                    db.ChiTietDonHangs.Add(obj);
+                    db.GioHangs.Remove(item);
+                }
+                entity.ThanhTien = TongTien;
+                try
+                {
+                    db.SaveChanges();
+                    return 1;
+                }
+                catch
+                {
+                    return 0;
+                }
+            }
+            return 0;
+        }
         public DonHangInput GetForEdit(int Id)
         {
             var entity = db.DonHangs.Find(Id);

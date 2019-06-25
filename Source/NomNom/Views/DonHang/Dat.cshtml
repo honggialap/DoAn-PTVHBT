@@ -1,0 +1,184 @@
+﻿@model NomNom.Models.DonHangs.DonHangInput
+@{
+    ViewBag.Title = "Đặt hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section jsFooter{
+    <script src="~/Scripts/plugins/notify.min.js"></script>
+    <script>  
+        var listQuanHuyen;
+        $("form").submit(function (e) {
+            var Id = $('#KhuVucID').children("option:selected").val();
+            if (Id == 0 || Id == null || Id == undefined) {
+                e.preventDefault();
+                $.notify("Vui lòng chọn khu vực giao hàng", "error");
+            }
+            
+        });
+        $('#TinhThanh').change(function () {
+            var Id = $(this).children("option:selected").val();
+            var Kv = $(this).children("option:selected").text();
+            $.ajax({
+                url: '/DonHang/GetQuanHuyen',
+                type: 'GET',
+                data: { Id: Id },
+                dataType: 'json',
+                success: function (response) {
+                    listQuanHuyen = response.data;
+                    $('#KhuVucID').empty();
+                    $("#KhuVucID").append(new Option("Chọn quận huyện", 0));
+                    $.each(response.data, function (i, item) {
+                        $("#KhuVucID").append(new Option(item.Ten, item.Id));
+                    });                   
+                }
+            })  
+        });
+        $('#KhuVucID').change(function () {
+            var Id = $(this).children("option:selected").val();
+            var Kv = $(this).children("option:selected").text();
+            var rs = listQuanHuyen.find(x => x.Id == Id);
+            if (rs.HoatDong == false) {
+                $.notify("Khu vực này chưa được hỗ trợ giao hàng", "error");
+                $("#KhuVucID").val(0);
+            }
+            else {
+                $('#PhiShip').val(rs.PhiShip);
+                if (rs.ThoiGianShipMin != rs.ThoiGianShipMax) {
+                    $('#ThoiGianShip').val('Từ ' + rs.ThoiGianShipMin + ' đến ' + rs.ThoiGianShipMax + ' ngày');
+                }
+                else
+                    $('#ThoiGianShip').val('Trong vòng ' + rs.ThoiGianShipMax+' ngày');
+            }
+        });
+        function ReloadTongTien() {
+            var TongTien = 0;
+            $('#tblGioHang tr:gt(0)').each(function () {
+                var currentRow = $(this);
+                var GiaBan = parseInt(currentRow.find('td:eq(0)').find('span').text());
+                var SoLuong = parseInt(currentRow.find('td:eq(1)').find('span').text());
+                currentRow.find('td:eq(2)').find('span').text(GiaBan * SoLuong);
+                TongTien += GiaBan * SoLuong;
+            });
+            document.getElementById("TongTien").innerHTML = TongTien;
+        }
+        ReloadTongTien();
+    </script>
+}
+<!-- cart section end -->
+<section class="cart-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="cart-table">
+                    <h3>Chi tiết đơn hàng</h3>
+                    <div class="cart-table-warp">
+
+                        <table id="tblGioHang">
+                            <thead>
+                                <tr>
+                                    <th class="product-th">Sẩn phẩm</th>
+                                    <th class="quy-th">Số lượng</th>
+                                    <th class="total-th">Tổng tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (ViewBag.GioHang!=null&&ViewBag.GioHang.Count == 0)
+                                {
+                                    <a>Không có dữ liệu</a>
+                                }
+                                @foreach (var item in ViewBag.GioHang)
+                                {
+                                    <tr>
+                                        <td class="product-col">
+                                            <img src="@item.SanPhamHinhAnh" alt="">
+                                            <div class="pc-title">
+                                                <h4>@item.SanPhamTen</h4>
+                                                <p><span id="GiaBan">@item.SanPhamGiaBan</span>₫</p>
+                                            </div>
+                                        </td>
+                                        <td class="quy-col">
+                                            <div class="quantity">
+                                                <div>
+                                                    <span>@item.SoLuong</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="total-col"><h4><span id="Tong">@(item.SanPhamGiaBan * item.SoLuong)</span>₫</h4></td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="total-cost">
+                        <h6>Tổng tiền <span id="TongTien"></span>₫</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 card-right">
+                @using (Html.BeginForm("Create", "DonHang", FormMethod.Post, new { @class = "login-form" }))
+    {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
+                <div class="col-11 form-row w-100">
+                    <div class="w-100">@Html.LabelFor(model => model.TenNguoiNhan)</div>
+                    <div class="w-100">@Html.TextBoxFor(model => model.TenNguoiNhan, new { @Value=ViewBag.TaiKhoan.Ho +" " +ViewBag.TaiKhoan.Ten,@class = "form-control" })</div>
+                    <div class="w-100">@Html.ValidationMessageFor(model => model.TenNguoiNhan, "", new { @class = "text-danger" })</div>
+                </div>
+            </div>
+            <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
+                <div class="col-11 form-row w-100">
+                    <div class="w-100">@Html.LabelFor(model => model.SoDienThoai)</div>
+                    <div class="w-100">@Html.TextBoxFor(model => model.SoDienThoai, new { @Value = ViewBag.TaiKhoan.SDT, @class = "form-control" })</div>
+                    <div class="w-100">@Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })</div>
+                </div>
+            </div>
+            <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
+                <div class="col-11 form-row w-100">
+                    <div class="w-100">@Html.LabelFor(model => model.DiaChi)</div>
+                    <div class="w-100">@Html.TextBoxFor(model => model.DiaChi, new { @Value = ViewBag.TaiKhoan.DiaChi, @class = "form-control" })</div>
+                    <div class="w-100">@Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })</div>
+                </div>
+            </div>
+            <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
+                <div class="col-11 form-row w-100">
+                    <label for="TinhThanh">Chọn tỉnh thành</label>
+                    <select class="form-control" id="TinhThanh" name="TinhThanh">
+                        <option value="0" selected>Chọn tỉnh thành</option>
+                        @foreach (var item in ViewBag.TinhThanh)
+            {
+                <option value="@item.Id">@item.Ten</option>
+}
+                    </select>
+                </div>
+            </div>
+            <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
+                <div class="col-11 form-row w-100">
+                    <label for="KhuVucID">Chọn quận huyện</label>
+                    <select class="form-control" id="KhuVucID" name="KhuVucID"></select>
+                </div>
+            </div>
+            <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
+                <div class="col-11 form-row w-100">
+                    <label for="PhiShip">Phí giao hàng</label>
+                    <input type="text" class="form-control" readonly id="PhiShip" name="PhiShip" />
+                </div>
+            </div>
+            <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
+                <div class="col-11 form-row w-100">
+                    <label for="ThoiGianShip">Thời gian giao hàng</label>
+                    <input type="text" class="form-control" readonly id="ThoiGianShip" name="ThoiGianShip" />
+                </div>
+            </div>
+            <div class="form-row" style="margin-top:10px;margin-bottom:10px">
+                <input type="submit" value="Xác nhận đơn hàng" class="site-btn" style="margin:auto" />
+            </div>
+}
+                <a href="/SanPham" class="site-btn sb-dark">Tiếp tục mua sắm</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- cart section end -->
