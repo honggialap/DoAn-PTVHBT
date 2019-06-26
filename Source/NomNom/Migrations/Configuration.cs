@@ -228,6 +228,13 @@
                 "hạng cao nhất trong nghiên cứu do APCO Insight, một công " +
                 "ty nghiên cứu thị trường toàn cầu thực hiện.";
             thuonghieus.Add(th);
+
+            th = new ThuongHieu();
+            th.Id = n++;
+            th.Ten = "VinMart";
+            th.GhiChu = "bla bla...";
+            thuonghieus.Add(th);
+
             context.ThuongHieus.AddOrUpdate(thuonghieus.ToArray());
             #endregion
 
@@ -268,6 +275,199 @@
                 "Cung cấp canxi, vitamin D3, A, C và selen, hỗ trợ miễn dịch - " +
                 "Sản phẩm đóng lốc 4 hộp, có ống hút tiện dụng ";
             sp.GiaBan = 7500;
+            sanphams.Add(sp);
+
+            sp = new SanPham();
+            sp.Id = n++;
+            sp.Ten = "Sữa chua TH True Yogurt có đường hộp 100g";
+            sp.LoaiID = 9;
+            sp.ThuongHieuID = 5;
+            sp.HinhAnh = "/assets/filesimages/9549480886302.jpg";
+            sp.ThongTin = "Hương vị thơm ngon, phù hợp nhiều khẩu vị " +
+                "- Có nhiều công dụng tốt đối với sức khỏe " +
+                "- Đóng hộp nhỏ gọn, tiện lợi thưởng thức, bảo quản ";
+            sp.GiaBan = 6100;
+            sanphams.Add(sp);
+
+            sp = new SanPham();
+            sp.Id = n++;
+            sp.Ten = "Sữa tươi sạch TH true Milk có đường túi giấy 220ml";
+            sp.LoaiID = 9;
+            sp.ThuongHieuID = 5;
+            sp.HinhAnh = "/assets/filesimages/16608420364318.jpg";
+            sp.ThongTin = "Hương vị sữa tươi thơm ngon hấp dẫn - " +
+                "Được làm từ sữa bò, có đường dễ uống - " +
+                "Chứa protein giúp điều hòa tim mạch";
+            sp.GiaBan = 6800;
+            sanphams.Add(sp);
+
+            sp = new SanPham();
+            sp.Id = n++;
+            sp.Ten = "Sữa tươi sạch TH true Milk nguyên chất túi giấy 220ml";
+            sp.LoaiID = 9;
+            sp.ThuongHieuID = 5;
+            sp.HinhAnh = "/assets/filesimages/16608420102174.jpg";
+            sp.ThongTin = "Được làm từ 100% sữa bò tươi " +
+                "- Hương vị sữa nguyên chất thơm ngon " +
+                "- Chứa protein giúp điều hòa tim mạch";
+            sp.GiaBan = 6800;
+            sanphams.Add(sp);
+
+            sp = new SanPham();
+            sp.Id = n++;
+            sp.Ten = "Sữa tươi sạch TH true Milk ít đường túi giấy 220ml";
+            sp.LoaiID = 9;
+            sp.ThuongHieuID = 5;
+            sp.HinhAnh = "/assets/filesimages/16608420298782.jpg";
+            sp.ThongTin = "Hương vị sữa tươi thơm ngon hấp dẫn - " +
+                "Được làm từ sữa bò, ít đường dễ uống - " +
+                "Chứa protein giúp điều hòa tim mạch";
+            sp.GiaBan = 6800;
+            sanphams.Add(sp);
+
+            sp = new SanPham();
+            sp.Id = n++;
+            sp.Ten = "Sữa chua men sống vị trái cây tự nhiên TH True Yogurt hộp 100g";
+            sp.LoaiID = 9;
+            sp.ThuongHieuID = 5;
+            sp.HinhAnh = "/assets/filesimages/9550330658846.jpg";
+            sp.ThongTin = "Thơm ngon với hương vị trái cây tự nhiên - " +
+                "Bổ sung nhiều lợi khuẩn giúp tăng cường hệ tiêu hóa - " +
+                "Đóng hộp nhỏ gọn, tiện lợi sử dụng ";
+            sp.GiaBan = 7300;
+            sanphams.Add(sp);
+
+            sp = new SanPham();
+            sp.Id = n++;
+            sp.Ten = "Sữa chua dừa tự nhiên TH True Yogurt hộp 100g";
+            sp.LoaiID = 9;
+            sp.ThuongHieuID = 5;
+            sp.HinhAnh = "/assets/filesimages/1559123457703_4991356.jpg";
+            sp.ThongTin = "Hương vị thơm ngon, hấp dẫn - " +
+                "Được sản xuất từ sữa bò tươi lên men sữa chua tự nhiên - " +
+                "Giúp tăng cường hệ tiêu hóa, hệ miễn dịch của cơ thể";
+            sp.GiaBan = 7600;
+            sanphams.Add(sp);
+
+            sp = new SanPham();
+            sp.Id = n++;
+            sp.Ten = "Sữa tươi hữu cơ TH true Milk Organic hộp 500ml";
+            sp.LoaiID = 9;
+            sp.ThuongHieuID = 5;
+            sp.HinhAnh = "/assets/filesimages/16124530491422.jpg";
+            sp.ThongTin = "Được sản xuất hoàn toàn từ sữa tươi sạch hữu cơ - " +
+                "Chất lượng vượt trội, đạt chuẩn Organic châu Âu - " +
+                "Chứa vitamin A, B1, canxi, protein giúp điều hòa tim mạch";
+            sp.GiaBan = 31000;
+            sanphams.Add(sp);
+
+            sp = new SanPham();
+            sp.Id = n++;
+            sp.Ten = "Sữa tươi tiệt trùng TH true Milk ít đường 110ml (Lốc 4 hộp)";
+            sp.LoaiID = 9;
+            sp.ThuongHieuID = 5;
+            sp.HinhAnh = "/assets/filesimages/17427354550302.jpg";
+            sp.ThongTin = "Được làm từ 97% sữa bò tươi, ít đường - " +
+                "Hương vị sữa thơm ngon, dễ uống - " +
+                "Chứa protein giúp điều hòa tim mạch";
+            sp.GiaBan = 20500;
+            sanphams.Add(sp);
+
+            sp = new SanPham();
+            sp.Id = n++;
+            sp.Ten = "Sữa chua sầu riêng tự nhiên TH True Yogurt hộp 100g";
+            sp.LoaiID = 9;
+            sp.ThuongHieuID = 5;
+            sp.HinhAnh = "/assets/filesimages/9591757799454.jpg";
+            sp.ThongTin = "Thơm ngon với vị sầu riêng tự nhiên - " +
+                "Cung cấp nhiều chất dinh dưỡng cho cơ thể - " +
+                "An toàn cho người sử dụng ";
+            sp.GiaBan = 7300;
+            sanphams.Add(sp);
+
+            sp = new SanPham();
+            sp.Id = n++;
+            sp.Ten = "Combo 4 hộp sữa TH true milk ít đường 180ml";
+            sp.LoaiID = 9;
+            sp.ThuongHieuID = 5;
+            sp.HinhAnh = "/assets/filesimages/16124537405470.jpg";
+            sp.ThongTin = "Được làm từ 97% sữa bò tươi, ít đường - " +
+                "Hương vị sữa thơm ngon, dễ uống - " +
+                "Chứa protein giúp điều hòa tim mạch";
+            sp.GiaBan = 31700;
+            sanphams.Add(sp);
+
+            sp = new SanPham();
+            sp.Id = n++;
+            sp.Ten = "Sữa hạt óc chó TH True NUT lốc 4 hộp x 180ml";
+            sp.LoaiID = 9;
+            sp.ThuongHieuID = 5;
+            sp.HinhAnh = "/assets/filesimages/15681313996830.jpg";
+            sp.ThongTin = "Cung cấp khoáng chất và năng lượng tốt cho sức khỏe - " +
+                "Sử dụng nguyên liệu hoàn toàn từ thiên nhiên - " +
+                "Sản phẩm không dùng đường tinh luyện, có vị thanh ngọt";
+            sp.GiaBan = 53500;
+            sanphams.Add(sp);
+
+            sp = new SanPham();
+            sp.Id = n++;
+            sp.Ten = "Sữa tươi tiệt trùng TH True Milk ít đường gói 220ml";
+            sp.LoaiID = 9;
+            sp.ThuongHieuID = 5;
+            sp.HinhAnh = "/assets/filesimages/9607265517598.jpg";
+            sp.ThongTin = "Thành phần tươi ngon, tốt cho sức khỏe - " +
+                "Sữa hoàn toàn tự nhiên, không chất bảo quản - " +
+                "Giàu dinh dưỡng, đảm bảo sức khỏe";
+            sp.GiaBan = 7200;
+            sanphams.Add(sp);
+
+            sp = new SanPham();
+            sp.Id = n++;
+            sp.Ten = "Ổi lê 0.5 Kg";
+            sp.LoaiID = 2;
+            sp.ThuongHieuID = 7;
+            sp.HinhAnh = "/assets/filesimages/9520385130526.jpg";
+            sp.ThongTin = "Hương vị thơm ngon, hấp dẫn - " +
+                "Cung cấp nhiều vitamin tốt cho cơ thể -" +
+                "Đóng khay nhỏ gọn, hợp vệ sinh ";
+            sp.GiaBan = 8000;
+            sanphams.Add(sp);
+
+            sp = new SanPham();
+            sp.Id = n++;
+            sp.Ten = "Chuối sứ 0.8 Kg";
+            sp.LoaiID = 2;
+            sp.ThuongHieuID = 7;
+            sp.HinhAnh = "/assets/filesimages/9620647084062.jpg";
+            sp.ThongTin = "Chọn lọc từ nguồn nguyên liệu sạch - " +
+                "Chuối dẻo và có vị ngọt thanh tự nhiên - " +
+                "Đảm bảo vệ sinh an toàn thực phẩm";
+            sp.GiaBan = 12600;
+            sanphams.Add(sp);
+
+            sp = new SanPham();
+            sp.Id = n++;
+            sp.Ten = "Đu đủ ruột đỏ 1.6 Kg";
+            sp.LoaiID = 2;
+            sp.ThuongHieuID = 7;
+            sp.HinhAnh = "/assets/filesimages/9607270858782.jpg";
+            sp.ThongTin = "Sản phẩm thực tế có thể có màu sắc khác nhau, tùy theo mùa vụ hoặc thời tiết - " +
+                "Ruột quả mềm, vị ngọt đậm thơm ngon - " +
+                "Loại trái cây giàu vitamin A, tốt cho mắt - " +
+                "Sản phẩm sạch, an toàn cho sức khỏe";
+            sp.GiaBan = 31800;
+            sanphams.Add(sp);
+
+            sp = new SanPham();
+            sp.Id = n++;
+            sp.Ten = "Dưa hấu Hắc Mỹ Nhân (Long An) 1.8 Kg";
+            sp.LoaiID = 2;
+            sp.ThuongHieuID = 7;
+            sp.HinhAnh = "/assets/filesimages/9618852773918.jpg";
+            sp.ThongTin = "Cung cấp nhiều chất dinh dưỡng tốt cho sức khỏe - " +
+                "Loại trái cây giải khát tuyệt vời - " +
+                "Nguyên liệu tươi ngon, hợp vệ sinh ";
+            sp.GiaBan = 43000;
             sanphams.Add(sp);
 
             context.SanPhams.AddOrUpdate(sanphams.ToArray());
