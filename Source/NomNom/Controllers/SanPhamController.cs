@@ -11,8 +11,12 @@ namespace NomNom.Controllers
     public class SanPhamController : Controller
     {
         // GET: SanPham
-        public ActionResult Index()
+        public ActionResult Index(string Ten)
         {
+            if (Ten != null)
+            {
+                ViewBag.FilterTen = Ten;
+            }
             var lspDAL = new LoaiSanPhamDAL();
             var thDAL = new ThuongHieuDAL();
             ViewBag.listLoaiSanPham = lspDAL.GetLoaiSanPham(null);

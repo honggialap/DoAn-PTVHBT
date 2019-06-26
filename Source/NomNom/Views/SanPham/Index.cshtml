@@ -13,6 +13,16 @@
             ThuongHieu: new Array(),
             spCount: 20
         };
+        var Ten = '@ViewBag.FilterTen';
+        if (Ten != '' && Ten != null && Ten != undefined) {
+            filter.Ten.push(Ten);
+            var html = $('#Filter').html();
+            var template = $('#tenFilter-template').html();
+            html += Mustache.render(template, {
+                Ten: Ten
+            });
+            $('#Filter').html(html);
+        }
         function ThemSP(Id) {
             $.ajax({
                 url: '/GioHang/Them',
@@ -82,17 +92,17 @@
                 $('#Filter').html(html);
             }
         }
-        function lspFilterRemove(Id) {
+        function lspFilterRemove(Id,element) {
             filter.LoaiSanPham = filter.LoaiSanPham.filter(x => x != Id);
-            $("#LSP" + Id).remove();
+            element.remove();
         }
-        function thFilterRemove(Id) {
+        function thFilterRemove(Id,element) {
             filter.ThuongHieu = filter.ThuongHieu.filter(x => x != Id);
-            $("#TH" + Id).remove();
+            element.remove();
         }
-        function tenFilterRemove(Id) {
+        function tenFilterRemove(Id,element) {
             filter.Ten = filter.Ten.filter(x => x != Id);
-            $("#TenSP" + Id).remove();
+            element.remove();
         }
         $('#txtTenSP').off('keypress').on('keypress', function (e) {
             if (e.which == 13) {
@@ -178,11 +188,11 @@
 
 </script>
 <script id="lspFilter-template" type="x-tmpl-mustache">
-    <button class="btn btn-dark" id="LSP{{Id}}" onclick="lspFilterRemove('{{Id}}')">Loại thực phẩm: {{Ten}}</button>
+    <button class="btn btn-dark" id="LSP{{Id}}" onclick="lspFilterRemove('{{Id}}',this)">Loại thực phẩm: {{Ten}}</button>
 </script>
 <script id="thFilter-template" type="x-tmpl-mustache">
-    <button class="btn btn-dark" id="TH{{Id}}" onclick="thFilterRemove('{{Id}}')">Thương hiệu: {{Ten}}</button>
+    <button class="btn btn-dark" id="TH{{Id}}" onclick="thFilterRemove('{{Id}}',this)">Thương hiệu: {{Ten}}</button>
 </script>
 <script id="tenFilter-template" type="x-tmpl-mustache">
-    <button class="btn btn-dark" id="TenSP{{Ten}}" onclick="tenFilterRemove('{{Ten}}')">Tên: {{Ten}}</button>
+    <button class="btn btn-dark" id="TenSP{{Ten}}" onclick="tenFilterRemove('{{Ten}}',this)">Tên: {{Ten}}</button>
 </script>
