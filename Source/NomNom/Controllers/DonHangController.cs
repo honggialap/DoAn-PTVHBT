@@ -14,8 +14,35 @@ namespace NomNom.Controllers
         // GET: DonHang
         public ActionResult Index()
         {
-            return View();
+            var session = Session[CommonConstants.USER_SESSION];
+            if (session != null)
+            {
+                var user = (UserLogin)session;
+                var dal = new DonHangDAL();
+                var filter = new DonHangFilter();
+                filter.KhachHangID = user.UserID;
+                ViewBag.DonHang = dal.GetDonHang(filter);
+                return View();
+            }
+            return Redirect("/DangNhap");
+
         }
+        public ActionResult ChiTiet(int Id)
+        {
+            var session = Session[CommonConstants.USER_SESSION];
+            if (session != null)
+            {
+                var user = (UserLogin)session;
+                var dal = new DonHangDAL();
+                var rs = dal.GetForView(Id);
+                if (rs==null||rs.KhachHangID != user.UserID)
+                    return Redirect("/Home");
+                ViewBag.listSanPham = dal.GetChiTietsForView(Id);
+                return View(rs);
+            }
+            return Redirect("/DangNhap");
+        }
+        [HttpGet]
         public ActionResult Dat()
         {
             var session = Session[CommonConstants.USER_SESSION];
@@ -36,7 +63,7 @@ namespace NomNom.Controllers
             return Redirect("/Home");
         }
         [HttpPost]
-        public ActionResult Create(DonHangInput input)
+        public ActionResult Dat(DonHangInput input)
         {
             var session = Session[CommonConstants.USER_SESSION];
             if (session != null)
@@ -45,7 +72,9 @@ namespace NomNom.Controllers
                 var dal = new DonHangDAL();
                 input.KhachHangID = user.UserID;
                 var result = dal.LapDonHang(input);
-                Redirect("/DonHang");
+                if (result == 1)
+                    Redirect("/DonHang");
+                else Content("Có lỗi xảy ra");
             }
             return Redirect("/DangNhap");
         }

@@ -65,10 +65,10 @@
     </script>
 }
 <!-- cart section end -->
-<section class="cart-section spad">
+<section class="">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <div class="cart-table">
                     <h3>Chi tiết đơn hàng</h3>
                     <div class="cart-table-warp">
@@ -115,68 +115,63 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 card-right">
-                @using (Html.BeginForm("Create", "DonHang", FormMethod.Post, new { @class = "login-form" }))
+            <div class="col-lg-12">
+                @using (Html.BeginForm("Dat", "DonHang", FormMethod.Post, new { @class = "login-form" }))
     {
             @Html.AntiForgeryToken()
 
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
-                <div class="col-11 form-row w-100">
-                    <div class="w-100">@Html.LabelFor(model => model.TenNguoiNhan)</div>
-                    <div class="w-100">@Html.TextBoxFor(model => model.TenNguoiNhan, new { @Value=ViewBag.TaiKhoan.Ho +" " +ViewBag.TaiKhoan.Ten,@class = "form-control" })</div>
-                    <div class="w-100">@Html.ValidationMessageFor(model => model.TenNguoiNhan, "", new { @class = "text-danger" })</div>
+                <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
+                    <div class="col-5 form-row w-100">
+                        <div class="w-100">@Html.LabelFor(model => model.TenNguoiNhan)</div>
+                        <div class="w-100">@Html.TextBoxFor(model => model.TenNguoiNhan, new { @Value = ViewBag.TaiKhoan.Ho + " " + ViewBag.TaiKhoan.Ten, @class = "form-control" })</div>
+                        <div class="w-100">@Html.ValidationMessageFor(model => model.TenNguoiNhan, "", new { @class = "text-danger" })</div>
+                    </div>
+                    <div class="col-5 form-row w-100">
+                        <div class="w-100">@Html.LabelFor(model => model.SoDienThoai)</div>
+                        <div class="w-100">@Html.TextBoxFor(model => model.SoDienThoai, new { @Value = ViewBag.TaiKhoan.SDT, @class = "form-control" })</div>
+                        <div class="w-100">@Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })</div>
+                    </div>
                 </div>
-            </div>
             <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
-                <div class="col-11 form-row w-100">
-                    <div class="w-100">@Html.LabelFor(model => model.SoDienThoai)</div>
-                    <div class="w-100">@Html.TextBoxFor(model => model.SoDienThoai, new { @Value = ViewBag.TaiKhoan.SDT, @class = "form-control" })</div>
-                    <div class="w-100">@Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })</div>
-                </div>
-            </div>
-            <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
-                <div class="col-11 form-row w-100">
+                <div class="col-5 form-row w-100">
                     <div class="w-100">@Html.LabelFor(model => model.DiaChi)</div>
                     <div class="w-100">@Html.TextBoxFor(model => model.DiaChi, new { @Value = ViewBag.TaiKhoan.DiaChi, @class = "form-control" })</div>
                     <div class="w-100">@Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })</div>
                 </div>
-            </div>
-            <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
-                <div class="col-11 form-row w-100">
+                <div class="col-5 form-row w-100">
                     <label for="TinhThanh">Chọn tỉnh thành</label>
                     <select class="form-control" id="TinhThanh" name="TinhThanh">
                         <option value="0" selected>Chọn tỉnh thành</option>
                         @foreach (var item in ViewBag.TinhThanh)
-            {
-                <option value="@item.Id">@item.Ten</option>
-}
+                        {
+                            <option value="@item.Id">@item.Ten</option>
+                          }
                     </select>
                 </div>
             </div>
             <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
-                <div class="col-11 form-row w-100">
+                <div class="col-5 form-row w-100">
                     <label for="KhuVucID">Chọn quận huyện</label>
                     <select class="form-control" id="KhuVucID" name="KhuVucID"></select>
                 </div>
-            </div>
-            <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
-                <div class="col-11 form-row w-100">
+                <div class="col-5 form-row w-100">
                     <label for="PhiShip">Phí giao hàng</label>
                     <input type="text" class="form-control" readonly id="PhiShip" name="PhiShip" />
                 </div>
             </div>
             <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
-                <div class="col-11 form-row w-100">
+                <div class="col-5 form-row w-100">
                     <label for="ThoiGianShip">Thời gian giao hàng</label>
                     <input type="text" class="form-control" readonly id="ThoiGianShip" name="ThoiGianShip" />
                 </div>
             </div>
             <div class="form-row" style="margin-top:10px;margin-bottom:10px">
                 <input type="submit" value="Xác nhận đơn hàng" class="site-btn" style="margin:auto" />
-            </div>
+                <a href="/SanPham" style="margin:auto" class="site-btn sb-dark">Tiếp tục mua sắm</a>
+            </div>            
 }
-                <a href="/SanPham" class="site-btn sb-dark">Tiếp tục mua sắm</a>
+
             </div>
         </div>
     </div>

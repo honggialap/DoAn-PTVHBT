@@ -1,0 +1,94 @@
+﻿@model NomNom.Models.DonHangs.DonHangDTO
+@{
+    ViewBag.Title = "Đơn hàng - Chi tiết";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
+                    <div class="col-5 form-row w-100">
+                        <div class="w-100"><label for="TenNguoiNhan">Tên người nhận</label></div>
+                        <div class="w-100"><input name="TenNguoiNHan"type="text" readonly class="form-control" value="@Model.TenNguoiNhan" /></div>
+                    </div>
+                    <div class="col-5 form-row w-100">
+                        <div class="w-100"><label for="SoDienThoai">Số điện thoai</label></div>
+                        <div class="w-100"><input name="SoDienThoai" type="text" readonly class="form-control" value="@Model.SoDienThoai" /></div>
+                    </div>
+                </div>
+                <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
+                    <div class="col-5 form-row w-100">
+                        <div class="w-100"><label for="DiaChiGiaoHang">Địa chỉ giao hàng</label></div>
+                        <div class="w-100"><input name="DiaChiGiaoHang" type="text" readonly class="form-control" value="@Model.DiaChi" /></div>
+                    </div>
+                    <div class="col-5 form-row w-100">
+                        <div class="w-100"><label for="KhuVucGiaoHang">Khu vực giao hàng</label></div>
+                        <div class="w-100"><input name="KhuVucGiaoHang" type="text" readonly class="form-control" value="@Model.KhuVucTen" /></div>
+                    </div>
+                </div>
+                <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
+                    <div class="col-5 form-row w-100">
+                        <div class="w-100"><label for="PhiShip">Phí ship</label></div>
+                        <div class="w-100"><input name="PhiShip" type="text" readonly class="form-control" value="@Model.PhiShip" /></div>
+                    </div>
+                    <div class="col-5 form-row w-100">
+                        <div class="w-100"><label for="NgayGiaoHang">Ngày giao hàng dự kiến</label></div>
+                        @if (DateTime.Compare(Model.NgayGiaoDuKienMin, Model.NgayGiaoDuKienMax) == 0)
+                        {
+                            <div class="w-100"><input name="NgayGiaoHang" type="text" readonly class="form-control" value="@Model.NgayGiaoDuKienMin.ToString("dd/M/yyyy")" /></div>
+                        }
+                        else
+                        {
+                            <div class="w-100"><input name="NgayGiaoHang" type="text" readonly class="form-control" value="Từ @Model.NgayGiaoDuKienMin.ToString("dd/M/yyyy") đến @Model.NgayGiaoDuKienMax.ToString("dd/M/yyyy")" /></div>
+                        }
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-12">
+                <div class="cart-table">
+                    <h3>Chi tiết đơn hàng</h3>
+                    <div class="cart-table-warp">
+
+                        <table id="tblGioHang">
+                            <thead>
+                                <tr>
+                                    <th class="product-th">Sẩn phẩm</th>
+                                    <th class="total-th">Số lượng</th>
+                                    <th class="total-th">Tổng tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in ViewBag.listSanPham)
+                        {
+                            <tr>
+                                <td class="product-col">
+                                    <a href="/SanPham/ChiTiet/@item.SanPhamID"><img src="@item.SanPhamHinhAnh" alt=""></a>
+                                    <div class="pc-title">
+                                        <h4>@item.SanPhamTen</h4>
+                                        <p><span id="GiaBan">@item.GiaOrder</span>₫</p>
+                                    </div>
+                                </td>
+                                <td class="total-col">
+
+                                    <h4><span>@item.SoLuong</span></h4>
+
+                                </td>
+                                <td class="total-col"><h4><span>@(item.GiaOrder * item.SoLuong)</span>₫</h4></td>
+                            </tr>
+                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="total-cost">
+                        <h6>Tổng tiền <span>@Model.ThanhTien</span>₫</h6>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

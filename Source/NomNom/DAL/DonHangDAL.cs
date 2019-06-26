@@ -22,6 +22,8 @@ namespace NomNom.DAL
             var kv = db.KhuVucs.Find(input.KhuVucID);
             if (kv != null||!kv.HoatDong)
             {
+                var list = db.GioHangs.Where(x => x.TaiKhoanID == input.KhachHangID).ToList();
+                if (list.Count() == 0) return 0;
                 input.TinhTrangID = CommonConstants.TINH_TRANG_CHO_DUYET;
                 input.PhiShip = kv.PhiShip;
                 input.Ngay = DateTime.Now;
@@ -36,8 +38,7 @@ namespace NomNom.DAL
                 catch
                 {
                     return 0;
-                }
-                var list = db.GioHangs.Where(x => x.TaiKhoanID == entity.KhachHangID).ToList();
+                }                
                 double TongTien = 0;
                 foreach(var item in list)
                 {
@@ -172,6 +173,13 @@ namespace NomNom.DAL
                         obj.KhuVucTen += ", " + tinhthanh.Ten;
                     }
                 }
+
+                var tinhtrang = db.TinhTrangDonHangs.Find(obj.TinhTrangID);
+                if (tinhtrang != null)
+                {
+                    obj.TinhTrangTen = tinhtrang.Ten;
+                }
+
                 obj.KhachHangTen = "";
                 var khachhang = db.TaiKhoans.Find(obj.KhachHangID);
                 if (khachhang != null)
