@@ -23,7 +23,13 @@ namespace NomNom.Controllers
         {
             var dal = new SanPhamDAL();
             var input = dal.GetForView(Id);
-            return View(input);
+            if (input != null)
+            {
+                dal.Tang1View(Id);
+                return View(input);
+            }
+            return Redirect("/SanPham");
+            
         }
         [HttpGet]
         public JsonResult LoadData(string jsonFilter)

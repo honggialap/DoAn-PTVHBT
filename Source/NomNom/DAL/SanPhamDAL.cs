@@ -18,6 +18,62 @@ namespace NomNom.DAL
         {
             db = new NomNomDbContext();
         }
+        public bool Tang1View(int Id)
+        {
+            var entity = db.SanPhams.Find(Id);
+            entity.SoView += 1;
+            try
+            {
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public List<SanPhamDTO> SanPhamBanChay()
+        {
+            var donhang = db.DonHangs.Where(x => !x.IsDeleted&&x.TinhTrangID == CommonConstants.TINH_TRANG_HOAN_TAT).ToList();
+            var chitiet = db.ChiTietDonHangs.Where(x=>!x.IsDeleted).ToList();
+            chitiet = chitiet.Where(x => donhang.Exists(y => y.Id == x.DonHangID)).ToList();
+            var rs = chitiet.GroupBy(x => x.SanPhamID, x => x.SoLuong, (id, soluong) => new {
+                Key = id,
+                SoLuong = soluong.Sum()
+            });
+            rs = rs.Take(CommonConstants.SO_SAN_PHAM).OrderByDescending(x => x.SoLuong);
+           
+            var list = new List<SanPhamDTO>();
+            foreach (var item in rs)
+            {
+                var sp = db.SanPhams.Find(item.Key);
+                var obj = Mapper.Map<SanPhamDTO>(sp);
+                list.Add(obj);
+            }
+            return list;
+        }
+        public List<SanPhamDTO> SanPhamDuocQuanTam()
+        {
+            var rs = db.SanPhams.Take(CommonConstants.SO_SAN_PHAM).OrderByDescending(x => x.SoView);
+            var list = new List<SanPhamDTO>();
+            foreach (var item in rs)
+            {
+                var obj = Mapper.Map<SanPhamDTO>(item);
+                list.Add(obj);
+            }
+            return list;
+        }
+        public List<SanPhamDTO> SanPhamMoiNhat()
+        {
+            var rs = db.SanPhams.Take(CommonConstants.SO_SAN_PHAM).OrderByDescending(x=>x.Id);
+            var list = new List<SanPhamDTO>();
+            foreach (var item in rs)
+            {
+                var obj = Mapper.Map<SanPhamDTO>(item);
+                list.Add(obj);
+            }
+            return list;
+        }
         public int CreateOrEdit(SanPhamInput input)
         {
             if (input.Id == 0)

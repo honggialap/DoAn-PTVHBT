@@ -1,8 +1,112 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    /**/
+
+    ViewBag.Title = "Nom Nom";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Index</h2>
-
+@section jsFooter{
+    <script src="~/Scripts/plugins/notify.min.js"></script>
+    <script>
+        function ThemSP(Id) {
+            $.ajax({
+                url: '/GioHang/Them',
+                type: 'POST',
+                data: { SanPhamID: Id },
+                dataType: 'json',
+                success: function (response) {
+                    if (response.status == 1)
+                        $.notify("Thêm thành công", "success");
+                    else if (response.status == 0)
+                        $.notify("Thêm thất bại", "error");
+                    else if (response.status == -1)
+                        $.notify("Sản phẩm đã có trong giỏ", "error");
+                }
+            })
+        }
+    </script>
+}
+<!-- letest product section -->
+<section class="top-letest-product-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Sản phẩm mới nhất</h2>
+        </div>
+        <div class="product-slider owl-carousel">
+            @foreach (var item in ViewBag.listMoiNhat)
+            {
+                <div class="product-item">
+                    <div class="pi-pic">
+                        <img src="@item.HinhAnh" alt="">
+                        <div class="pi-links">
+                            <a onclick="ThemSP(@item.Id)" class="add-card"><i class="flaticon-bag"></i><span>Thêm vào giỏ</span></a>
+                        </div>
+                    </div>
+                    <a href="/SanPham/ChiTiet/@item.Id">
+                        <div class="pi-text">
+                            <h6>@item.GiaBan</h6>
+                            <p>@item.Ten</p>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!-- letest product section end -->
+<!-- hot product section -->
+<section class="top-letest-product-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Sản phẩm được quan tâm</h2>
+        </div>
+        <div class="product-slider owl-carousel">
+            @foreach (var item in ViewBag.listQuanTam)
+            {
+                <div class="product-item">
+                    <div class="pi-pic">
+                        <img src="@item.HinhAnh" alt="">
+                        <div class="pi-links">
+                            <a onclick="ThemSP(@item.Id)" class="add-card"><i class="flaticon-bag"></i><span>Thêm vào giỏ</span></a>
+                        </div>
+                    </div>
+                    <a href="/SanPham/ChiTiet/@item.Id">
+                        <div class="pi-text">
+                            <h6>@item.GiaBan</h6>
+                            <p>@item.Ten</p>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!-- hot product section end -->
+<!-- best selling product section -->
+<section class="top-letest-product-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Sản phẩm bán chạy</h2>
+        </div>
+        <div class="product-slider owl-carousel">
+            @foreach (var item in ViewBag.listBanChay)
+            {
+                <div class="product-item">
+                    <div class="pi-pic">
+                        <img src="@item.HinhAnh" alt="">
+                        <div class="pi-links">
+                            <a onclick="ThemSP(@item.Id)" class="add-card"><i class="flaticon-bag"></i><span>Thêm vào giỏ</span></a>
+                        </div>
+                    </div>
+                    <a href="/SanPham/ChiTiet/@item.Id">
+                        <div class="pi-text">
+                            <h6>@item.GiaBan</h6>
+                            <p>@item.Ten</p>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!-- best selling product section end -->
