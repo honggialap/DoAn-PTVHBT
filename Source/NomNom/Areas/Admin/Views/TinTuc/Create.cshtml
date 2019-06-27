@@ -1,0 +1,85 @@
+﻿@model NomNom.Models.TinTucs.TinTucInput
+@{
+    ViewBag.Title = "Tin tức - Thêm mới";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section jsFooter{
+    <script src="~/Assets/admin/plugins/ckeditor/ckeditor.js"></script>
+    
+    <script>
+        $('#btnSelectImage').on('click', function (e) {
+            e.preventDefault();
+                var finder = new CKFinder();
+                finder.selectActionFunction=function(url){
+                    $('#txtImage').val(url);
+                };
+                finder.popup();
+        })  
+        var editor = CKEDITOR.replace('txtNoiDung', {
+            customConfig: '/Assets/admin/plugins/ckeditor/config.js'
+        });
+       
+    </script>
+
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary"><a href="/Admin/TinTuc">Danh mục Tin tức</a> > Thêm mới</h6>
+    </div>
+    <div class="card-body">
+        <div class="panel panel-info shadow mb-4" style="width:1000px;margin:auto;border:1px groove">
+            <div class="panel-heading" style="background-color: #d9edf7;padding: 10px 15px;color: #31708f;">
+                <div class="panel-title" style="font-size: 16px;color: inherit;">Thêm mới</div>
+            </div>
+            @using (Html.BeginForm("Create", "TinTuc", FormMethod.Post, new { @class = "login-form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
+            <div class="col-11 form-row w-100">
+                <div class="w-100">@Html.LabelFor(model => model.TieuDe)</div>
+                <div class="w-100">@Html.TextBoxFor(model => model.TieuDe, new { @class = "form-control" })</div>
+                <div class="w-100">@Html.ValidationMessageFor(model => model.TieuDe, "", new { @class = "text-danger" })</div>
+            </div>
+        </div>
+        <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
+            <div class="col-11 form-row w-100">
+                <div class="w-100">@Html.LabelFor(model => model.MieuTa)</div>
+                <div class="w-100">@Html.TextAreaFor(model => model.MieuTa, new { @class = "form-control" })</div>
+                <div class="w-100">@Html.ValidationMessageFor(model => model.MieuTa, "", new { @class = "text-danger" })</div>
+            </div>
+        </div>
+        <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
+            <div class="col-11 form-row w-100">
+                <div class="w-100">@Html.LabelFor(model => model.HinhAnh)</div>
+                <div class="w-100 form-row">
+                    @Html.TextBoxFor(model => model.HinhAnh, new { @class = "form-control", @id = "txtImage", style = "width:200px", @readonly = true })
+                    <button id="btnSelectImage" class="btn btn-primary">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
+            <div class="col-11 form-row w-100">
+                <div class="w-100">@Html.LabelFor(model => model.GhiChu)</div>
+                <div class="w-100">@Html.TextAreaFor(model => model.GhiChu, new { @class = "form-control" })</div>
+                <div class="w-100">@Html.ValidationMessageFor(model => model.GhiChu, "", new { @class = "text-danger" })</div>
+            </div>
+        </div>
+        <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
+            <div class="col-11 form-row w-100">
+                <div class="w-100">@Html.LabelFor(model => model.NoiDung)</div>
+                <div class="w-100">@Html.TextAreaFor(model => model.NoiDung, new { @id="txtNoiDung", @class = "form-control" })</div>
+                <div class="w-100">@Html.ValidationMessageFor(model => model.GhiChu, "", new { @class = "text-danger" })</div>
+            </div>
+        </div>
+        <div class="form-row" style="margin-top:10px;margin-bottom:10px">
+            <input type="submit" value="Xác nhận" class="btn btn-primary" style="margin:auto" />
+        </div>
+}
+        </div>
+    </div>
+</div>

@@ -45,6 +45,7 @@ namespace NomNom.Areas.Admin.Controllers
                     Login.UserID = dal.GetId(model.TenTaiKhoan);
                     Login.UserName = model.TenTaiKhoan;
                     var tk = dal.GetForView(Login.UserID);
+                    Login.ChucVuID = tk.ChucVuID;
                     if (tk.Ten != null && tk.Ten != "")
                         Login.Name = tk.Ten;
                     else

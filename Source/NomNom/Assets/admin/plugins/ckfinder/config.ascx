@@ -17,7 +17,7 @@
         // ... where Session[ "IsAuthorized" ] is set to "true" as soon as the
         // user logs on your system.
         
-        return Session[NomNom.Common.CommonConstants.USER_SESSION]!=null;
+        return Session[NomNom.Common.CommonConstants.USER_SESSION]!=null&&((NomNom.Common.UserLogin)(Session[NomNom.Common.CommonConstants.USER_SESSION])).ChucVuID==NomNom.Common.CommonConstants.CHUC_VU_ADMIN;
     }
 
     /**

@@ -11,5 +11,6 @@ namespace NomNom.Common
         public string UserName { set; get; }
         public string Avatar { get; set; }
         public string Name { get; set; }
+        public int ChucVuID { get; set; }
     }
 }

@@ -11,6 +11,7 @@ using NomNom.Models.TaiKhoans;
 using NomNom.Models.ThongTinWebsites;
 using NomNom.Models.ThuongHieus;
 using NomNom.Models.TinhTrangDonHangs;
+using NomNom.Models.TinTucs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,6 +73,10 @@ namespace NomNom.Models
             //Thông tin website
             CreateMap<ThongTinWebsite, ThongTinWebsiteInput>();
             CreateMap<ThongTinWebsiteInput, ThongTinWebsite>();
+            //Tin tức
+            CreateMap<TinTuc, TinTucDTO>();
+            CreateMap<TinTuc, TinTucInput>();
+            CreateMap<TinTucInput, TinTuc>();
         }
     }
 }

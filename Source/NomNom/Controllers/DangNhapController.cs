@@ -35,6 +35,7 @@ namespace NomNom.Controllers
                     Login.UserID = dal.GetId(input.TenTaiKhoan);
                     Login.UserName = input.TenTaiKhoan;
                     var tk = dal.GetForView(Login.UserID);
+                    Login.ChucVuID = tk.ChucVuID;
                     if (tk.Ten != null && tk.Ten != "")
                         Login.Name = tk.Ten;
                     else
