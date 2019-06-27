@@ -189,6 +189,31 @@ namespace NomNom.DAL
             }
             return list;
         }
+        public int DonHangChoDuyet()
+        {
+            var rs = db.DonHangs.Where(x => !x.IsDeleted && x.TinhTrangID == CommonConstants.TINH_TRANG_CHO_DUYET).Count();
+            return rs;
+        }
+        public double DoanhThuThang(int Thang,int Nam)
+        {
+            var dh = db.DonHangs.Where(x => !x.IsDeleted && x.TinhTrangID == CommonConstants.TINH_TRANG_HOAN_TAT && x.NgayHoanTat.Value.Month == Thang && x.NgayHoanTat.Value.Year == Nam);
+            double rs = 0;
+            foreach (var item in dh)
+            {
+                rs += item.ThanhTien+item.PhiShip;
+            }        
+            return rs;
+        }
+        public double DoanhThuNam(int Nam)
+        {
+            var dh = db.DonHangs.Where(x => !x.IsDeleted && x.TinhTrangID == CommonConstants.TINH_TRANG_HOAN_TAT && x.NgayHoanTat.Value.Year == Nam);
+            double rs = 0;
+            foreach (var item in dh)
+            {
+                rs += item.ThanhTien + item.PhiShip;
+            }
+            return rs;
+        }
         public bool Duyet(int Id)
         {
             var entity = db.DonHangs.Find(Id);

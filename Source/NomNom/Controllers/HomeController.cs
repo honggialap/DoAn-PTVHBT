@@ -17,6 +17,10 @@ namespace NomNom.Controllers
             ViewBag.listBanChay = dal.SanPhamBanChay();
             return View();
         }
-       
+        public ActionResult LienHe()
+        {
+            var dal = new ThongTinWebsiteDAL();
+            return View(dal.Get());
+        }
     }
 }

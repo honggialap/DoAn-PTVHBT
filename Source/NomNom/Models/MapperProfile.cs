@@ -8,6 +8,7 @@ using NomNom.Models.NhaCungCaps;
 using NomNom.Models.PhieuNhaps;
 using NomNom.Models.SanPhams;
 using NomNom.Models.TaiKhoans;
+using NomNom.Models.ThongTinWebsites;
 using NomNom.Models.ThuongHieus;
 using NomNom.Models.TinhTrangDonHangs;
 using System;
@@ -68,6 +69,9 @@ namespace NomNom.Models
             CreateMap<ChucVuInput, ChucVu>();
             //Giỏ hàng
             CreateMap<GioHang, GioHangDTO>();
+            //Thông tin website
+            CreateMap<ThongTinWebsite, ThongTinWebsiteInput>();
+            CreateMap<ThongTinWebsiteInput, ThongTinWebsite>();
         }
     }
 }

@@ -175,6 +175,7 @@
     <Compile Include="DAL\NhaCungCapDAL.cs" />
     <Compile Include="DAL\PhieuNhapDAL.cs" />
     <Compile Include="DAL\GioHangDAL.cs" />
+    <Compile Include="DAL\ThongTinWebsiteDAL.cs" />
     <Compile Include="DAL\ThuongHieuDAL.cs" />
     <Compile Include="DAL\LoaiSanPhamDAL.cs" />
     <Compile Include="DAL\SanPhamDAL.cs" />
@@ -251,6 +252,18 @@
     <Compile Include="Migrations\201906250411252_tao-bang-giohangs.Designer.cs">
       <DependentUpon>201906250411252_tao-bang-giohangs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906270635480_tao_bang_thongtinwebsites.cs" />
+    <Compile Include="Migrations\201906270635480_tao_bang_thongtinwebsites.Designer.cs">
+      <DependentUpon>201906270635480_tao_bang_thongtinwebsites.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906270756469_cap_nhat_bang_thongtinwebsites.cs" />
+    <Compile Include="Migrations\201906270756469_cap_nhat_bang_thongtinwebsites.Designer.cs">
+      <DependentUpon>201906270756469_cap_nhat_bang_thongtinwebsites.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906270805177_cap_nhat_bang_thongtinwebsité.cs" />
+    <Compile Include="Migrations\201906270805177_cap_nhat_bang_thongtinwebsité.Designer.cs">
+      <DependentUpon>201906270805177_cap_nhat_bang_thongtinwebsité.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\ChucVus\ChucVu.cs" />
@@ -288,6 +301,8 @@
     <Compile Include="Models\NhaCungCaps\NhaCungCapDTO.cs" />
     <Compile Include="Models\NhaCungCaps\NhaCungCapFilter.cs" />
     <Compile Include="Models\NhaCungCaps\NhaCungCapInput.cs" />
+    <Compile Include="Models\ThongTinWebsites\ThongTinWebsite.cs" />
+    <Compile Include="Models\ThongTinWebsites\ThongTinWebsiteInput.cs" />
     <Compile Include="Models\ThuongHieus\ThuongHieu.cs" />
     <Compile Include="Models\ThuongHieus\ThuongHieuDTO.cs" />
     <Compile Include="Models\ThuongHieus\ThuongHieuFilter.cs" />
@@ -2832,6 +2847,7 @@
     <Content Include="Assets\client\Source\sass\style.scss" />
     <Content Include="Assets\client\Source\SlickNav-master.zip" />
     <Content Include="Assets\client\Source\zoom-master.zip" />
+    <Content Include="Areas\Admin\Views\Home\ThongTinWebsite.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\controllers\PhieuNhapController.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -2871,6 +2887,7 @@
     <Content Include="Views\DonHang\Dat.cshtml" />
     <Content Include="Views\DonHang\Index.cshtml" />
     <Content Include="Views\DonHang\ChiTiet.cshtml" />
+    <Content Include="Views\Home\LienHe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2942,6 +2959,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906250411252_tao-bang-giohangs.resx">
       <DependentUpon>201906250411252_tao-bang-giohangs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906270635480_tao_bang_thongtinwebsites.resx">
+      <DependentUpon>201906270635480_tao_bang_thongtinwebsites.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906270756469_cap_nhat_bang_thongtinwebsites.resx">
+      <DependentUpon>201906270756469_cap_nhat_bang_thongtinwebsites.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906270805177_cap_nhat_bang_thongtinwebsité.resx">
+      <DependentUpon>201906270805177_cap_nhat_bang_thongtinwebsité.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

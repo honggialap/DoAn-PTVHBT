@@ -1,0 +1,31 @@
+﻿@model NomNom.Models.ThongTinWebsites.ThongTinWebsiteInput
+@{
+    ViewBag.Title = "Liên hệ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="contact-section" style="height:720px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 contact-info">
+                <h3>Thông tin liên hệ</h3>
+                <p>Địa chỉ: @Model.DiaChi</p>
+                <p>Số điện thoai: @Model.SoDienThoai</p>
+                <p>Email: @Model.Email</p>
+                <p>Thông tin: @Model.ThongTin</p>
+                <div class="contact-social">
+                    @if (!Model.Facebook.IsEmpty())
+                    {
+                    <a href="@Model.Facebook"><i class="fa fa-facebook"></i></a>
+                    }
+                    @if (!Model.Twitter.IsEmpty())
+                    {
+                    <a href="@Model.Twitter"><i class="fa fa-twitter"></i></a>
+                    }
+                </div>
+              
+            </div>
+        </div>
+    </div>
+    </section>
+<!-- Contact section end -->

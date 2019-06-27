@@ -14,6 +14,7 @@ using NomNom.Models.KhuVucs;
 using NomNom.Models.DonHangs;
 using NomNom.Models.ChucVus;
 using NomNom.Models.GioHangs;
+using NomNom.Models.ThongTinWebsites;
 
 namespace NomNom.Models
 {
@@ -37,5 +38,6 @@ namespace NomNom.Models
         public DbSet<ChiTietDonHang> ChiTietDonHangs { get; set; }
         public DbSet<ChucVu> ChucVus { get; set; }
         public DbSet<GioHang> GioHangs { get; set; }
+        public DbSet<ThongTinWebsite> ThongTinWebsites { get; set; }
     }
 }

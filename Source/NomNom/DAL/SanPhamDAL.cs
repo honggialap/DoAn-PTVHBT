@@ -54,7 +54,7 @@ namespace NomNom.DAL
         }
         public List<SanPhamDTO> SanPhamDuocQuanTam()
         {
-            var rs = db.SanPhams.Take(CommonConstants.SO_SAN_PHAM).OrderByDescending(x => x.SoView);
+            var rs = db.SanPhams.Where(x=>!x.IsDeleted).Take(CommonConstants.SO_SAN_PHAM).OrderByDescending(x => x.SoView);
             var list = new List<SanPhamDTO>();
             foreach (var item in rs)
             {
@@ -65,7 +65,7 @@ namespace NomNom.DAL
         }
         public List<SanPhamDTO> SanPhamMoiNhat()
         {
-            var rs = db.SanPhams.Take(CommonConstants.SO_SAN_PHAM).OrderByDescending(x=>x.Id);
+            var rs = db.SanPhams.Where(x => !x.IsDeleted).Take(CommonConstants.SO_SAN_PHAM).OrderByDescending(x=>x.Id);
             var list = new List<SanPhamDTO>();
             foreach (var item in rs)
             {

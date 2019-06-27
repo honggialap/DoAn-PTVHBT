@@ -9,6 +9,7 @@
     using NomNom.Models.NhaCungCaps;
     using NomNom.Models.SanPhams;
     using NomNom.Models.TaiKhoans;
+    using NomNom.Models.ThongTinWebsites;
     using NomNom.Models.ThuongHieus;
     using NomNom.Models.TinhTrangDonHangs;
     using System;
@@ -665,6 +666,19 @@
             context.ChiTietDonHangs.AddOrUpdate(chitietdonhangs.ToArray());
             #endregion
 
+            #region thongtinwebsite
+            List<ThongTinWebsite> thongtinwebsite = new List<ThongTinWebsite>();
+            ThongTinWebsite ttws = new ThongTinWebsite();
+            n = 1;
+            ttws.Id = n++;
+            ttws.Logo = "?";
+            ttws.Email = "NomNom@gmail.com";
+            ttws.DiaChi = "VRC3+2C Linh Trung, Thủ Đức, Ho Chi Minh City, Vietnam";
+            ttws.SoDienThoai = "0123456789";
+            ttws.ThongTin = "Website Nom Nom bla bla bl.................";
+            thongtinwebsite.Add(ttws);
+            context.ThongTinWebsites.AddOrUpdate(thongtinwebsite.ToArray());
+            #endregion
         }
 
     }
