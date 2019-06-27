@@ -2,6 +2,8 @@
 @{
     /**/
 
+    /**/
+
     ViewBag.Title = "Nom Nom";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -26,6 +28,36 @@
         }
     </script>
 }
+<!-- Tin tuc section -->
+@if (ViewBag.listTinTuc != null)
+{
+    <section class="hero-section">
+        <div class="hero-slider owl-carousel">
+            @foreach (var item in ViewBag.listTinTuc)
+            {
+                
+                <div class="hs-item set-bg" data-setbg="@(item.HinhAnh==null?"/Assets/client/img/bg.jpg":item.HinhAnh)">
+               
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-7 text-white">
+                            <h2>@item.TieuDe</h2>
+                            <p>@item.MieuTa</p>
+                            <a href="/TinTuc/ChiTiet/@item.Id" class="site-btn sb-line">Xem chi tiết</a>
+                           
+                        </div>
+                    </div>               
+                </div>
+            </div>
+            }
+            
+        </div>
+        <div class="container">
+            <div class="slide-num-holder" id="snh-1"></div>
+        </div>
+    </section>
+}
+<!-- Tin tuc section end -->
 <!-- letest product section -->
 <section class="top-letest-product-section">
     <div class="container">

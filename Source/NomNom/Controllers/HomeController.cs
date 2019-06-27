@@ -1,4 +1,5 @@
-﻿using NomNom.DAL;
+﻿using NomNom.Common;
+using NomNom.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,11 @@ namespace NomNom.Controllers
         public ActionResult Index()
         {
             var dal = new SanPhamDAL();
+            var tintucDAL = new TinTucDAL();
             ViewBag.listMoiNhat = dal.SanPhamMoiNhat();
             ViewBag.listQuanTam = dal.SanPhamDuocQuanTam();
             ViewBag.listBanChay = dal.SanPhamBanChay();
+            ViewBag.listTinTuc = tintucDAL.GetTinTuc(null,0,CommonConstants.SO_TIN_TUC);
             return View();
         }
         public ActionResult LienHe()

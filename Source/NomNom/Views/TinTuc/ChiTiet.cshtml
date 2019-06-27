@@ -1,0 +1,22 @@
+﻿@model NomNom.Models.TinTucs.TinTucInput
+@{
+    ViewBag.Title = Model.TieuDe;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-top-info">
+    <div class="container">
+        <h4>@Model.TieuDe</h4>
+        <div class="site-pagination">
+            <a href="/Home">Trang chủ</a> /
+            <a href="/TinTuc">Tin tức</a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            @Html.Raw(Model.NoiDung)
+        </div>
+        
+    </div>
+</div>

@@ -43,7 +43,7 @@ namespace NomNom.DAL
                     result = result.Where(x => x.TieuDe.Contains(filter.TieuDe));
                 }
             }
-            result = result.Skip(skip).Take(take);
+            result = result.OrderByDescending(x=>x.Ngay).Skip(skip).Take(take);
             var list = new List<TinTucDTO>();
             foreach (var item in result)
             {

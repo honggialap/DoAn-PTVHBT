@@ -171,6 +171,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
+    <Compile Include="Controllers\TinTucController.cs" />
     <Compile Include="DAL\DonHangDAL.cs" />
     <Compile Include="DAL\KhuVucDAL.cs" />
     <Compile Include="DAL\NhaCungCapDAL.cs" />
@@ -2950,8 +2951,6 @@
     <Content Include="Assets\client\icon-fonts\fontawesome-webfont.svg" />
     <Content Include="Assets\client\img\arrow-down.png" />
     <Content Include="Assets\client\img\arrow-up.png" />
-    <Content Include="Assets\client\img\banner-bg.jpg" />
-    <Content Include="Assets\client\img\bg-2.jpg" />
     <Content Include="Assets\client\img\bg.jpg" />
     <Content Include="Assets\client\img\blog-thumbs\1.jpg" />
     <Content Include="Assets\client\img\blog-thumbs\2.jpg" />
@@ -3288,6 +3287,8 @@
     <Content Include="Views\DonHang\Index.cshtml" />
     <Content Include="Views\DonHang\ChiTiet.cshtml" />
     <Content Include="Views\Home\LienHe.cshtml" />
+    <Content Include="Views\TinTuc\Index.cshtml" />
+    <Content Include="Views\TinTuc\ChiTiet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

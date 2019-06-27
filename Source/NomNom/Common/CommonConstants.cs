@@ -38,5 +38,6 @@ namespace NomNom.Common
         public static int GIO_HANG_THEM_THAT_BAI = 0;
         public static int GIO_HANG_SAN_PHAM_DA_CO = -1;
         public static int SO_SAN_PHAM = 10; // số lượng sản phẩm mới nhất, bán chạy
+        public static int SO_TIN_TUC = 5; //Số tin tức hiển thị trên trang chủ
     }
 }
